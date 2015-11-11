@@ -13,4 +13,16 @@ package telefonia;
  */
 public interface Cuenta {
     
+    /**
+     * muestra montos a pagar en detalle (pago por minutos usados, pago por impuestos), 
+     * descuentos y monto total a cancelar. Además, toda la información asociada al fono que es relevante
+     * para identificar a la compañía, usuario y fono
+     */
+    void mostrarCuentaCompleta();
+    
+    /**
+     * muestra solo el nombre de usuario, número de teléfono y total a pagar.
+     */
+    void cuentaSimple();
+    
 }
