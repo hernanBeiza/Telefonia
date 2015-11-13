@@ -4,298 +4,143 @@
  * and open the template in the editor.
  */
 package telefonia;
-import java.util.ArrayList;
-import java.util.Iterator;
-import javax.swing.JOptionPane;
+
 /**
  *
  * @author hernanBeiza
  */
-public class Telefonia implements Cuenta, Impuestos, ServicioTecnico{
-    /**
-     * Companias de teléfono registradas en el sistema
-     */
-    private ArrayList <Compania> companias = new ArrayList<Compania>();
-    /**
-     * Planes de teléfono registrados en el sistema
-     */
-    private ArrayList <PlanTelefonico> planes = new ArrayList<PlanTelefonico>();
-    /**
-     * Usuarios registrados en el sistema
-     */
-    private ArrayList <Usuario> usuarios = new ArrayList<Usuario>();
-    /**
-     * Teléfonos móviles registrados en el sistema
-     */
-    private ArrayList <Movil> moviles = new ArrayList<Movil>();
-    /**
-     * Teléfonos fijos registrados en el sistema
-     */
-    private ArrayList <Fijo> fijos = new ArrayList<Fijo>();
-    
+public class Telefonia {
+    private Compania compania;
+    private Usuario usuario;
+    private String region;
+    private String comuna;
+    private String fechaContrato;
+    private int valorMinutoFijo;
+    private int valorMinutoMovil;
+    private float tarifaFija;
+    private int cantidadMinutosUsadosFijos;
+    private int cantidadMinutosUsadosMovil;
+    private PlanTelefonico planTelefonico;
+    private String numeroFono;
+
     public Telefonia() {
-        // Necesario para ejecutar
-        // Tener ArrayList de Compañia
-        // Tener ArrayList de PlanTelefonico
-
-        /*
-        0. Tener companias y planes por defecto
-        Crear compañia
-        Crear planes
-        */
-        Compania movistar = new Compania("70123456-1", "MOVISTAR", "ESPAÑA");
-        Compania entel = new Compania("70234543-2", "ENTEL", "CHILE");
-        companias.add(movistar);
-        companias.add(entel);
-        Iterator it = companias.iterator();
-        while(it.hasNext()){
-            Compania unaCompania = (Compania)it.next();
-            System.out.println(unaCompania.toString());
-        }
-        
-
-        PlanTelefonico economico = new PlanTelefonico("ABC123", "ECONOMICO", "RODRIGO", 10, true);
-        PlanTelefonico normal = new PlanTelefonico("ABC123", "NORMAL", "RODRIGO", 50, true);
-        PlanTelefonico premium = new PlanTelefonico("ABC123", "PREMIUM", "HERNAN", 100, true);
-        planes.add(economico);
-        planes.add(normal);
-        planes.add(premium);
-        it = planes.iterator();
-        while(it.hasNext()){
-            PlanTelefonico unPlan = (PlanTelefonico)it.next();
-            System.out.println(unPlan.toString());
-        }        
-
-    }
-    
-    public ArrayList<Compania> getCompanias() {
-        return companias;
     }
 
-    public void setCompanias(ArrayList<Compania> companias) {
-        this.companias = companias;
+    public Telefonia(Compania compania, Usuario usuario, String region, String comuna, String fechaContrato, int valorMinutoFijo, int valorMinutoMovil, float tarifaFija, int cantidadMinutosUsadosFijos, int cantidadMinutosUsadosMovil, PlanTelefonico planTelefonico, String numeroFono) {
+        this.compania = compania;
+        this.usuario = usuario;
+        this.region = region;
+        this.comuna = comuna;
+        this.fechaContrato = fechaContrato;
+        this.valorMinutoFijo = valorMinutoFijo;
+        this.valorMinutoMovil = valorMinutoMovil;
+        this.tarifaFija = tarifaFija;
+        this.cantidadMinutosUsadosFijos = cantidadMinutosUsadosFijos;
+        this.cantidadMinutosUsadosMovil = cantidadMinutosUsadosMovil;
+        this.planTelefonico = planTelefonico;
+        this.numeroFono = numeroFono;
     }
 
-    public ArrayList<PlanTelefonico> getPlanes() {
-        return planes;
+    public Compania getCompania() {
+        return compania;
     }
 
-    public void setPlanes(ArrayList<PlanTelefonico> planes) {
-        this.planes = planes;
+    public void setCompania(Compania compania) {
+        this.compania = compania;
     }
 
-    public ArrayList<Usuario> getUsuarios() {
-        return usuarios;
+    public Usuario getUsuario() {
+        return usuario;
     }
 
-    public void setUsuarios(ArrayList<Usuario> usuarios) {
-        this.usuarios = usuarios;
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 
-    public ArrayList<Movil> getMoviles() {
-        return moviles;
+    public String getRegion() {
+        return region;
     }
 
-    public void setMoviles(ArrayList<Movil> moviles) {
-        this.moviles = moviles;
+    public void setRegion(String region) {
+        this.region = region;
     }
 
-    public ArrayList<Fijo> getFijos() {
-        return fijos;
+    public String getComuna() {
+        return comuna;
     }
 
-    public void setFijos(ArrayList<Fijo> fijos) {
-        this.fijos = fijos;
+    public void setComuna(String comuna) {
+        this.comuna = comuna;
     }
 
-    /**
-    1. Agregar fono
-        Crear usuario
-            Pedir Datos
-        Pedir numero, para ver si es movil o fijo
-            Crear fijo o móvil
-            Si es fijo
-     */
-    public void agregarFono() {        
-        JOptionPane.showMessageDialog(null, "Agregar Usuario");
-        String nombre = JOptionPane.showInputDialog("Ingrese nombre").toUpperCase();
-        String apellido= JOptionPane.showInputDialog("Ingrese apellido").toUpperCase();
-        String run= JOptionPane.showInputDialog("Ingrese run").toUpperCase();
-        String fechaNacimiento= JOptionPane.showInputDialog("Ingrese fecha de nacimiento");
-        int edad = Integer.parseInt(JOptionPane.showInputDialog("Ingrese edad"));
-        String estadoCivil = JOptionPane.showInputDialog("Ingrese estado civil").toUpperCase();
-        
-        Usuario miUsuario = new Usuario(nombre, apellido, run, fechaNacimiento, edad, estadoCivil);
-        usuarios.add(miUsuario);
-        Iterator it = usuarios.iterator();
-        while(it.hasNext()){
-            Usuario unUsuario = (Usuario)it.next();
-            System.out.println(unUsuario.toString());
-        }
-    
-        String numeroTelefono= JOptionPane.showInputDialog("Ingrese el número del usuario: " + miUsuario.getRun());
-        if(revisarNumero(numeroTelefono)){
-            //Existe en la DB, no se puede crear
-            System.out.println("Número de teléfono ya existe");
-        } else {
-            System.out.println("Número de teléfono no existe");
-            if(esMovil(numeroTelefono)){
-                //Pedir datos de móvil
-                //...
-                //Luego crear el tipo de móvil
-                String[] opciones = new String[2];
-                opciones[0]="Smartphone";
-                opciones[1]="Tradicional";
-                
-                int tipoMovil = JOptionPane.showOptionDialog(null, //Component parentComponent
-                               "¿Qué tipo de móvil?", //Object message,
-                               "Elegir tipo de movil", //String title
-                               JOptionPane.YES_NO_OPTION, //int optionType
-                               JOptionPane.INFORMATION_MESSAGE, //int messageType
-                               null, //Icon icon,
-                               opciones, //Object[] options,
-                               opciones[0]);//Object initialValue 
-                System.out.println("tipoMovil " + tipoMovil);
-                //Smartphone
-                if(tipoMovil==0){
-                    opciones = new String[2];
-                    opciones[0]="iOS Apple";
-                    opciones[1]="Android";                    
-                    int sistema = JOptionPane.showOptionDialog(null, //Component parentComponent
-                               "¿Qué SO de Smartphone?", //Object message,
-                               "Elegir SO del Smartphone", //String title
-                               JOptionPane.YES_NO_OPTION, //int optionType
-                               JOptionPane.INFORMATION_MESSAGE, //int messageType
-                               null, //Icon icon,
-                               opciones, //Object[] options,
-                               opciones[0]);//Object initialValue 
-                    System.out.println("sistema " + sistema);
-
-                    if(sistema==1){
-                        //Android
-                        Android android = new Android();
-                        moviles.add(android);
-                    } else {
-                       //IOS
-                        IOS ios = new IOS();
-                        moviles.add(ios);
-                    }
-                    
-                //Tradicional
-                } else {
-                    
-                }
-            } else {
-                
-            }
-
-            
-        }
-        //Revisar que este número no exista en la DB de teléfonos fijos
-        
-    }
-    /**
-     * Verifica si el teléfono es de un móvil o fijo
-     * @param numero del teléfono
-     * @return true si es móvil. false si es fijo
-     */
-    private boolean esMovil(String numero){
-        boolean resultado = false;
-        if(numero.startsWith("9", 0) || numero.startsWith("8",0)){
-            System.out.println("Es móvil");
-            resultado = true;
-        } else {
-            System.out.println("Es fijo");  
-            resultado = false;
-        }        
-        return resultado;
-    }
-    /**
-     * Busca el número en la DB correspondiente
-     * @param numero del teléfono
-     * @return true si existe. false si no
-     */
-    private boolean revisarNumero(String numero){
-        boolean encontrado = false;
-        Iterator iterador = null;
-        if(esMovil(numero)){
-            System.out.println("Buscar en moviles");
-            iterador = moviles.iterator();
-            while(iterador.hasNext()){
-                Movil unMovil = (Movil)iterador.next();
-                if(unMovil.getNumeroFono().equals(numero)){
-                    encontrado = true;
-                    break;
-                }
-            }            
-        } else {
-            System.out.println("Buscar en fijos");  
-            throw new UnsupportedOperationException("Aún no soportado. Falta que Andrés termine sus clases."); //To change body of generated methods, choose Tools | Templates.
-            /*
-            iterador = fijos.iterator();
-            while(iterador.hasNext()){
-                Fijo unFijo = (Fijo)iterador.next();
-                //Terminar cuando Andrés tenga la clase lista
-                if(unFijo..equals(numero)){
-                    encontrado = true;
-                    break;
-                }
-            }            
-            */            
-        }
-
-        return encontrado;
+    public String getFechaContrato() {
+        return fechaContrato;
     }
 
-    @Override
-    public void mostrarCuentaCompleta() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void setFechaContrato(String fechaContrato) {
+        this.fechaContrato = fechaContrato;
     }
 
-    @Override
-    public void cuentaSimple() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public int getValorMinutoFijo() {
+        return valorMinutoFijo;
     }
 
-    @Override
-    public float impuestoAplicado() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void setValorMinutoFijo(int valorMinutoFijo) {
+        this.valorMinutoFijo = valorMinutoFijo;
     }
 
-    @Override
-    public float pagoPorMinutosUsados() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public int getValorMinutoMovil() {
+        return valorMinutoMovil;
     }
 
-    @Override
-    public float totalAPagar() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void setValorMinutoMovil(int valorMinutoMovil) {
+        this.valorMinutoMovil = valorMinutoMovil;
     }
 
-    @Override
-    public float descuento() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public float getTarifaFija() {
+        return tarifaFija;
     }
 
-    @Override
-    public void aplicaServicio() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void setTarifaFija(float tarifaFija) {
+        this.tarifaFija = tarifaFija;
     }
 
-    @Override
-    public float pagarServicioTecnico() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public int getCantidadMinutosUsadosFijos() {
+        return cantidadMinutosUsadosFijos;
     }
 
-    
-    
-    
-    
+    public void setCantidadMinutosUsadosFijos(int cantidadMinutosUsadosFijos) {
+        this.cantidadMinutosUsadosFijos = cantidadMinutosUsadosFijos;
+    }
+
+    public int getCantidadMinutosUsadosMovil() {
+        return cantidadMinutosUsadosMovil;
+    }
+
+    public void setCantidadMinutosUsadosMovil(int cantidadMinutosUsadosMovil) {
+        this.cantidadMinutosUsadosMovil = cantidadMinutosUsadosMovil;
+    }
+
+    public PlanTelefonico getPlanTelefonico() {
+        return planTelefonico;
+    }
+
+    public void setPlanTelefonico(PlanTelefonico planTelefonico) {
+        this.planTelefonico = planTelefonico;
+    }
+
+    public String getNumeroFono() {
+        return numeroFono;
+    }
+
+    public void setNumeroFono(String numeroFono) {
+        this.numeroFono = numeroFono;
+    }
+
     @Override
     public String toString() {
-        return "Telefonia{" + "companias=" + companias + ", planes=" + planes + ", usuarios=" + usuarios + '}';
+        return "Telefonia{" + "compania=" + compania + ", usuario=" + usuario + ", region=" + region + ", comuna=" + comuna + ", fechaContrato=" + fechaContrato + ", valorMinutoFijo=" + valorMinutoFijo + ", valorMinutoMovil=" + valorMinutoMovil + ", tarifaFija=" + tarifaFija + ", cantidadMinutosUsadosFijos=" + cantidadMinutosUsadosFijos + ", cantidadMinutosUsadosMovil=" + cantidadMinutosUsadosMovil + ", planTelefonico=" + planTelefonico + ", numeroFono=" + numeroFono + '}';
     }
-    
     
     
 }
