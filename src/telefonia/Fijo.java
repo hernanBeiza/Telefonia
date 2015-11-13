@@ -1,7 +1,7 @@
 package telefonia;
 
 
-public class Fijo extends Telefonia{
+public abstract class Fijo extends Telefonia{
     private int codigoZona;
 
     public Fijo() {

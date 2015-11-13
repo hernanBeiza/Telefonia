@@ -1,6 +1,5 @@
 package telefonia;
 
-
 public class Privado extends Fijo{
     
     private boolean identificadorLlamada;

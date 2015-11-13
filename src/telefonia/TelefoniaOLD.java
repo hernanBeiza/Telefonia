@@ -51,8 +51,7 @@ public class TelefoniaOLD implements Cuenta, Impuestos, ServicioTecnico{
         while(it.hasNext()){
             Compania unaCompania = (Compania)it.next();
             System.out.println(unaCompania.toString());
-        }
-        
+        }        
 
         PlanTelefonico economico = new PlanTelefonico("ABC123", "ECONOMICO", "RODRIGO", 10, true);
         PlanTelefonico normal = new PlanTelefonico("ABC123", "NORMAL", "RODRIGO", 50, true);
@@ -173,12 +172,10 @@ public class TelefoniaOLD implements Cuenta, Impuestos, ServicioTecnico{
 
                     if(sistema==1){
                         //Android
-                        Android android = new Android();
-                        moviles.add(android);
                     } else {
-                       //IOS
-                        IOS ios = new IOS();
-                        moviles.add(ios);
+                       
+                        
+                        
                     }
                     
                 //Tradicional

@@ -1,15 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package telefonia;
 
-/**
- *
- * @author hernanBeiza
- */
-public class Telefonia {
+public abstract class Telefonia {
     private Compania compania;
     private Usuario usuario;
     private String region;

@@ -1,16 +1,5 @@
 package telefonia;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-
-/**
- *
- * @author hernanBeiza
- */
 public class IOS extends SmartPhone{
     /**
      * 1,2,3,4,5,6
@@ -26,6 +15,21 @@ public class IOS extends SmartPhone{
         super(versionSO, cantidadmemoria, codigoAntena, peso, duracionBateria, compania, usuario, region, comuna, fechaContrato, valorMinutoFijo, valorMinutoMovil, tarifaFija, cantidadMinutosUsadosFijos, cantidadMinutosUsadosMovil, planTelefonico, numeroFono);
         this.modelo = modelo;
     }
+
+    public String getModelo() {
+        return modelo;
+    }
+
+    public void setModelo(String modelo) {
+        this.modelo = modelo;
+    }
+
+    @Override
+    public String toString() {
+        return "IOS{" + "modelo=" + modelo + '}';
+    }
+    
+    
 
     
     

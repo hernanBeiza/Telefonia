@@ -1,6 +1,4 @@
-
 package telefonia;
-
 
 public class Compania {
     private String rut;

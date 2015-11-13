@@ -1,6 +1,5 @@
 package telefonia;
 
-
 public class Comerciales extends Fijo {
     private int cantidadAnexos;
 

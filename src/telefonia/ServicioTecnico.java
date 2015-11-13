@@ -1,8 +1,6 @@
 package telefonia;
 
-/
 public interface ServicioTecnico {
-    
   
     void aplicaServicio();
     /**

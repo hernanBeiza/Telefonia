@@ -1,6 +1,5 @@
 package telefonia;
 
-
 public class Android extends SmartPhone {
     private String marcaFono;
 
