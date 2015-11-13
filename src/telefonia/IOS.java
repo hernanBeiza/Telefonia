@@ -11,6 +11,10 @@ package telefonia;
  *
  * @author hernanBeiza
  */
-public class IOS {
-    
+public class IOS extends Movil{
+    /**
+     * 1,2,3,4,5,6
+     */
+    private String modelo;
+
 }

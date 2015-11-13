@@ -13,4 +13,7 @@ package telefonia;
  */
 public class SmartPhone {
     
+    private String versionSO;
+    private int cantidadmemoria;
+
 }

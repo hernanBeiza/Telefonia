@@ -11,6 +11,7 @@ package telefonia;
  *
  * @author hernanBeiza
  */
-public class Android {
-    
+public class Android extends Movil{
+    private String marcaFono;
+
 }
