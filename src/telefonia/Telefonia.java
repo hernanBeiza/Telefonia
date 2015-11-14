@@ -1,5 +1,5 @@
 package telefonia;
-
+//Implements Impuestos
 public abstract class Telefonia {
     private Compania compania;
     private Usuario usuario;
