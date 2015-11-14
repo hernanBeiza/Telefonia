@@ -1,5 +1,6 @@
 package telefonia;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Iterator;
 import javax.swing.JOptionPane;
@@ -40,21 +41,6 @@ public class main {
      */
     
     public static void main(String[] args) {
-<<<<<<< HEAD
-        /*
-        0. Tener companias y planes por defecto
-        Crear compañia
-        Crear planes
-        */
-//        Compania movistar = new Compania("70123456-1", "MOVISTAR", "ESPAÑA");
-//        Compania entel = new Compania("70234543-2", "ENTEL", "CHILE");
-//        companias.add(movistar);
-//        companias.add(entel);
-//        Iterator it = companias.iterator();
-//        while(it.hasNext()){
-//            Compania unaCompania = (Compania)it.next();
-//            System.out.println(unaCompania.toString());
-//        }        
 
         PlanTelefonico economico = new PlanTelefonico("ABC123", "ECONOMICO", "RODRIGO", 10, true);
         PlanTelefonico normal = new PlanTelefonico("ABC123", "NORMAL", "RODRIGO", 50, true);
@@ -63,121 +49,22 @@ public class main {
         planes.add(normal);
         planes.add(premium);
         Iterator it = planes.iterator();
+        /*
         it = planes.iterator();
         while(it.hasNext()){
             PlanTelefonico unPlan = (PlanTelefonico)it.next();
             System.out.println(unPlan.toString());
-        }
-        
+        }   
+        */
         Compania movistar = new Compania("70123456-1", "MOVISTAR", "ESPAÑA",planes);
         Compania entel = new Compania("70234543-2", "ENTEL", "CHILE",planes);
         companias.add(movistar);
         companias.add(entel);
-         it = companias.iterator();
+        it = companias.iterator();
         while(it.hasNext()){
             Compania unaCompania = (Compania)it.next();
             System.out.println(unaCompania.toString());
-        }        
-
-        /**
-        1.Agregar fono
-        * Crear usuario
-        * Pedir Datos
-        *   Pedir numero, para ver si es movil o fijo
-        *       Crear fijo o móvil
-        *           Si es móvil
-                *       pedir sistema oeprativo
-                *       si es iphone, modelo
-                *       si es android, marca
-                *       pedir que plan desea
-                *       crear móvil finalmente
-                *   
-         */
-             
-        
-        
-        
-        
-        
-        /*
-        String numeroTelefono= JOptionPane.showInputDialog("Ingrese el número del usuario: " + miUsuario.getRun());
-        if(revisarNumero(numeroTelefono)){
-            //Existe en la DB, no se puede crear
-            System.out.println("Número de teléfono ya existe");
-        } else {
-            System.out.println("Número de teléfono no existe");
-            if(esMovil(numeroTelefono)){
-                //Pedir datos de móvil
-                //...
-                //Luego crear el tipo de móvil
-                String[] tipos = new String[2];
-                tipos[0]="Smartphone";
-                tipos[1]="Tradicional";
-                
-                int tipoMovil = JOptionPane.showOptionDialog(null, //Component parentComponent
-                               "¿Qué tipo de móvil?", //Object message,
-                               "Elegir tipo de movil", //String title
-                               JOptionPane.YES_NO_OPTION, //int optionType
-                               JOptionPane.INFORMATION_MESSAGE, //int messageType
-                               null, //Icon icon,
-                               tipos, //Object[] options,
-                               tipos[0]);//Object initialValue 
-                System.out.println("tipoMovil " + tipos[tipoMovil]);
-                //Smartphone
-                if(tipoMovil==0){
-                    String[] so = new String[2];
-                    so[0]="iOS Apple";
-                    so[1]="Android";                    
-                    int sistema = JOptionPane.showOptionDialog(null, //Component parentComponent
-                               "¿Qué SO de Smartphone?", //Object message,
-                               "Elegir SO del Smartphone", //String title
-                               JOptionPane.YES_NO_OPTION, //int optionType
-                               JOptionPane.INFORMATION_MESSAGE, //int messageType
-                               null, //Icon icon,
-                               so, //Object[] options,
-                               so[0]);//Object initialValue 
-                    System.out.println("sistema " + so[sistema]);
-                    if(sistema==1){
-                        //Android
-                        int marca = JOptionPane.showOptionDialog(null, //Component parentComponent
-                               "¿Qué marca de Android?", //Object message,
-                               "Elegir marca de Android", //String title
-                               JOptionPane.YES_NO_OPTION, //int optionType
-                               JOptionPane.INFORMATION_MESSAGE, //int messageType
-                               null, //Icon icon,
-                               marcasAndroid, //Object[] options,
-                               marcasAndroid[0]);//Object initialValue 
-                        System.out.println("marca " + marcasAndroid[marca]);
-                        
-                    } else {
-                        //IOS
-                        int modelo = JOptionPane.showOptionDialog(null, //Component parentComponent
-                               "¿Qué modelo de iPhone?", //Object message,
-                               "Elegir modelo de iPhone", //String title
-                               JOptionPane.YES_NO_OPTION, //int optionType
-                               JOptionPane.INFORMATION_MESSAGE, //int messageType
-                               null, //Icon icon,
-                               modelosIOS, //Object[] options,
-                               modelosIOS[0]);//Object initialValue 
-                        System.out.println("modelo " + modelosIOS[modelo]);
-                        //guardar en la db
-                    }
-                    
-                //Tradicional
-                } else {
-                    int tipo = JOptionPane.showOptionDialog(null, //Component parentComponent
-                               "¿Qué tipo de equipo es?", //Object message,
-                               "Elegir tipo de equipo tradicional", //String title
-                               JOptionPane.YES_NO_OPTION, //int optionType
-                               JOptionPane.INFORMATION_MESSAGE, //int messageType
-                               null, //Icon icon,
-                               tipos, //Object[] options,
-                               tipos[0]);//Object initialValue 
-                    System.out.println("tipo " + tipos[tipo]);
-                    int color = JOptionPane.showConfirmDialog(null, "¿Tiene pantalla a color?");
-                    System.out.println("color " + color);
-                }
-=======
+        }  
         
         boolean run = true;
         while(run){
@@ -213,7 +100,7 @@ public class main {
 
                         Usuario miUsuario = new Usuario(nombre, apellido, rut, fechaNacimiento, edad, estadoCivil);
                         usuarios.add(miUsuario);
-                        Iterator it = usuarios.iterator();
+                        it = usuarios.iterator();
                         while(it.hasNext()){
                             Usuario unUsuario = (Usuario)it.next();
                             System.out.println(unUsuario.toString());
@@ -230,12 +117,47 @@ public class main {
                             System.out.println("Número de teléfono no existe");
                             if(esMovil(numeroTelefono)){
                                 //Pedir datos de móvil
-                                //...
+                                //antenas
+                                String[] antenas = {"100","130","150"};
+                                int opcionAntena = JOptionPane.showOptionDialog(null, //Component parentComponent
+                                                    "¿Cuánto pesa?", //Object message,
+                                                    "Elegir el peso", //String title
+                                                    JOptionPane.YES_NO_OPTION, //int optionType
+                                                    JOptionPane.INFORMATION_MESSAGE, //int messageType
+                                                    null, //Icon icon,
+                                                    antenas, //Object[] options,
+                                                    antenas[0]);//Object initialValue 
+                                System.out.println("antes " + antenas[opcionAntena]);
+
+                                //peso móvil
+                                String[] peso = {"100","130","150"};
+                                int opcionPeso = JOptionPane.showOptionDialog(null, //Component parentComponent
+                                                    "¿Cuánto pesa?", //Object message,
+                                                    "Elegir el peso", //String title
+                                                    JOptionPane.YES_NO_OPTION, //int optionType
+                                                    JOptionPane.INFORMATION_MESSAGE, //int messageType
+                                                    null, //Icon icon,
+                                                    peso, //Object[] options,
+                                                    peso[0]);//Object initialValue 
+                                System.out.println("peso " + peso[opcionPeso]);
+                                
+                                //duracion
+                                String[] duracion = {"1","2","3"};
+                                int opcionDuracion = JOptionPane.showOptionDialog(null, //Component parentComponent
+                                                    "¿Cuánto dura la batería?", //Object message,
+                                                    "Elegir la duración", //String title
+                                                    JOptionPane.YES_NO_OPTION, //int optionType
+                                                    JOptionPane.INFORMATION_MESSAGE, //int messageType
+                                                    null, //Icon icon,
+                                                    duracion, //Object[] options,
+                                                    duracion[0]);//Object initialValue 
+                                System.out.println("duracion " + duracion[opcionDuracion]);
+                                        
                                 //Luego crear el tipo de móvil
                                 String[] opciones = new String[2];
                                 opciones[0]="Smartphone";
                                 opciones[1]="Tradicional";
-
+                                //tipo
                                 int tipoMovil = JOptionPane.showOptionDialog(null, //Component parentComponent
                                                "¿Qué tipo de móvil?", //Object message,
                                                "Elegir tipo de movil", //String title
@@ -245,6 +167,7 @@ public class main {
                                                opciones, //Object[] options,
                                                opciones[0]);//Object initialValue 
                                 System.out.println("tipoMovil " + tipoMovil);
+                                
                                 //Smartphone
                                 if(tipoMovil==0){
                                     opciones = new String[2];
@@ -259,7 +182,7 @@ public class main {
                                                opciones, //Object[] options,
                                                opciones[0]);//Object initialValue 
                                     System.out.println("sistema " + sistema);
-
+                                    
                                     if(sistema==1){
                                         //Android
                                         int opcionAndroid = JOptionPane.showOptionDialog(null, //Component parentComponent
@@ -283,9 +206,27 @@ public class main {
                                                             modelosIOS, //Object[] options,
                                                             modelosIOS[0]);//Object initialValue 
                                         System.out.println("modelo " + modelosIOS[opcionIOS]);
+                                        
+                                        String[] memoria = {"16gb","32gb","64gb"};
+                                        int opcionMemoria = JOptionPane.showOptionDialog(null, //Component parentComponent
+                                                            "¿Qué cantidad de memoria de iOS?", //Object message,
+                                                            "Elegir cantidad memoria de iOS", //String title
+                                                            JOptionPane.YES_NO_OPTION, //int optionType
+                                                            JOptionPane.INFORMATION_MESSAGE, //int messageType
+                                                            null, //Icon icon,
+                                                            memoria, //Object[] options,
+                                                            memoria[0]);//Object initialValue 
+                                        System.out.println("memoria " + memoria[opcionMemoria]);
                                     }
-
-                                //Tradicional
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                //Teléfono móvil tradicional
                                 } else {
                                     int opcionTradicional = JOptionPane.showOptionDialog(null, //Component parentComponent
                                                         "¿Qué tipo de equipo?", //Object message,
@@ -295,29 +236,39 @@ public class main {
                                                         null, //Icon icon,
                                                         tipos, //Object[] options,
                                                         tipos[0]);//Object initialValue 
-                                    System.out.println("opcionTradicional " + tipos[opcionTradicional]);                                    
+                                    System.out.println("opcionTradicional " + tipos[opcionTradicional]);  
+                                    
+                                    int color = JOptionPane.showConfirmDialog(null, "¿Tiene pantalla a color?");
+                                    System.out.println("color " + color);
                                 }
+                                
+                                
+                                
+                                
                                 //Seleccionar un plan de la lista
-                                /*
                                 PlanTelefonico plan = (PlanTelefonico)planes.get(0);
                                 System.out.println(planes.size());
-                                String[] listaPLanes = new String[planes.size()];
+                                String[] listaPlanes = new String[planes.size()];
                                 
                                 for (int i = 0; i < planes.size(); i++) {
-                                    listaPLanes[i]=planes.get(i).getNombrePlan();
+                                    listaPlanes[i]=planes.get(i).getNombrePlan();
                                 }
+                                
                                 int opcionPlan = JOptionPane.showOptionDialog(null, //Component parentComponent
                                                     "¿Qué plan?", //Object message,
                                                     "Elegir plan", //String title
                                                     JOptionPane.YES_NO_OPTION, //int optionType
                                                     JOptionPane.INFORMATION_MESSAGE, //int messageType
                                                     null, //Icon icon,
-                                                    listaPLanes, //Object[] options,
+                                                    listaPlanes, //Object[] options,
                                                     plan.getNombrePlan());//Object initialValue 
-                                System.out.println("opcionPlan " + listaPLanes[opcionPlan]);     
-                                */
-
+                                System.out.println("opcionPlan " + listaPlanes[opcionPlan]);     
+                                
+                                
+ 
                             } else {
+                                //Fijo
+                                
 
                             }
                         }
@@ -365,7 +316,6 @@ public class main {
             if(unTelefono.getNumeroFono().equals(fono)){
                 System.out.println("Fono Encontrado");
                 telefonia = unTelefono;
->>>>>>> origin/master
             } else {
                 System.out.println("Fono no encontrado");
                 telefonia = null;
@@ -428,6 +378,18 @@ public class main {
         }
 
         return encontrado;
+    }
+    
+    /**
+     * Eliminar un fono
+     * @param numero a buscar para eliminar
+     * @return estado, true eliminado, false no eliminado
+     */
+    private static boolean eliminarFono(String numero){
+        boolean estado = false;
+        
+        
+        return estado;
     }
     
 }
