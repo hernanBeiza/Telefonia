@@ -1,18 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package telefonia;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author hernanBeiza
- */
 public class main {
     /**
      * Companias de teléfono registradas en el sistema
@@ -23,19 +14,16 @@ public class main {
      */
     private static ArrayList <PlanTelefonico> planes = new ArrayList<PlanTelefonico>();
     /**
+     * Telefonos registrados en el sistema
+     */
+    private static ArrayList <Telefonia> telefonos = new ArrayList<Telefonia>();
+
+    /**
      * Usuarios registrados en el sistema
      */
     private static ArrayList <Usuario> usuarios = new ArrayList<Usuario>();
     /**
-     * Teléfonos móviles registrados en el sistema
-     */
-    private static ArrayList <Movil> moviles = new ArrayList<Movil>();
-    /**
-     * Teléfonos fijos registrados en el sistema
-     */
-    private static ArrayList <Fijo> fijos = new ArrayList<Fijo>();
-    /**
-     * Módelos iOS registrados en el sistema
+     * Módelos de teléfonos iPhone
      */
     private static String[] modelosIOS = {"1","2","3","4","5","6"};
     /**
@@ -74,13 +62,22 @@ public class main {
             System.out.println(opcionPrincipal);
             if(opcionPrincipal !=14){
                 switch(opcionPrincipal){
-                    //agregar fono
                     case 1:
+                        //agregar fono
                         //Seleccionar usuario 
 
                             break;
                     case 2:
-                        
+                        //buscar fono por número
+                        JOptionPane.showMessageDialog(null, "2. Buscar fono por número");
+                        String numero = JOptionPane.showInputDialog(null, "Ingrese el número a buscar");
+                        Telefonia telefono = buscarPorFono(numero);
+                        if(telefono!=null){
+                            System.out.println("Sí encontrado");
+                            System.out.println(telefono.toString());
+                        } else {
+                            System.out.println("No encontado");
+                        }
                             break;
                     }                    
             } else {
@@ -121,7 +118,22 @@ public class main {
     
     
     
-    
+    private static Telefonia buscarPorFono(String fono){
+        Telefonia telefonia = null;
+        Iterator it = telefonos.iterator();
+        while(it.hasNext()){
+            Telefonia unTelefono = (Telefonia)it.next();
+            if(unTelefono.getNumeroFono().equals(fono)){
+                System.out.println("Fono Encontrado");
+                telefonia = unTelefono;
+            } else {
+                System.out.println("Fono no encontrado");
+                telefonia = null;
+            }
+        }
+                
+        return telefonia;            
+    }
     /**
      * Verifica si el teléfono es de un móvil o fijo
      * @param numero del teléfono
@@ -143,11 +155,13 @@ public class main {
      * @param numero del teléfono
      * @return true si existe. false si no
      */
+    
     private static boolean revisarNumero(String numero){
         boolean encontrado = false;
         Iterator iterador = null;
         if(esMovil(numero)){
             System.out.println("Buscar en moviles");
+            /*
             iterador = moviles.iterator();
             while(iterador.hasNext()){
                 Movil unMovil = (Movil)iterador.next();
@@ -155,7 +169,8 @@ public class main {
                     encontrado = true;
                     break;
                 }
-            }            
+            } 
+            */
         } else {
             System.out.println("Buscar en fijos");  
             throw new UnsupportedOperationException("Aún no soportado. Falta que Andrés termine sus clases."); //To change body of generated methods, choose Tools | Templates.
