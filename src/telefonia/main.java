@@ -74,32 +74,20 @@ public class main {
             System.out.println(opcionPrincipal);
             if(opcionPrincipal !=14){
                 switch(opcionPrincipal){
-                    
-                }
-                
-                
-                
-                
-                
+                    //agregar fono
+                    case 1:
+                        //Seleccionar usuario 
+
+                            break;
+                    case 2:
+                        
+                            break;
+                    }                    
             } else {
                 run = false;
             }
-        }
         
-        /**
-        1.Agregar fono
-        * Crear usuario
-        * Pedir Datos
-        *   Pedir numero, para ver si es movil o fijo
-        *       Crear fijo o móvil
-        *           Si es móvil
-                *       pedir sistema oeprativo
-                *       si es iphone, modelo
-                *       si es android, marca
-                *       pedir que plan desea
-                *       crear móvil finalmente
-                *   
-         */
+        
         /*
         JOptionPane.showMessageDialog(null, "Agregar Usuario");
         String nombre = JOptionPane.showInputDialog("Ingrese nombre").toUpperCase();
@@ -117,101 +105,23 @@ public class main {
             System.out.println(unUsuario.toString());
         }
         */
-        
-        
-        
-        
-        
-        
-        /*
-        String numeroTelefono= JOptionPane.showInputDialog("Ingrese el número del usuario: " + miUsuario.getRun());
-        if(revisarNumero(numeroTelefono)){
-            //Existe en la DB, no se puede crear
-            System.out.println("Número de teléfono ya existe");
-        } else {
-            System.out.println("Número de teléfono no existe");
-            if(esMovil(numeroTelefono)){
-                //Pedir datos de móvil
-                //...
-                //Luego crear el tipo de móvil
-                String[] tipos = new String[2];
-                tipos[0]="Smartphone";
-                tipos[1]="Tradicional";
-                
-                int tipoMovil = JOptionPane.showOptionDialog(null, //Component parentComponent
-                               "¿Qué tipo de móvil?", //Object message,
-                               "Elegir tipo de movil", //String title
-                               JOptionPane.YES_NO_OPTION, //int optionType
-                               JOptionPane.INFORMATION_MESSAGE, //int messageType
-                               null, //Icon icon,
-                               tipos, //Object[] options,
-                               tipos[0]);//Object initialValue 
-                System.out.println("tipoMovil " + tipos[tipoMovil]);
-                //Smartphone
-                if(tipoMovil==0){
-                    String[] so = new String[2];
-                    so[0]="iOS Apple";
-                    so[1]="Android";                    
-                    int sistema = JOptionPane.showOptionDialog(null, //Component parentComponent
-                               "¿Qué SO de Smartphone?", //Object message,
-                               "Elegir SO del Smartphone", //String title
-                               JOptionPane.YES_NO_OPTION, //int optionType
-                               JOptionPane.INFORMATION_MESSAGE, //int messageType
-                               null, //Icon icon,
-                               so, //Object[] options,
-                               so[0]);//Object initialValue 
-                    System.out.println("sistema " + so[sistema]);
-                    if(sistema==1){
-                        //Android
-                        int marca = JOptionPane.showOptionDialog(null, //Component parentComponent
-                               "¿Qué marca de Android?", //Object message,
-                               "Elegir marca de Android", //String title
-                               JOptionPane.YES_NO_OPTION, //int optionType
-                               JOptionPane.INFORMATION_MESSAGE, //int messageType
-                               null, //Icon icon,
-                               marcasAndroid, //Object[] options,
-                               marcasAndroid[0]);//Object initialValue 
-                        System.out.println("marca " + marcasAndroid[marca]);
-                        
-                    } else {
-                        //IOS
-                        int modelo = JOptionPane.showOptionDialog(null, //Component parentComponent
-                               "¿Qué modelo de iPhone?", //Object message,
-                               "Elegir modelo de iPhone", //String title
-                               JOptionPane.YES_NO_OPTION, //int optionType
-                               JOptionPane.INFORMATION_MESSAGE, //int messageType
-                               null, //Icon icon,
-                               modelosIOS, //Object[] options,
-                               modelosIOS[0]);//Object initialValue 
-                        System.out.println("modelo " + modelosIOS[modelo]);
-                        //guardar en la db
-                    }
-                    
-                //Tradicional
-                } else {
-                    int tipo = JOptionPane.showOptionDialog(null, //Component parentComponent
-                               "¿Qué tipo de equipo es?", //Object message,
-                               "Elegir tipo de equipo tradicional", //String title
-                               JOptionPane.YES_NO_OPTION, //int optionType
-                               JOptionPane.INFORMATION_MESSAGE, //int messageType
-                               null, //Icon icon,
-                               tipos, //Object[] options,
-                               tipos[0]);//Object initialValue 
-                    System.out.println("tipo " + tipos[tipo]);
-                    int color = JOptionPane.showConfirmDialog(null, "¿Tiene pantalla a color?");
-                    System.out.println("color " + color);
-                }
-            } else {
-                //Fijo
-                
-            }
-            
+     
         }
-        */
-
-
-
     }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     /**
      * Verifica si el teléfono es de un móvil o fijo
      * @param numero del teléfono
