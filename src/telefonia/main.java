@@ -64,8 +64,126 @@ public class main {
                 switch(opcionPrincipal){
                     case 1:
                         //agregar fono
-                        //Seleccionar usuario 
+                        //crear usuario
+                        JOptionPane.showMessageDialog(null, "Agregar Usuario");
+                        String nombre = JOptionPane.showInputDialog("Ingrese nombre").toUpperCase();
+                        String apellido= JOptionPane.showInputDialog("Ingrese apellido").toUpperCase();
+                        String rut= JOptionPane.showInputDialog("Ingrese run").toUpperCase();
+                        String fechaNacimiento= JOptionPane.showInputDialog("Ingrese fecha de nacimiento");
+                        int edad = Integer.parseInt(JOptionPane.showInputDialog("Ingrese edad"));
+                        String estadoCivil = JOptionPane.showInputDialog("Ingrese estado civil").toUpperCase();
 
+                        Usuario miUsuario = new Usuario(nombre, apellido, rut, fechaNacimiento, edad, estadoCivil);
+                        usuarios.add(miUsuario);
+                        Iterator it = usuarios.iterator();
+                        while(it.hasNext()){
+                            Usuario unUsuario = (Usuario)it.next();
+                            System.out.println(unUsuario.toString());
+                        }
+                        String region = JOptionPane.showInputDialog(null, "Ingrese la región");
+                        String comuna = JOptionPane.showInputDialog(null, "Ingrese la comuna");
+                        String fechaContrato = JOptionPane.showInputDialog(null, "Ingrese la fecha del contrato");
+                        
+                        String numeroTelefono= JOptionPane.showInputDialog("Ingrese el número del usuario: " + miUsuario.getRun());
+                        if(revisarNumero(numeroTelefono)){
+                            //Existe en la DB, no se puede crear
+                            System.out.println("Número de teléfono ya existe");
+                        } else {
+                            System.out.println("Número de teléfono no existe");
+                            if(esMovil(numeroTelefono)){
+                                //Pedir datos de móvil
+                                //...
+                                //Luego crear el tipo de móvil
+                                String[] opciones = new String[2];
+                                opciones[0]="Smartphone";
+                                opciones[1]="Tradicional";
+
+                                int tipoMovil = JOptionPane.showOptionDialog(null, //Component parentComponent
+                                               "¿Qué tipo de móvil?", //Object message,
+                                               "Elegir tipo de movil", //String title
+                                               JOptionPane.YES_NO_OPTION, //int optionType
+                                               JOptionPane.INFORMATION_MESSAGE, //int messageType
+                                               null, //Icon icon,
+                                               opciones, //Object[] options,
+                                               opciones[0]);//Object initialValue 
+                                System.out.println("tipoMovil " + tipoMovil);
+                                //Smartphone
+                                if(tipoMovil==0){
+                                    opciones = new String[2];
+                                    opciones[0]="iOS Apple";
+                                    opciones[1]="Android";                    
+                                    int sistema = JOptionPane.showOptionDialog(null, //Component parentComponent
+                                               "¿Qué SO de Smartphone?", //Object message,
+                                               "Elegir SO del Smartphone", //String title
+                                               JOptionPane.YES_NO_OPTION, //int optionType
+                                               JOptionPane.INFORMATION_MESSAGE, //int messageType
+                                               null, //Icon icon,
+                                               opciones, //Object[] options,
+                                               opciones[0]);//Object initialValue 
+                                    System.out.println("sistema " + sistema);
+
+                                    if(sistema==1){
+                                        //Android
+                                        int opcionAndroid = JOptionPane.showOptionDialog(null, //Component parentComponent
+                                                   "¿Qué marca de Android?", //Object message,
+                                                   "Elegir marca de Android", //String title
+                                                   JOptionPane.YES_NO_OPTION, //int optionType
+                                                   JOptionPane.INFORMATION_MESSAGE, //int messageType
+                                                   null, //Icon icon,
+                                                   marcasAndroid, //Object[] options,
+                                                   marcasAndroid[0]);//Object initialValue 
+                                        System.out.println("marca " + marcasAndroid[opcionAndroid]);
+
+                                        
+                                    } else {
+                                        int opcionIOS = JOptionPane.showOptionDialog(null, //Component parentComponent
+                                                            "¿Qué modelos de iOS?", //Object message,
+                                                            "Elegir modelo de iOS", //String title
+                                                            JOptionPane.YES_NO_OPTION, //int optionType
+                                                            JOptionPane.INFORMATION_MESSAGE, //int messageType
+                                                            null, //Icon icon,
+                                                            modelosIOS, //Object[] options,
+                                                            modelosIOS[0]);//Object initialValue 
+                                        System.out.println("modelo " + modelosIOS[opcionIOS]);
+                                    }
+
+                                //Tradicional
+                                } else {
+                                    int opcionTradicional = JOptionPane.showOptionDialog(null, //Component parentComponent
+                                                        "¿Qué tipo de equipo?", //Object message,
+                                                        "Elegir tipo de equipo", //String title
+                                                        JOptionPane.YES_NO_OPTION, //int optionType
+                                                        JOptionPane.INFORMATION_MESSAGE, //int messageType
+                                                        null, //Icon icon,
+                                                        tipos, //Object[] options,
+                                                        tipos[0]);//Object initialValue 
+                                    System.out.println("opcionTradicional " + tipos[opcionTradicional]);                                    
+                                }
+                                //Seleccionar un plan de la lista
+                                /*
+                                PlanTelefonico plan = (PlanTelefonico)planes.get(0);
+                                System.out.println(planes.size());
+                                String[] listaPLanes = new String[planes.size()];
+                                
+                                for (int i = 0; i < planes.size(); i++) {
+                                    listaPLanes[i]=planes.get(i).getNombrePlan();
+                                }
+                                int opcionPlan = JOptionPane.showOptionDialog(null, //Component parentComponent
+                                                    "¿Qué plan?", //Object message,
+                                                    "Elegir plan", //String title
+                                                    JOptionPane.YES_NO_OPTION, //int optionType
+                                                    JOptionPane.INFORMATION_MESSAGE, //int messageType
+                                                    null, //Icon icon,
+                                                    listaPLanes, //Object[] options,
+                                                    plan.getNombrePlan());//Object initialValue 
+                                System.out.println("opcionPlan " + listaPLanes[opcionPlan]);     
+                                */
+
+                            } else {
+
+                            }
+                        }
+                
                             break;
                     case 2:
                         //buscar fono por número
@@ -85,23 +203,6 @@ public class main {
             }
         
         
-        /*
-        JOptionPane.showMessageDialog(null, "Agregar Usuario");
-        String nombre = JOptionPane.showInputDialog("Ingrese nombre").toUpperCase();
-        String apellido= JOptionPane.showInputDialog("Ingrese apellido").toUpperCase();
-        String run= JOptionPane.showInputDialog("Ingrese run").toUpperCase();
-        String fechaNacimiento= JOptionPane.showInputDialog("Ingrese fecha de nacimiento");
-        int edad = Integer.parseInt(JOptionPane.showInputDialog("Ingrese edad"));
-        String estadoCivil = JOptionPane.showInputDialog("Ingrese estado civil").toUpperCase();
-        
-        Usuario miUsuario = new Usuario(nombre, apellido, run, fechaNacimiento, edad, estadoCivil);
-        usuarios.add(miUsuario);
-        it = usuarios.iterator();
-        while(it.hasNext()){
-            Usuario unUsuario = (Usuario)it.next();
-            System.out.println(unUsuario.toString());
-        }
-        */
      
         }
     }
