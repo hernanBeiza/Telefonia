@@ -57,15 +57,15 @@ public class main {
         Crear compañia
         Crear planes
         */
-        Compania movistar = new Compania("70123456-1", "MOVISTAR", "ESPAÑA");
-        Compania entel = new Compania("70234543-2", "ENTEL", "CHILE");
-        companias.add(movistar);
-        companias.add(entel);
-        Iterator it = companias.iterator();
-        while(it.hasNext()){
-            Compania unaCompania = (Compania)it.next();
-            System.out.println(unaCompania.toString());
-        }        
+//        Compania movistar = new Compania("70123456-1", "MOVISTAR", "ESPAÑA");
+//        Compania entel = new Compania("70234543-2", "ENTEL", "CHILE");
+//        companias.add(movistar);
+//        companias.add(entel);
+//        Iterator it = companias.iterator();
+//        while(it.hasNext()){
+//            Compania unaCompania = (Compania)it.next();
+//            System.out.println(unaCompania.toString());
+//        }        
 
         PlanTelefonico economico = new PlanTelefonico("ABC123", "ECONOMICO", "RODRIGO", 10, true);
         PlanTelefonico normal = new PlanTelefonico("ABC123", "NORMAL", "RODRIGO", 50, true);
@@ -73,11 +73,22 @@ public class main {
         planes.add(economico);
         planes.add(normal);
         planes.add(premium);
+        Iterator it = planes.iterator();
         it = planes.iterator();
         while(it.hasNext()){
             PlanTelefonico unPlan = (PlanTelefonico)it.next();
             System.out.println(unPlan.toString());
         }
+        
+        Compania movistar = new Compania("70123456-1", "MOVISTAR", "ESPAÑA",planes);
+        Compania entel = new Compania("70234543-2", "ENTEL", "CHILE",planes);
+        companias.add(movistar);
+        companias.add(entel);
+         it = companias.iterator();
+        while(it.hasNext()){
+            Compania unaCompania = (Compania)it.next();
+            System.out.println(unaCompania.toString());
+        }        
 
         /**
         1.Agregar fono
@@ -93,23 +104,7 @@ public class main {
                 *       crear móvil finalmente
                 *   
          */
-        JOptionPane.showMessageDialog(null, "Agregar Usuario");
-        String nombre = JOptionPane.showInputDialog("Ingrese nombre").toUpperCase();
-        String apellido= JOptionPane.showInputDialog("Ingrese apellido").toUpperCase();
-        String run= JOptionPane.showInputDialog("Ingrese run").toUpperCase();
-        String fechaNacimiento= JOptionPane.showInputDialog("Ingrese fecha de nacimiento");
-        int edad = Integer.parseInt(JOptionPane.showInputDialog("Ingrese edad"));
-        String estadoCivil = JOptionPane.showInputDialog("Ingrese estado civil").toUpperCase();
-        
-        Usuario miUsuario = new Usuario(nombre, apellido, run, fechaNacimiento, edad, estadoCivil);
-        usuarios.add(miUsuario);
-        it = usuarios.iterator();
-        while(it.hasNext()){
-            Usuario unUsuario = (Usuario)it.next();
-            System.out.println(unUsuario.toString());
-        }
-    
-        
+             
         
         
         

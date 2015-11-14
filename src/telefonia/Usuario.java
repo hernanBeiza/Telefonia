@@ -1,5 +1,7 @@
 package telefonia;
 
+import java.util.ArrayList;
+
 public class Usuario {
     private String nombre;
     private String apellido;
@@ -8,6 +10,10 @@ public class Usuario {
     private int edad;
     private String estadoCivil;
 
+
+    public Usuario() {
+    }
+
     public Usuario(String nombre, String apellido, String run, String fechaNacimiento, int edad, String estadoCivil) {
         this.nombre = nombre;
         this.apellido = apellido;
@@ -15,6 +21,7 @@ public class Usuario {
         this.fechaNacimiento = fechaNacimiento;
         this.edad = edad;
         this.estadoCivil = estadoCivil;
+        
     }
 
     public String getNombre() {
@@ -69,6 +76,6 @@ public class Usuario {
     public String toString() {
         return "Usuario{" + "nombre=" + nombre + ", apellido=" + apellido + ", run=" + run + ", fechaNacimiento=" + fechaNacimiento + ", edad=" + edad + ", estadoCivil=" + estadoCivil + '}';
     }
-    
-    
+
+
 }
