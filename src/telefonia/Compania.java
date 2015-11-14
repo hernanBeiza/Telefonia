@@ -4,6 +4,7 @@ public class Compania {
     private String rut;
     private String nombre;
     private String direccion;
+    
 
     public Compania() {
     }
