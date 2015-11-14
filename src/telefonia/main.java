@@ -52,33 +52,40 @@ public class main {
      */
     
     public static void main(String[] args) {
-        /*
-        0. Tener companias y planes por defecto
-        Crear compañia
-        Crear planes
-        */
-        Compania movistar = new Compania("70123456-1", "MOVISTAR", "ESPAÑA");
-        Compania entel = new Compania("70234543-2", "ENTEL", "CHILE");
-        companias.add(movistar);
-        companias.add(entel);
-        Iterator it = companias.iterator();
-        while(it.hasNext()){
-            Compania unaCompania = (Compania)it.next();
-            System.out.println(unaCompania.toString());
-        }        
-
-        PlanTelefonico economico = new PlanTelefonico("ABC123", "ECONOMICO", "RODRIGO", 10, true);
-        PlanTelefonico normal = new PlanTelefonico("ABC123", "NORMAL", "RODRIGO", 50, true);
-        PlanTelefonico premium = new PlanTelefonico("ABC123", "PREMIUM", "HERNAN", 100, true);
-        planes.add(economico);
-        planes.add(normal);
-        planes.add(premium);
-        it = planes.iterator();
-        while(it.hasNext()){
-            PlanTelefonico unPlan = (PlanTelefonico)it.next();
-            System.out.println(unPlan.toString());
+        
+        boolean run = true;
+        while(run){
+            String mensajeInicial ="Telefonía\n";
+            mensajeInicial+="1. Agregar fono\n";
+            mensajeInicial+="2. Buscar fono por número\n";
+            mensajeInicial+="3. Eliminar fono número\n";
+            mensajeInicial+="4. Modificar fono número X (solo datos asociados)\n";
+            mensajeInicial+="5. BUscar fono por run/rut (todos los asociados al elemento)\n";
+            mensajeInicial+="6. Eliminar fono por run/rut (todos los asociados al elemento)\n";
+            mensajeInicial+="7. Mostrar cuenta para fono X completa\n";
+            mensajeInicial+="8. Mostrar cuenta simpel para run X\n";
+            mensajeInicial+="9. Aplicar servicio técnico a un fono X\n";
+            mensajeInicial+="10. Buscar teléfonos asociados a una marca X\n";
+            mensajeInicial+="11. Buscar los fonos que han sido llevados a servicio técnico\n";
+            mensajeInicial+="12. Cantidad de cuentas que superarn los 250 minutos\n";
+            mensajeInicial+="13. Cantidad de teléfonos privados\n";
+            mensajeInicial+="14. Salir\n";
+            int opcionPrincipal = Integer.parseInt(JOptionPane.showInputDialog(null, mensajeInicial));
+            System.out.println(opcionPrincipal);
+            if(opcionPrincipal !=14){
+                switch(opcionPrincipal){
+                    
+                }
+                
+                
+                
+                
+                
+            } else {
+                run = false;
+            }
         }
-
+        
         /**
         1.Agregar fono
         * Crear usuario
@@ -93,6 +100,7 @@ public class main {
                 *       crear móvil finalmente
                 *   
          */
+        /*
         JOptionPane.showMessageDialog(null, "Agregar Usuario");
         String nombre = JOptionPane.showInputDialog("Ingrese nombre").toUpperCase();
         String apellido= JOptionPane.showInputDialog("Ingrese apellido").toUpperCase();
@@ -108,7 +116,7 @@ public class main {
             Usuario unUsuario = (Usuario)it.next();
             System.out.println(unUsuario.toString());
         }
-    
+        */
         
         
         
