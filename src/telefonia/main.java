@@ -116,42 +116,6 @@ public class main {
                         } else {
                             System.out.println("Número de teléfono no existe");
                             if(esMovil(numeroTelefono)){
-                                //Pedir datos de móvil
-                                //antenas
-                                String[] antenas = {"100","130","150"};
-                                int opcionAntena = JOptionPane.showOptionDialog(null, //Component parentComponent
-                                                    "¿Cuánto pesa?", //Object message,
-                                                    "Elegir el peso", //String title
-                                                    JOptionPane.YES_NO_OPTION, //int optionType
-                                                    JOptionPane.INFORMATION_MESSAGE, //int messageType
-                                                    null, //Icon icon,
-                                                    antenas, //Object[] options,
-                                                    antenas[0]);//Object initialValue 
-                                System.out.println("antes " + antenas[opcionAntena]);
-
-                                //peso móvil
-                                String[] peso = {"100","130","150"};
-                                int opcionPeso = JOptionPane.showOptionDialog(null, //Component parentComponent
-                                                    "¿Cuánto pesa?", //Object message,
-                                                    "Elegir el peso", //String title
-                                                    JOptionPane.YES_NO_OPTION, //int optionType
-                                                    JOptionPane.INFORMATION_MESSAGE, //int messageType
-                                                    null, //Icon icon,
-                                                    peso, //Object[] options,
-                                                    peso[0]);//Object initialValue 
-                                System.out.println("peso " + peso[opcionPeso]);
-                                
-                                //duracion
-                                String[] duracion = {"1","2","3"};
-                                int opcionDuracion = JOptionPane.showOptionDialog(null, //Component parentComponent
-                                                    "¿Cuánto dura la batería?", //Object message,
-                                                    "Elegir la duración", //String title
-                                                    JOptionPane.YES_NO_OPTION, //int optionType
-                                                    JOptionPane.INFORMATION_MESSAGE, //int messageType
-                                                    null, //Icon icon,
-                                                    duracion, //Object[] options,
-                                                    duracion[0]);//Object initialValue 
-                                System.out.println("duracion " + duracion[opcionDuracion]);
                                         
                                 //Luego crear el tipo de móvil
                                 String[] opciones = new String[2];
@@ -217,6 +181,22 @@ public class main {
                                                             memoria, //Object[] options,
                                                             memoria[0]);//Object initialValue 
                                         System.out.println("memoria " + memoria[opcionMemoria]);
+                                        
+                                        String[] versiones = {"6.0","7.0","8.0","9.0"};
+                                        int opcionVersion = JOptionPane.showOptionDialog(null, //Component parentComponent
+                                                            "¿Qué versión de SO tiene?", //Object message,
+                                                            "Elegir versión de SO", //String title
+                                                            JOptionPane.YES_NO_OPTION, //int optionType
+                                                            JOptionPane.INFORMATION_MESSAGE, //int messageType
+                                                            null, //Icon icon,
+                                                            versiones, //Object[] options,
+                                                            versiones[0]);//Object initialValue 
+                                        System.out.println("versiones " + versiones[opcionVersion]);                                    
+                                        
+                                        
+                                        //    public IOS(String modelo, String versionSO, int cantidadmemoria, int codigoAntena, int peso, int duracionBateria, Compania compania, Usuario usuario, String region, String comuna, String fechaContrato, int valorMinutoFijo, int valorMinutoMovil, float tarifaFija, int cantidadMinutosUsadosFijos, int cantidadMinutosUsadosMovil, PlanTelefonico planTelefonico, String numeroFono) {
+
+                                        
                                     }
                                     
                                     
@@ -240,11 +220,38 @@ public class main {
                                     
                                     int color = JOptionPane.showConfirmDialog(null, "¿Tiene pantalla a color?");
                                     System.out.println("color " + color);
-                                }
+                                }                                
                                 
+                                //Todo lo común para tradicional y smartphone
+                                //Pedir datos de móvil
+                                //antena
+                                String codigoAntena = JOptionPane.showInputDialog(null, "Ingrese el código de la antena");
+                                System.out.println("codigoAntena " + codigoAntena);
+
+                                //peso móvil
+                                String[] peso = {"100","130","150"};
+                                int opcionPeso = JOptionPane.showOptionDialog(null, //Component parentComponent
+                                                    "¿Cuánto pesa?", //Object message,
+                                                    "Elegir el peso", //String title
+                                                    JOptionPane.YES_NO_OPTION, //int optionType
+                                                    JOptionPane.INFORMATION_MESSAGE, //int messageType
+                                                    null, //Icon icon,
+                                                    peso, //Object[] options,
+                                                    peso[0]);//Object initialValue 
+                                System.out.println("peso " + peso[opcionPeso]);
                                 
-                                
-                                
+                                //duracion
+                                String[] duracion = {"1","2","3"};
+                                int opcionDuracion = JOptionPane.showOptionDialog(null, //Component parentComponent
+                                                    "¿Cuánto dura la batería?", //Object message,
+                                                    "Elegir la duración", //String title
+                                                    JOptionPane.YES_NO_OPTION, //int optionType
+                                                    JOptionPane.INFORMATION_MESSAGE, //int messageType
+                                                    null, //Icon icon,
+                                                    duracion, //Object[] options,
+                                                    duracion[0]);//Object initialValue 
+                                System.out.println("duracion " + duracion[opcionDuracion]);
+
                                 //Seleccionar un plan de la lista
                                 PlanTelefonico plan = (PlanTelefonico)planes.get(0);
                                 System.out.println(planes.size());
@@ -265,6 +272,8 @@ public class main {
                                 System.out.println("opcionPlan " + listaPlanes[opcionPlan]);     
                                 
                                 
+                                
+
  
                             } else {
                                 //Fijo
@@ -273,6 +282,31 @@ public class main {
                             }
                         }
                 
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
                             break;
                     case 2:
                         //buscar fono por número
