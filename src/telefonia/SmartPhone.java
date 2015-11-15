@@ -35,7 +35,7 @@ public abstract class SmartPhone extends Movil{
 
     @Override
     public String toString() {
-        return "SmartPhone{" + "versionSO=" + versionSO + ", cantidadmemoria=" + cantidadmemoria + '}';
+        return "SmartPhone{" + "versionSO=" + versionSO + ", cantidadmemoria=" + cantidadmemoria + ", " +super.toString()+'}';
     }
     
     

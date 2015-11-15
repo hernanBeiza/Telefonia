@@ -44,7 +44,7 @@ public abstract class Movil extends Telefonia{
 
     @Override
     public String toString() {
-        return "Movil{" + "codigoAntena=" + codigoAntena + ", peso=" + peso + ", duracionBateria=" + duracionBateria + '}';
+        return "Movil{" + "codigoAntena=" + codigoAntena + ", peso=" + peso + ", duracionBateria=" + duracionBateria + ", "+super.toString()+'}';
     }
     
     
