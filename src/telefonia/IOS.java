@@ -26,7 +26,7 @@ public class IOS extends SmartPhone{
 
     @Override
     public String toString() {
-        return "IOS{" + "modelo=" + modelo + '}';
+        return "IOS{" + "modelo=" + modelo + ", " + super.toString()+'}';
     }
     
     

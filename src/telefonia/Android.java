@@ -23,7 +23,7 @@ public class Android extends SmartPhone {
 
     @Override
     public String toString() {
-        return "Android{" + "marcaFono=" + marcaFono + '}';
+        return "Android{" + "marcaFono=" + marcaFono + ", "+super.toString()+'}';
     }
     
     
