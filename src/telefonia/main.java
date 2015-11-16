@@ -382,38 +382,43 @@ public class main {
                             //Fijo
                             //Lógica de Andrés acá....
                            //Luego crear el tipo de móvil
-                        String[] OpFijo = new String[2];
-                        OpFijo[0]="Comerciales";
-                        OpFijo[1]="Privado";
-                        //tipo
-                        int TipoPlan = JOptionPane.showOptionDialog(null, //Component parentComponent
-                                       "¿Qué tipo de móvil?", //Object message,
-                                       "Elegir tipo de movil", //String title
-                                       JOptionPane.YES_NO_OPTION, //int optionType
-                                       JOptionPane.INFORMATION_MESSAGE, //int messageType
-                                       null, //Icon icon,
-                                       OpFijo, //Object[] options,
-                                       OpFijo[0]);//Object initialValue 
-                        System.out.println("TipoPlan " + TipoPlan);
-                        
-                        if (TipoPlan ==0){
-                                System.out.println("Opción Comercial " + OpFijo[TipoPlan]);    
-                                Comerciales com = new Comerciales(cantidadMemoria, codigoAntena, compania, miUsuario, region, comuna, fechaContrato, valorMinutoFijo, valorMinutoMovil, tarifaFija, cantidadMemoria, valorMinutoMovil, planTelefono, numeroTelefono);
-                                telefonos.add(com);
-                                System.out.println(com.toString());
-                                int CanAne = Integer.parseInt(JOptionPane.showInputDialog("Ingrese la Cantidad de Anexos"));
-                                System.out.println(CanAne);
-                        }else if( TipoPlan == 1){
-                                System.out.println("Opción Privado " + OpFijo[TipoPlan]);    
-                                Privado pri =new Privado(run, codigoAntena, compania, miUsuario, region, comuna, fechaContrato, valorMinutoFijo, valorMinutoMovil, tarifaFija, cantidadMemoria, valorMinutoMovil, planTelefono, numeroTelefono);
-                                telefonos.add(pri);
-                                System.out.println(pri.toString());
-                                int IdeLlam = Integer.parseInt(JOptionPane.showInputDialog("Ingresar Identificador de llamdas"));
-                                System.out.println(IdeLlam); 
-                        }                        
-                        
+                            String[] OpFijo = new String[2];
+                            OpFijo[0]="Comerciales";
+                            OpFijo[1]="Privado";
+                            //tipo
+                            int TipoPlan = JOptionPane.showOptionDialog(null, //Component parentComponent
+                                           "¿Qué tipo de teléfono?", //Object message,
+                                           "Elegir tipo de teléfono", //String title
+                                           JOptionPane.YES_NO_OPTION, //int optionType
+                                           JOptionPane.INFORMATION_MESSAGE, //int messageType
+                                           null, //Icon icon,
+                                           OpFijo, //Object[] options,
+                                           OpFijo[0]);//Object initialValue 
+                            System.out.println("TipoPlan " + TipoPlan);
+
+                            if (TipoPlan ==0){
+                                    System.out.println("Opción Comercial " + OpFijo[TipoPlan]);    
+                                    Comerciales com = new Comerciales(cantidadMemoria, codigoAntena, compania, miUsuario, region, comuna, fechaContrato, valorMinutoFijo, valorMinutoMovil, tarifaFija, cantidadMemoria, valorMinutoMovil, planTelefono, numeroTelefono);
+                                    telefonos.add(com);
+                                    int cantidadAnexos = Integer.parseInt(JOptionPane.showInputDialog("Ingrese la Cantidad de Anexos"));
+                                    System.out.println(cantidadAnexos);
+                                    com.setCantidadAnexos(cantidadAnexos);
+                                    System.out.println(com.toString());
+                            }else if( TipoPlan == 1){
+                                    System.out.println("Opción Privado " + OpFijo[TipoPlan]);    
+                                    Privado pri =new Privado(run, codigoAntena, compania, miUsuario, region, comuna, fechaContrato, valorMinutoFijo, valorMinutoMovil, tarifaFija, cantidadMemoria, valorMinutoMovil, planTelefono, numeroTelefono);
+                                    telefonos.add(pri);
+                                    int identificador = JOptionPane.showConfirmDialog(null,"¿Tiene identificador de llamadas?");
+                                    if(identificador==1){
+                                        pri.setIdentificadorLlamada(false);                                   
+                                    } else {
+                                        pri.setIdentificadorLlamada(true);
+                                    }
+                                    System.out.println(pri.toString());
+                                }                        
+
+                            }
                         }
-                    }
                         break;
                 case 2:
                     //buscar fono por número
@@ -669,35 +674,14 @@ public class main {
      */    
     private static boolean revisarNumero(String numero){
         boolean encontrado = false;
-        Iterator iterador = null;
-        if(esMovil(numero)){
-            System.out.println("Buscar en moviles");
-            /*
-            iterador = moviles.iterator();
-            while(iterador.hasNext()){
-                Movil unMovil = (Movil)iterador.next();
-                if(unMovil.getNumeroFono().equals(numero)){
-                    encontrado = true;
-                    break;
-                }
-            } 
-            */
-        } else {
-            System.out.println("Buscar en fijos");  
-            throw new UnsupportedOperationException("Aún no soportado. Falta que Andrés termine sus clases."); //To change body of generated methods, choose Tools | Templates.
-            /*
-            iterador = fijos.iterator();
-            while(iterador.hasNext()){
-                Fijo unFijo = (Fijo)iterador.next();
-                //Terminar cuando Andrés tenga la clase lista
-                if(unFijo..equals(numero)){
-                    encontrado = true;
-                    break;
-                }
-            }            
-            */            
-        }
-
+        Iterator iterador = telefonos.iterator();
+        while(iterador.hasNext()){
+            Telefonia unTelefono = (Telefonia)iterador.next();
+            if(unTelefono.getNumeroFono().equals(numero)){
+                encontrado = true;
+                break;
+            }
+        }            
         return encontrado;
     }
     /**
