@@ -8,6 +8,7 @@ import javax.swing.JOptionPane;
 public class main {
     /**
      * Companias de teléfono registradas en el sistema
+     * 
      */
     private static ArrayList <Compania> companias = new ArrayList<Compania>();
     
@@ -379,7 +380,38 @@ public class main {
 
                         } else {
                             //Fijo
-                            //Lógica de Andrés acá
+                            //Lógica de Andrés acá....
+                           //Luego crear el tipo de móvil
+                        String[] OpFijo = new String[2];
+                        OpFijo[0]="Comerciales";
+                        OpFijo[1]="Privado";
+                        //tipo
+                        int TipoPlan = JOptionPane.showOptionDialog(null, //Component parentComponent
+                                       "¿Qué tipo de móvil?", //Object message,
+                                       "Elegir tipo de movil", //String title
+                                       JOptionPane.YES_NO_OPTION, //int optionType
+                                       JOptionPane.INFORMATION_MESSAGE, //int messageType
+                                       null, //Icon icon,
+                                       OpFijo, //Object[] options,
+                                       OpFijo[0]);//Object initialValue 
+                        System.out.println("TipoPlan " + TipoPlan);
+                        
+                        if (TipoPlan ==0){
+                                System.out.println("Opción Comercial " + OpFijo[TipoPlan]);    
+                                Comerciales com = new Comerciales(cantidadMemoria, codigoAntena, compania, miUsuario, region, comuna, fechaContrato, valorMinutoFijo, valorMinutoMovil, tarifaFija, cantidadMemoria, valorMinutoMovil, planTelefono, numeroTelefono);
+                                telefonos.add(com);
+                                System.out.println(com.toString());
+                                int CanAne = Integer.parseInt(JOptionPane.showInputDialog("Ingrese la Cantidad de Anexos"));
+                                System.out.println(CanAne);
+                        }else if( TipoPlan == 1){
+                                System.out.println("Opción Privado " + OpFijo[TipoPlan]);    
+                                Privado pri =new Privado(run, codigoAntena, compania, miUsuario, region, comuna, fechaContrato, valorMinutoFijo, valorMinutoMovil, tarifaFija, cantidadMemoria, valorMinutoMovil, planTelefono, numeroTelefono);
+                                telefonos.add(pri);
+                                System.out.println(pri.toString());
+                                int IdeLlam = Integer.parseInt(JOptionPane.showInputDialog("Ingresar Identificador de llamdas"));
+                                System.out.println(IdeLlam); 
+                        }                        
+                        
                         }
                     }
                         break;
