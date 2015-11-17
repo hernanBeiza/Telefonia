@@ -431,6 +431,7 @@ public class main {
                         System.out.println(telefono.toString());
                     } else {
                         System.out.println("No encontado");
+                        JOptionPane.showMessageDialog(null, "Fono no encontrado");
                     }
                     break;
                 case 3:
