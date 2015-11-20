@@ -1,6 +1,6 @@
 package telefonia;
-//Implements Impuestos
-public abstract class Telefonia {
+//Implements Impuestos, ServicioTecnico
+public abstract class Telefonia implements ServicioTecnico, Impuestos{
     private Compania compania;
     private Usuario usuario;
     private String region;
@@ -13,11 +13,12 @@ public abstract class Telefonia {
     private int cantidadMinutosUsadosMovil;
     private PlanTelefonico planTelefonico;
     private String numeroFono;
+    private int costoEquipo;
 
     public Telefonia() {
     }
 
-    public Telefonia(Compania compania, Usuario usuario, String region, String comuna, String fechaContrato, int valorMinutoFijo, int valorMinutoMovil, float tarifaFija, int cantidadMinutosUsadosFijos, int cantidadMinutosUsadosMovil, PlanTelefonico planTelefonico, String numeroFono) {
+    public Telefonia(Compania compania, Usuario usuario, String region, String comuna, String fechaContrato, int valorMinutoFijo, int valorMinutoMovil, float tarifaFija, int cantidadMinutosUsadosFijos, int cantidadMinutosUsadosMovil, PlanTelefonico planTelefonico, String numeroFono,int costoEquipo) {
         this.compania = compania;
         this.usuario = usuario;
         this.region = region;
@@ -30,6 +31,7 @@ public abstract class Telefonia {
         this.cantidadMinutosUsadosMovil = cantidadMinutosUsadosMovil;
         this.planTelefonico = planTelefonico;
         this.numeroFono = numeroFono;
+        this.costoEquipo = costoEquipo;
     }
 
     public Compania getCompania() {
@@ -62,6 +64,14 @@ public abstract class Telefonia {
 
     public void setComuna(String comuna) {
         this.comuna = comuna;
+    }
+
+    public int getCostoEquipo() {
+        return costoEquipo;
+    }
+
+    public void setCostoEquipo(int costoEquipo) {
+        this.costoEquipo = costoEquipo;
     }
 
     public String getFechaContrato() {
@@ -129,9 +139,48 @@ public abstract class Telefonia {
     }
 
     @Override
-    public String toString() {
-        return "Telefonia{" + "compania=" + compania + ", usuario=" + usuario + ", region=" + region + ", comuna=" + comuna + ", fechaContrato=" + fechaContrato + ", valorMinutoFijo=" + valorMinutoFijo + ", valorMinutoMovil=" + valorMinutoMovil + ", tarifaFija=" + tarifaFija + ", cantidadMinutosUsadosFijos=" + cantidadMinutosUsadosFijos + ", cantidadMinutosUsadosMovil=" + cantidadMinutosUsadosMovil + ", planTelefonico=" + planTelefonico + ", numeroFono=" + numeroFono + '}';
+    public boolean aplicaServicio() {
+        //Si ya está en el servicio técnico, no aplica. 
+        if(planTelefonico.isEstadoServicioTecnico()){
+            return false;
+        } else {
+            //Se lleva por primera vez
+            planTelefonico.setEstadoServicioTecnico(true);
+            return true;
+        }        
     }
-    
+
+    //Cálculo de impuestos
+    @Override
+    public float pagarServicioTecnico() {
+        //37% del valor del aparato... ¿Dónde nos piden el valor del aparato? Se agregó una propiedad, costoEquipo
+        float valor = (float)0.37*this.getCostoEquipo();        
+        return valor;
+    }
+
+    @Override
+    public float impuestoAplicado() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public float pagoPorMinutosUsados() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public float totalAPagar() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public float descuento() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public String toString() {
+        return "Telefonia{" + "compania=" + compania + ", usuario=" + usuario + ", region=" + region + ", comuna=" + comuna + ", fechaContrato=" + fechaContrato + ", valorMinutoFijo=" + valorMinutoFijo + ", valorMinutoMovil=" + valorMinutoMovil + ", tarifaFija=" + tarifaFija + ", cantidadMinutosUsadosFijos=" + cantidadMinutosUsadosFijos + ", cantidadMinutosUsadosMovil=" + cantidadMinutosUsadosMovil + ", planTelefonico=" + planTelefonico + ", numeroFono=" + numeroFono + ", costoEquipo=" + costoEquipo + '}';
+    }
     
 }

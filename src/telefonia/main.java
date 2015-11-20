@@ -51,16 +51,16 @@ public class main {
         Iterator it = null;
         ArrayList <PlanTelefonico> planesEntel = new ArrayList<PlanTelefonico>();
 
-        PlanTelefonico economicoEntel = new PlanTelefonico("ABC123", "ECONOMICO", "RODRIGO", 10, true);
-        PlanTelefonico normalEntel = new PlanTelefonico("ABC123", "NORMAL", "ANDRÉS", 50, true);
-        PlanTelefonico premiumEntel = new PlanTelefonico("ABC123", "PREMIUM", "HERNAN", 100, true);
+        PlanTelefonico economicoEntel = new PlanTelefonico("ABC123", "ECONOMICO", "RODRIGO", 10, false);
+        PlanTelefonico normalEntel = new PlanTelefonico("ABC123", "NORMAL", "ANDRÉS", 50, false);
+        PlanTelefonico premiumEntel = new PlanTelefonico("ABC123", "PREMIUM", "HERNAN", 100, false);
         planesEntel.add(economicoEntel);
         planesEntel.add(normalEntel);
         planesEntel.add(premiumEntel);
         
         ArrayList <PlanTelefonico> planesMovistar = new ArrayList<PlanTelefonico>();        
-        PlanTelefonico normalMovistar = new PlanTelefonico("ABC123", "NORMAL", "GRACIELA", 50, true);
-        PlanTelefonico premiumMovistar = new PlanTelefonico("ABC123", "PREMIUM", "HERNAN", 100, true);
+        PlanTelefonico normalMovistar = new PlanTelefonico("ABC123", "NORMAL", "GRACIELA", 50, false);
+        PlanTelefonico premiumMovistar = new PlanTelefonico("ABC123", "PREMIUM", "HERNAN", 100, false);
         planesMovistar.add(normalMovistar);
         planesMovistar.add(premiumMovistar);
         
@@ -254,7 +254,8 @@ public class main {
                                                         versiones[0]);//Object initialValue 
                                     System.out.println("versiones " + versiones[opcionVersion]);
                                     versionOS = versiones[opcionVersion];
-                                    Android android = new Android(marca, versionOS, cantidadMemoria, codigoAntena, peso, duracionBateria, compania, miUsuario, region, comuna, fechaContrato, valorMinutoFijo, valorMinutoMovil, tarifaFija, cantidadMemoria, valorMinutoMovil, planTelefono, numeroTelefono);
+                                    int costoEquipo = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el costo del equipo"));
+                                    Android android = new Android(marca, versionOS, cantidadMemoria, codigoAntena, peso, duracionBateria, compania, miUsuario, region, comuna, fechaContrato, valorMinutoFijo, valorMinutoMovil, tarifaFija, cantidadMemoria, valorMinutoMovil, planTelefono, numeroTelefono,costoEquipo);
                                     telefonos.add(android);
                                     System.out.println(android.toString());
                                 } else {
@@ -281,8 +282,8 @@ public class main {
                                                         versiones[0]);//Object initialValue 
                                     System.out.println("versiones " + versiones[opcionVersion]);
                                     versionOS = versiones[opcionVersion];
-                                    // public IOS(String modelo, String versionSO, int cantidadmemoria, int codigoAntena, int peso, int duracionBateria, Compania compania, Usuario usuario, String region, String comuna, String fechaContrato, int valorMinutoFijo, int valorMinutoMovil, float tarifaFija, int cantidadMinutosUsadosFijos, int cantidadMinutosUsadosMovil, PlanTelefonico planTelefonico, String numeroFono) {
-                                    IOS ios = new IOS(modelo, versionOS, cantidadMemoria, codigoAntena, peso, duracionBateria, compania, miUsuario, region, comuna, fechaContrato, valorMinutoFijo, valorMinutoMovil, tarifaFija, valorMinutoFijo, valorMinutoMovil, planTelefono, numeroTelefono);
+                                    int costoEquipo = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el costo del equipo"));
+                                    IOS ios = new IOS(modelo, versionOS, cantidadMemoria, codigoAntena, peso, duracionBateria, compania, miUsuario, region, comuna, fechaContrato, valorMinutoFijo, valorMinutoMovil, tarifaFija, valorMinutoFijo, valorMinutoMovil, planTelefono, numeroTelefono,costoEquipo);
                                     telefonos.add(ios);
                                     System.out.println(ios.toString());
                                 }
@@ -372,8 +373,8 @@ public class main {
 
                                 System.out.println("colorOpcion " + colorOpcion);
                                 System.out.println("color " + color);
-
-                                Tradicional tradicional = new Tradicional(color,modelo, codigoAntena, peso, duracionBateria, compania, miUsuario, region, comuna, fechaContrato, valorMinutoFijo, valorMinutoMovil, tarifaFija, cantidadMemoria, valorMinutoMovil, planTelefono, numeroTelefono);
+                                int costoEquipo = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el costo del equipo"));
+                                Tradicional tradicional = new Tradicional(color,modelo, codigoAntena, peso, duracionBateria, compania, miUsuario, region, comuna, fechaContrato, valorMinutoFijo, valorMinutoMovil, tarifaFija, cantidadMemoria, valorMinutoMovil, planTelefono, numeroTelefono,costoEquipo);
                                 System.out.println(tradicional.toString());
                                 telefonos.add(tradicional);
                             }                                
@@ -398,7 +399,8 @@ public class main {
 
                             if (TipoPlan ==0){
                                     System.out.println("Opción Comercial " + OpFijo[TipoPlan]);    
-                                    Comerciales com = new Comerciales(cantidadMemoria, codigoAntena, compania, miUsuario, region, comuna, fechaContrato, valorMinutoFijo, valorMinutoMovil, tarifaFija, cantidadMemoria, valorMinutoMovil, planTelefono, numeroTelefono);
+                                    int costoEquipo = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el costo del equipo"));
+                                    Comerciales com = new Comerciales(cantidadMemoria, codigoAntena, compania, miUsuario, region, comuna, fechaContrato, valorMinutoFijo, valorMinutoMovil, tarifaFija, cantidadMemoria, valorMinutoMovil, planTelefono, numeroTelefono,costoEquipo);
                                     telefonos.add(com);
                                     int cantidadAnexos = Integer.parseInt(JOptionPane.showInputDialog("Ingrese la Cantidad de Anexos"));
                                     System.out.println(cantidadAnexos);
@@ -406,7 +408,8 @@ public class main {
                                     System.out.println(com.toString());
                             }else if( TipoPlan == 1){
                                     System.out.println("Opción Privado " + OpFijo[TipoPlan]);    
-                                    Privado pri =new Privado(run, codigoAntena, compania, miUsuario, region, comuna, fechaContrato, valorMinutoFijo, valorMinutoMovil, tarifaFija, cantidadMemoria, valorMinutoMovil, planTelefono, numeroTelefono);
+                                    int costoEquipo = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el costo del equipo"));
+                                    Privado pri =new Privado(run, codigoAntena, compania, miUsuario, region, comuna, fechaContrato, valorMinutoFijo, valorMinutoMovil, tarifaFija, cantidadMemoria, valorMinutoMovil, planTelefono, numeroTelefono,costoEquipo);
                                     telefonos.add(pri);
                                     int identificador = JOptionPane.showConfirmDialog(null,"¿Tiene identificador de llamadas?");
                                     if(identificador==1){
@@ -517,10 +520,14 @@ public class main {
                         System.out.println(telefonoTecnico.toString());                     
                         int opcionTecnico = JOptionPane.showConfirmDialog(null, "¿Desea llevar a servicio técnico?");
                         System.out.println(opcionTecnico);
+                        
                         if(opcionTecnico==0){
-                            telefonoTecnico.getPlanTelefonico().setEstadoServicioTecnico(true);
-                        } else {
-                            telefonoTecnico.getPlanTelefonico().setEstadoServicioTecnico(false);
+                            if(telefonoTecnico.aplicaServicio()){
+                                // Calcular datos del servicio técnico                                
+                                JOptionPane.showMessageDialog(null, "Debe pagar por servicio técnico: "+ telefonoTecnico.pagarServicioTecnico());    
+                            } else {
+                                JOptionPane.showMessageDialog(null, "Fono ya se llevó una vez al servicio técnico");
+                            }
                         }
                     } else {
                         System.out.println("Teléfono no encontrado");

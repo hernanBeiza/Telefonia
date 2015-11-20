@@ -11,8 +11,8 @@ public abstract class Fijo extends Telefonia{
         this.codigoZona = codigoZona;
     }
 
-    public Fijo(int codigoZona, Compania compania, Usuario usuario, String region, String comuna, String fechaContrato, int valorMinutoFijo, int valorMinutoMovil, float tarifaFija, int cantidadMinutosUsadosFijos, int cantidadMinutosUsadosMovil, PlanTelefonico planTelefonico, String numeroFono) {
-        super(compania, usuario, region, comuna, fechaContrato, valorMinutoFijo, valorMinutoMovil, tarifaFija, cantidadMinutosUsadosFijos, cantidadMinutosUsadosMovil, planTelefonico, numeroFono);
+    public Fijo(int codigoZona, Compania compania, Usuario usuario, String region, String comuna, String fechaContrato, int valorMinutoFijo, int valorMinutoMovil, float tarifaFija, int cantidadMinutosUsadosFijos, int cantidadMinutosUsadosMovil, PlanTelefonico planTelefonico, String numeroFono, int costoEquipo) {
+        super(compania, usuario, region, comuna, fechaContrato, valorMinutoFijo, valorMinutoMovil, tarifaFija, cantidadMinutosUsadosFijos, cantidadMinutosUsadosMovil, planTelefonico, numeroFono, costoEquipo);
         this.codigoZona = codigoZona;
     }
 
@@ -26,7 +26,7 @@ public abstract class Fijo extends Telefonia{
 
     @Override
     public String toString() {
-        return "Fijo{" + "codigoZona=" + codigoZona + '}';
+        return "Fijo{" + "codigoZona=" + codigoZona + ", "+super.toString()+'}';
     }
     
     
