@@ -3,7 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/Users/hernanBeiza/Documents/UCINFGIT/Telefonia/src/telefonia/main.java</file>
+            <file>file:/Users/hernanBeiza/Documents/UCINFGIT/Telefonia/src/gui/MenuFrame.java</file>
+            <file>file:/Users/hernanBeiza/Documents/UCINFGIT/Telefonia/src/gui/FonoBuscarFrame.java</file>
+            <file>file:/Users/hernanBeiza/Documents/UCINFGIT/Telefonia/src/gui/MainFrame.java</file>
+            <file>file:/Users/hernanBeiza/Documents/UCINFGIT/Telefonia/src/gui/CuentasSuperadasFrame.java</file>
         </group>
     </open-files>
 </project-private>

@@ -47,7 +47,7 @@ public class main {
      */
     
     public static void main(String[] args) {
-
+        
         Iterator it = null;
         ArrayList <PlanTelefonico> planesEntel = new ArrayList<PlanTelefonico>();
 
