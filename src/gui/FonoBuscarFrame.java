@@ -107,7 +107,7 @@ public class FonoBuscarFrame extends javax.swing.JFrame {
                 .addComponent(txtNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 6, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -159,7 +159,7 @@ public class FonoBuscarFrame extends javax.swing.JFrame {
                 .addComponent(rutRadio)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(marcaRadio)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(161, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -298,7 +298,11 @@ public class FonoBuscarFrame extends javax.swing.JFrame {
     private void verDetalleButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verDetalleButtonActionPerformed
         // TODO add your handling code here:
         System.out.println(datosTable.getSelectedRow());
-        
+        if(datosTable.getSelectedRow()>=0){
+            
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "Debe seleccionar al menos una", "Error al ver detalle", JOptionPane.WARNING_MESSAGE);
+        }        
     }//GEN-LAST:event_verDetalleButtonActionPerformed
 
     private void volverButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_volverButtonActionPerformed

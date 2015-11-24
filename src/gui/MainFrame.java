@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package gui;
+import javax.swing.JOptionPane;
 import telefonia.DB;
 
 /**
@@ -44,38 +45,72 @@ public class MainFrame extends javax.swing.JFrame {
     private void initComponents() {
 
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
+        usuariosMenu = new javax.swing.JMenu();
+        usuariosAgregarMenuItem = new javax.swing.JMenuItem();
+        usuariosListarMenuItem = new javax.swing.JMenuItem();
+        companiaMenu = new javax.swing.JMenu();
+        companiaAgregarMenuItem = new javax.swing.JMenuItem();
+        companiaConsultarMenuItem = new javax.swing.JMenuItem();
+        telefonosMenu = new javax.swing.JMenu();
         jMenuItem8 = new javax.swing.JMenuItem();
         buscarNumeroItem = new javax.swing.JMenuItem();
         eliminarNumeroItem = new javax.swing.JMenuItem();
         cantidadMenuItem = new javax.swing.JMenuItem();
-        jMenu3 = new javax.swing.JMenu();
+        cuentasMenu = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenuItem4 = new javax.swing.JMenuItem();
         jMenuItem5 = new javax.swing.JMenuItem();
-        jMenu4 = new javax.swing.JMenu();
+        servicioMenu = new javax.swing.JMenu();
         jMenuItem6 = new javax.swing.JMenuItem();
         jMenuItem7 = new javax.swing.JMenuItem();
+        salirMenu = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jMenu1.setText("Usuarios");
+        usuariosMenu.setText("Usuarios");
 
-        jMenuItem1.setText("Agregar");
-        jMenu1.add(jMenuItem1);
+        usuariosAgregarMenuItem.setText("Agregar");
+        usuariosAgregarMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                usuariosAgregarMenuItemActionPerformed(evt);
+            }
+        });
+        usuariosMenu.add(usuariosAgregarMenuItem);
 
-        jMenuItem2.setText("Listar");
-        jMenu1.add(jMenuItem2);
+        usuariosListarMenuItem.setText("Listar");
+        usuariosListarMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                usuariosListarMenuItemActionPerformed(evt);
+            }
+        });
+        usuariosMenu.add(usuariosListarMenuItem);
 
-        jMenuBar1.add(jMenu1);
+        jMenuBar1.add(usuariosMenu);
 
-        jMenu2.setText("Teléfonos");
+        companiaMenu.setText("Compañia");
+
+        companiaAgregarMenuItem.setText("Agregar");
+        companiaAgregarMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                companiaAgregarMenuItemActionPerformed(evt);
+            }
+        });
+        companiaMenu.add(companiaAgregarMenuItem);
+
+        companiaConsultarMenuItem.setText("Consultar");
+        companiaConsultarMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                companiaConsultarMenuItemActionPerformed(evt);
+            }
+        });
+        companiaMenu.add(companiaConsultarMenuItem);
+
+        jMenuBar1.add(companiaMenu);
+
+        telefonosMenu.setText("Teléfonos");
 
         jMenuItem8.setText("Agregar fono");
-        jMenu2.add(jMenuItem8);
+        telefonosMenu.add(jMenuItem8);
 
         buscarNumeroItem.setText("Buscar fono");
         buscarNumeroItem.addActionListener(new java.awt.event.ActionListener() {
@@ -83,7 +118,7 @@ public class MainFrame extends javax.swing.JFrame {
                 buscarNumeroItemActionPerformed(evt);
             }
         });
-        jMenu2.add(buscarNumeroItem);
+        telefonosMenu.add(buscarNumeroItem);
 
         eliminarNumeroItem.setText("Eliminar fono");
         eliminarNumeroItem.addActionListener(new java.awt.event.ActionListener() {
@@ -91,7 +126,7 @@ public class MainFrame extends javax.swing.JFrame {
                 eliminarNumeroItemActionPerformed(evt);
             }
         });
-        jMenu2.add(eliminarNumeroItem);
+        telefonosMenu.add(eliminarNumeroItem);
 
         cantidadMenuItem.setText("Cantidad números privados");
         cantidadMenuItem.addActionListener(new java.awt.event.ActionListener() {
@@ -99,32 +134,44 @@ public class MainFrame extends javax.swing.JFrame {
                 cantidadMenuItemActionPerformed(evt);
             }
         });
-        jMenu2.add(cantidadMenuItem);
+        telefonosMenu.add(cantidadMenuItem);
 
-        jMenuBar1.add(jMenu2);
+        jMenuBar1.add(telefonosMenu);
 
-        jMenu3.setText("Cuentas");
+        cuentasMenu.setText("Cuentas");
 
         jMenuItem3.setText("Mostrar cuenta");
-        jMenu3.add(jMenuItem3);
+        cuentasMenu.add(jMenuItem3);
 
         jMenuItem4.setText("Mostrar cuenta simple");
-        jMenu3.add(jMenuItem4);
+        cuentasMenu.add(jMenuItem4);
 
         jMenuItem5.setText("Cantidad de cuentas sobre 250 minutos");
-        jMenu3.add(jMenuItem5);
+        cuentasMenu.add(jMenuItem5);
 
-        jMenuBar1.add(jMenu3);
+        jMenuBar1.add(cuentasMenu);
 
-        jMenu4.setText("Servicio Técnico");
+        servicioMenu.setText("Servicio Técnico");
 
         jMenuItem6.setText("Aplicar servicio a un teléfono");
-        jMenu4.add(jMenuItem6);
+        servicioMenu.add(jMenuItem6);
 
         jMenuItem7.setText("Buscar fonos llevados al servicio técnico");
-        jMenu4.add(jMenuItem7);
+        servicioMenu.add(jMenuItem7);
 
-        jMenuBar1.add(jMenu4);
+        jMenuBar1.add(servicioMenu);
+
+        salirMenu.setText("Salir");
+        salirMenu.addMenuListener(new javax.swing.event.MenuListener() {
+            public void menuSelected(javax.swing.event.MenuEvent evt) {
+                salirMenuMenuSelected(evt);
+            }
+            public void menuDeselected(javax.swing.event.MenuEvent evt) {
+            }
+            public void menuCanceled(javax.swing.event.MenuEvent evt) {
+            }
+        });
+        jMenuBar1.add(salirMenu);
 
         setJMenuBar(jMenuBar1);
 
@@ -132,11 +179,11 @@ public class MainFrame extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGap(0, 506, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 278, Short.MAX_VALUE)
+            .addGap(0, 279, Short.MAX_VALUE)
         );
 
         pack();
@@ -158,7 +205,6 @@ public class MainFrame extends javax.swing.JFrame {
                 new FonoEliminarFrame().setVisible(true);
             }
         });
-
     }//GEN-LAST:event_eliminarNumeroItemActionPerformed
 
     private void cantidadMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cantidadMenuItemActionPerformed
@@ -169,6 +215,45 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
     }//GEN-LAST:event_cantidadMenuItemActionPerformed
+
+    private void salirMenuMenuSelected(javax.swing.event.MenuEvent evt) {//GEN-FIRST:event_salirMenuMenuSelected
+        int dialogButton = JOptionPane.showConfirmDialog (rootPane, "¿Está seguro que desea cerrar el programa?","¿Está seguro?", JOptionPane.YES_NO_OPTION,JOptionPane.WARNING_MESSAGE);
+        if(dialogButton==0){
+            System.exit(0);
+        }
+    }//GEN-LAST:event_salirMenuMenuSelected
+
+    private void usuariosAgregarMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usuariosAgregarMenuItemActionPerformed
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new UsuarioAgregarFrame().setVisible(true);
+            }
+        });
+    }//GEN-LAST:event_usuariosAgregarMenuItemActionPerformed
+
+    private void usuariosListarMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usuariosListarMenuItemActionPerformed
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new UsuarioListarFrame().setVisible(true);
+            }
+        });
+    }//GEN-LAST:event_usuariosListarMenuItemActionPerformed
+
+    private void companiaConsultarMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_companiaConsultarMenuItemActionPerformed
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new CompaniaConsultarFrame().setVisible(true);
+            }
+        });
+    }//GEN-LAST:event_companiaConsultarMenuItemActionPerformed
+
+    private void companiaAgregarMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_companiaAgregarMenuItemActionPerformed
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new CompaniaAgregarFrame().setVisible(true);
+            }
+        });
+    }//GEN-LAST:event_companiaAgregarMenuItemActionPerformed
 
     /**
      * @param args the command line arguments
@@ -208,19 +293,23 @@ public class MainFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem buscarNumeroItem;
     private javax.swing.JMenuItem cantidadMenuItem;
+    private javax.swing.JMenuItem companiaAgregarMenuItem;
+    private javax.swing.JMenuItem companiaConsultarMenuItem;
+    private javax.swing.JMenu companiaMenu;
+    private javax.swing.JMenu cuentasMenu;
     private javax.swing.JMenuItem eliminarNumeroItem;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;
+    private javax.swing.JMenu salirMenu;
+    private javax.swing.JMenu servicioMenu;
+    private javax.swing.JMenu telefonosMenu;
+    private javax.swing.JMenuItem usuariosAgregarMenuItem;
+    private javax.swing.JMenuItem usuariosListarMenuItem;
+    private javax.swing.JMenu usuariosMenu;
     // End of variables declaration//GEN-END:variables
 }

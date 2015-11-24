@@ -128,7 +128,7 @@
                   <Component id="txtNumero" min="-2" pref="246" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="btnBuscar" min="-2" pref="137" max="-2" attributes="0"/>
-                  <EmptySpace min="0" pref="6" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -171,7 +171,7 @@
                   <Component id="rutRadio" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="marcaRadio" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace pref="161" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
