@@ -22,6 +22,8 @@ public class MainFrame extends javax.swing.JFrame {
     public MainFrame() {
         initComponents();
         db = new DB();
+        db.iniciarData();
+        
         setExtendedState(MAXIMIZED_BOTH);
     }
 
@@ -48,6 +50,7 @@ public class MainFrame extends javax.swing.JFrame {
         usuariosMenu = new javax.swing.JMenu();
         usuariosAgregarMenuItem = new javax.swing.JMenuItem();
         usuariosListarMenuItem = new javax.swing.JMenuItem();
+        planesMenu = new javax.swing.JMenu();
         companiaMenu = new javax.swing.JMenu();
         companiaAgregarMenuItem = new javax.swing.JMenuItem();
         companiaConsultarMenuItem = new javax.swing.JMenuItem();
@@ -66,10 +69,11 @@ public class MainFrame extends javax.swing.JFrame {
         salirMenu = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(630, 400));
 
         usuariosMenu.setText("Usuarios");
 
-        usuariosAgregarMenuItem.setText("Agregar");
+        usuariosAgregarMenuItem.setText("Agregar usuario");
         usuariosAgregarMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 usuariosAgregarMenuItemActionPerformed(evt);
@@ -77,7 +81,7 @@ public class MainFrame extends javax.swing.JFrame {
         });
         usuariosMenu.add(usuariosAgregarMenuItem);
 
-        usuariosListarMenuItem.setText("Listar");
+        usuariosListarMenuItem.setText("Listar usuarios");
         usuariosListarMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 usuariosListarMenuItemActionPerformed(evt);
@@ -87,9 +91,12 @@ public class MainFrame extends javax.swing.JFrame {
 
         jMenuBar1.add(usuariosMenu);
 
+        planesMenu.setText("Planes Telefónicos");
+        jMenuBar1.add(planesMenu);
+
         companiaMenu.setText("Compañia");
 
-        companiaAgregarMenuItem.setText("Agregar");
+        companiaAgregarMenuItem.setText("Agregar compañía");
         companiaAgregarMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 companiaAgregarMenuItemActionPerformed(evt);
@@ -97,7 +104,7 @@ public class MainFrame extends javax.swing.JFrame {
         });
         companiaMenu.add(companiaAgregarMenuItem);
 
-        companiaConsultarMenuItem.setText("Consultar");
+        companiaConsultarMenuItem.setText("Listar compañías");
         companiaConsultarMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 companiaConsultarMenuItemActionPerformed(evt);
@@ -109,10 +116,10 @@ public class MainFrame extends javax.swing.JFrame {
 
         telefonosMenu.setText("Teléfonos");
 
-        jMenuItem8.setText("Agregar fono");
+        jMenuItem8.setText("Agregar teléfono");
         telefonosMenu.add(jMenuItem8);
 
-        buscarNumeroItem.setText("Buscar fono");
+        buscarNumeroItem.setText("Buscar teléfono");
         buscarNumeroItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buscarNumeroItemActionPerformed(evt);
@@ -120,7 +127,7 @@ public class MainFrame extends javax.swing.JFrame {
         });
         telefonosMenu.add(buscarNumeroItem);
 
-        eliminarNumeroItem.setText("Eliminar fono");
+        eliminarNumeroItem.setText("Eliminar teléfono");
         eliminarNumeroItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 eliminarNumeroItemActionPerformed(evt);
@@ -156,7 +163,7 @@ public class MainFrame extends javax.swing.JFrame {
         jMenuItem6.setText("Aplicar servicio a un teléfono");
         servicioMenu.add(jMenuItem6);
 
-        jMenuItem7.setText("Buscar fonos llevados al servicio técnico");
+        jMenuItem7.setText("Buscar teléfonos llevados al servicio técnico");
         servicioMenu.add(jMenuItem7);
 
         jMenuBar1.add(servicioMenu);
@@ -179,7 +186,7 @@ public class MainFrame extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 506, Short.MAX_VALUE)
+            .addGap(0, 630, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -305,6 +312,7 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;
+    private javax.swing.JMenu planesMenu;
     private javax.swing.JMenu salirMenu;
     private javax.swing.JMenu servicioMenu;
     private javax.swing.JMenu telefonosMenu;

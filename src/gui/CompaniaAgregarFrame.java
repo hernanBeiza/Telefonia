@@ -4,27 +4,41 @@
  * and open the template in the editor.
  */
 package gui;
-import java.awt.Dimension;
-import java.awt.Toolkit;
 import telefonia.Compania;
 import java.util.ArrayList;
-import javax.swing.JFrame;
+import java.util.Iterator;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import telefonia.PlanTelefonico;
 
 /**
  *
  * @author Andres
  */
-public class CompaniaAgregarFrame extends javax.swing.JFrame {
-   private static ArrayList <Compania> companias = new ArrayList<Compania>();
+//public class CompaniaAgregarFrame extends javax.swing.JFrame {
+public class CompaniaAgregarFrame extends Ventana {
+
+    private ArrayList <PlanTelefonico> planes = new ArrayList<PlanTelefonico>();
+
     /**
      * Creates new form CompaniagregarFrame
      */
     public CompaniaAgregarFrame() {
         initComponents();
-        this.setAlwaysOnTop(true);
-        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
-        this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
-        this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        iniciarCentrada();
+        //Cargar Planes
+        planes = obtenerPlanes();
+        DefaultTableModel modeloTable = (DefaultTableModel) planesTable.getModel();
+        Iterator it = planes.iterator();
+        int rowCount = modeloTable.getRowCount();
+        for (int i = rowCount - 1; i >= 0; i--) {
+            modeloTable.removeRow(i);
+        }
+        while(it.hasNext()){
+            PlanTelefonico unPlan = (PlanTelefonico)it.next();
+            modeloTable.addRow(new Object[]{unPlan.getCodigo(),unPlan.getTipoPlan(),unPlan.getNombrePlan(),unPlan.getValorPlan()});
+        }
+
     }
 
     /**
@@ -43,13 +57,16 @@ public class CompaniaAgregarFrame extends javax.swing.JFrame {
         txtnombre = new javax.swing.JTextField();
         lbldireccion = new javax.swing.JLabel();
         txtdireccion = new javax.swing.JTextField();
-        btnconsulta = new javax.swing.JButton();
+        btnConsultar = new javax.swing.JButton();
         lbldireccion1 = new javax.swing.JLabel();
         cmbnombreplan = new javax.swing.JComboBox();
         jPanel3 = new javax.swing.JPanel();
         btnVolver = new javax.swing.JButton();
-        btnagregar = new javax.swing.JButton();
+        btnAgregar = new javax.swing.JButton();
         tituloLabel = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        planesTable = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -59,9 +76,10 @@ public class CompaniaAgregarFrame extends javax.swing.JFrame {
 
         lbldireccion.setText("Dirección");
 
-        btnconsulta.addActionListener(new java.awt.event.ActionListener() {
+        btnConsultar.setText("Consultar");
+        btnConsultar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnconsultaActionPerformed(evt);
+                btnConsultarActionPerformed(evt);
             }
         });
 
@@ -85,8 +103,8 @@ public class CompaniaAgregarFrame extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(txtrut, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnconsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 258, Short.MAX_VALUE))
+                        .addComponent(btnConsultar)
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(cmbnombreplan, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(txtdireccion, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(txtnombre))
@@ -96,11 +114,10 @@ public class CompaniaAgregarFrame extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(txtrut, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(lblrut))
-                    .addComponent(btnconsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtrut, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblrut)
+                    .addComponent(btnConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtnombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -113,30 +130,20 @@ public class CompaniaAgregarFrame extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cmbnombreplan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lbldireccion1))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         btnVolver.setText("Volver");
-        btnVolver.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnVolverMouseClicked(evt);
-            }
-        });
         btnVolver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnVolverActionPerformed(evt);
             }
         });
 
-        btnagregar.setText("Agregar");
-        btnagregar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnagregarMouseClicked(evt);
-            }
-        });
-        btnagregar.addActionListener(new java.awt.event.ActionListener() {
+        btnAgregar.setText("Agregar");
+        btnAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnagregarActionPerformed(evt);
+                btnAgregarActionPerformed(evt);
             }
         });
 
@@ -145,10 +152,10 @@ public class CompaniaAgregarFrame extends javax.swing.JFrame {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(331, Short.MAX_VALUE)
                 .addComponent(btnVolver)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnagregar)
+                .addComponent(btnAgregar)
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
@@ -157,12 +164,52 @@ public class CompaniaAgregarFrame extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnagregar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
         tituloLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         tituloLabel.setText("Agregar Compañia");
+
+        planesTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Código", "Tipo", "Nombre", "Valor"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        planesTable.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(planesTable);
+        if (planesTable.getColumnModel().getColumnCount() > 0) {
+            planesTable.getColumnModel().getColumn(0).setResizable(false);
+            planesTable.getColumnModel().getColumn(1).setResizable(false);
+            planesTable.getColumnModel().getColumn(2).setResizable(false);
+            planesTable.getColumnModel().getColumn(3).setResizable(false);
+        }
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 507, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 316, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 432, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -173,7 +220,8 @@ public class CompaniaAgregarFrame extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(tituloLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -183,39 +231,70 @@ public class CompaniaAgregarFrame extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnconsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnconsultaActionPerformed
+    private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarActionPerformed
         // TODO add your handling code here:
         CompaniaConsultarFrame consulta = new CompaniaConsultarFrame();
         consulta.setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_btnconsultaActionPerformed
+    }//GEN-LAST:event_btnConsultarActionPerformed
 
-    private void btnagregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnagregarActionPerformed
-        // TODO add your handling code here:
-        //Usuario usuarioNuevo = new Usuario(txtnombre.getText(), txtapellido.getText(), txtrut.getText(), txtfecnac.getText(), Integer.parseInt(txtedad.getText()), cboEstadoCivil.getSelectedItem().toString());
+    private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
+                
+        //Validar que estén todos los campos rellenados antes de guardar
+        boolean guardar = true;
+        String mensajeError = "Le faltaron los siguientes datos:";
+        if(txtrut.getText().equals("")){
+            guardar = false;
+            mensajeError+="\n Rut";
+        }
+        if(txtnombre.getText().equals("")){
+            guardar = false;
+            mensajeError+="\n Nombre";
+        }
+        if(txtdireccion.getText().equals("")){
+            guardar = false;
+            mensajeError+="\n Dirección";
+        }
+        if(planesTable.getSelectedRows().length==0){
+            guardar = false;
+            mensajeError+="\n Selececionar al menos un plan";
+        }
+        
+        if(guardar){
+            //Obtener las compañias seleccionadas
+            ArrayList <PlanTelefonico> planesSeleccionados = new ArrayList<PlanTelefonico>();
+            for (int i = 0; i < planesTable.getSelectedRows().length; i++) {
+                int id = planesTable.getSelectedRows()[i];
+                PlanTelefonico unPlan = planes.get(id);
+                System.out.println(unPlan.toString());
+                planesSeleccionados.add(unPlan);
+            }
 
-        String nomplan = cmbnombreplan.toString();
+            Compania companiaNueva = new Compania(txtrut.getText(), txtnombre.getText(), txtdireccion.getText(), planesSeleccionados);
+            if(companiaGuardar(companiaNueva)){
+                JOptionPane.showMessageDialog(rootPane, "Compañia guardado correctamente", "Guardado correcto", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(rootPane, "La Compañia no se pudo guardar. Ya existe una compañia con ese rut", "Error al intentar guardar", JOptionPane.WARNING_MESSAGE);
+            }
+            
+        } else {
+             JOptionPane.showMessageDialog(rootPane,mensajeError, "Error al intentar guardar", JOptionPane.WARNING_MESSAGE);
+        }   
 
+        //String nomplan = cmbnombreplan.toString();
         //Compania companiaNuevo = new Compania(txtrut.getText(),txtnombre.getText(),txtdireccion.getText());
         //ahora hay que guardarlo, pero como no tenemos la Db hecha, lo dejamos así por ahora
         //Revisamos el usuarioNuevo
         //System.out.println(companiaNuevo.toString());
-    }//GEN-LAST:event_btnagregarActionPerformed
-
-    private void btnagregarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnagregarMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnagregarMouseClicked
-
-    private void btnVolverMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVolverMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnVolverMouseClicked
+    }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
         this.dispose();
@@ -258,16 +337,19 @@ public class CompaniaAgregarFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAgregar;
+    private javax.swing.JButton btnConsultar;
     private javax.swing.JButton btnVolver;
-    private javax.swing.JButton btnagregar;
-    private javax.swing.JButton btnconsulta;
     private javax.swing.JComboBox cmbnombreplan;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lbldireccion;
     private javax.swing.JLabel lbldireccion1;
     private javax.swing.JLabel lblnombre;
     private javax.swing.JLabel lblrut;
+    private javax.swing.JTable planesTable;
     private javax.swing.JLabel tituloLabel;
     private javax.swing.JTextField txtdireccion;
     private javax.swing.JTextField txtnombre;

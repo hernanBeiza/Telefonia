@@ -5,27 +5,40 @@
  */
 package gui;
 
-import java.awt.Dimension;
-import java.awt.Toolkit;
-import javax.swing.JFrame;
+import java.util.ArrayList;
+import java.util.Iterator;
+import javax.swing.ListSelectionModel;
+import javax.swing.table.DefaultTableModel;
+import telefonia.Usuario;
 
 /**
  *
  * @author Andres
  */
-public class UsuarioListarFrame extends javax.swing.JFrame {
-
+//public class UsuarioListarFrame extends javax.swing.JFrame {
+public class UsuarioListarFrame extends Ventana {
     /**
      * Creates new form UsuarioListarFrame
      */
     public UsuarioListarFrame() {
         initComponents();
-        this.setAlwaysOnTop(true);
-        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
-        this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
-        this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-
+        iniciarCentrada();
+        
+        ArrayList<Usuario> usuarios = obtenerUsuarios();    
+        DefaultTableModel modeloTable = (DefaultTableModel) usuariosTable.getModel();
+        Iterator it = usuarios.iterator();
+        int rowCount = modeloTable.getRowCount();
+        for (int i = rowCount - 1; i >= 0; i--) {
+            modeloTable.removeRow(i);
+        }
+        while(it.hasNext()){
+            Usuario unUsuario = (Usuario)it.next();
+            modeloTable.addRow(new Object[]{unUsuario.getRun(),unUsuario.getNombre(),unUsuario.getApellido(),unUsuario.getEdad(),unUsuario.getFechaNacimiento(),unUsuario.getEstadoCivil()});
+        }
+        usuariosTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
     }
+    
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -38,25 +51,31 @@ public class UsuarioListarFrame extends javax.swing.JFrame {
 
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        usuariosTable = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
         btnVolver = new javax.swing.JButton();
+        btnConsultar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        usuariosTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+
             },
             new String [] {
                 "Rut", "Nombre", "Apellido", "Edad", "Fecha Nacimiento", "Estado Civil"
             }
-        ));
-        jScrollPane1.setViewportView(jTable1);
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, true
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(usuariosTable);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -83,17 +102,27 @@ public class UsuarioListarFrame extends javax.swing.JFrame {
             }
         });
 
+        btnConsultar.setText("Consultar");
+        btnConsultar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConsultarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(btnVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 464, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 480, Short.MAX_VALUE)
+                .addComponent(btnConsultar))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(btnVolver, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(btnVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -121,7 +150,7 @@ public class UsuarioListarFrame extends javax.swing.JFrame {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
 
         pack();
@@ -130,6 +159,12 @@ public class UsuarioListarFrame extends javax.swing.JFrame {
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
         this.dispose();
     }//GEN-LAST:event_btnVolverActionPerformed
+
+    private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarActionPerformed
+        int idConsulta = usuariosTable.getSelectedRow();
+        Usuario usuarioSeleccionado = obtenerUsuarios().get(idConsulta);
+        System.out.println(usuarioSeleccionado);
+    }//GEN-LAST:event_btnConsultarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -167,11 +202,12 @@ public class UsuarioListarFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnConsultar;
     private javax.swing.JButton btnVolver;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable usuariosTable;
     // End of variables declaration//GEN-END:variables
 }

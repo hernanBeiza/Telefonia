@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package gui;
-import gui.MenuFrame;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import javax.swing.JFrame;

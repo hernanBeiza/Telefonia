@@ -11,7 +11,7 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="usuariosAgregarMenuItem">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Agregar"/>
+                <Property name="text" type="java.lang.String" value="Agregar usuario"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="usuariosAgregarMenuItemActionPerformed"/>
@@ -19,13 +19,18 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="usuariosListarMenuItem">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Listar"/>
+                <Property name="text" type="java.lang.String" value="Listar usuarios"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="usuariosListarMenuItemActionPerformed"/>
               </Events>
             </MenuItem>
           </SubComponents>
+        </Menu>
+        <Menu class="javax.swing.JMenu" name="planesMenu">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Planes Telef&#xf3;nicos"/>
+          </Properties>
         </Menu>
         <Menu class="javax.swing.JMenu" name="companiaMenu">
           <Properties>
@@ -34,7 +39,7 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="companiaAgregarMenuItem">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Agregar"/>
+                <Property name="text" type="java.lang.String" value="Agregar compa&#xf1;&#xed;a"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="companiaAgregarMenuItemActionPerformed"/>
@@ -42,7 +47,7 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="companiaConsultarMenuItem">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Consultar"/>
+                <Property name="text" type="java.lang.String" value="Listar compa&#xf1;&#xed;as"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="companiaConsultarMenuItemActionPerformed"/>
@@ -57,12 +62,12 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem8">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Agregar fono"/>
+                <Property name="text" type="java.lang.String" value="Agregar tel&#xe9;fono"/>
               </Properties>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="buscarNumeroItem">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Buscar fono"/>
+                <Property name="text" type="java.lang.String" value="Buscar tel&#xe9;fono"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buscarNumeroItemActionPerformed"/>
@@ -70,7 +75,7 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="eliminarNumeroItem">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Eliminar fono"/>
+                <Property name="text" type="java.lang.String" value="Eliminar tel&#xe9;fono"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="eliminarNumeroItemActionPerformed"/>
@@ -120,7 +125,7 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem7">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Buscar fonos llevados al servicio t&#xe9;cnico"/>
+                <Property name="text" type="java.lang.String" value="Buscar tel&#xe9;fonos llevados al servicio t&#xe9;cnico"/>
               </Properties>
             </MenuItem>
           </SubComponents>
@@ -138,6 +143,9 @@
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
+    <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+      <Dimension value="[630, 400]"/>
+    </Property>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="menuBar" type="java.lang.String" value="jMenuBar1"/>
@@ -159,7 +167,7 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <EmptySpace min="0" pref="506" max="32767" attributes="0"/>
+          <EmptySpace min="0" pref="630" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">

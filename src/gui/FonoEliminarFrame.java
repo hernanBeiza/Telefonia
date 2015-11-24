@@ -8,25 +8,30 @@ package gui;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.util.ArrayList;
+import java.util.Iterator;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.ListSelectionModel;
+import javax.swing.table.DefaultTableModel;
 import telefonia.Telefonia;
 
 /**
  *
  * @author hernanBeiza
  */
-public class FonoEliminarFrame extends javax.swing.JFrame {
+//public class FonoEliminarFrame extends javax.swing.JFrame {
+public class FonoEliminarFrame extends Ventana {
+    /**
+     * Para almacenar los teléfonos encontrados
+     */
+    private ArrayList <Telefonia> telefonos;
 
     /**
      * Creates new form FonoEliminarFrame
      */
     public FonoEliminarFrame() {
         initComponents();
-        this.setAlwaysOnTop(true);
-        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
-        this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
-        this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        iniciarCentrada();
     }
 
     /**
@@ -51,6 +56,7 @@ public class FonoEliminarFrame extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         datosTable = new javax.swing.JTable();
+        btnEliminar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -98,7 +104,7 @@ public class FonoEliminarFrame extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        btnBuscar.setText("Buscar por fono");
+        btnBuscar.setText("Buscar");
         btnBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBuscarActionPerformed(evt);
@@ -136,15 +142,13 @@ public class FonoEliminarFrame extends javax.swing.JFrame {
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(volverButton))
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addComponent(volverButton)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addComponent(volverButton)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(volverButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         datosTable.setModel(new javax.swing.table.DefaultTableModel(
@@ -152,14 +156,14 @@ public class FonoEliminarFrame extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Rut", "Nombre", "Apellido"
+                "Rut", "Nombre", "Apellido", "Compañia", "Teléfono"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false
+                false, false, false, true, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -190,6 +194,13 @@ public class FonoEliminarFrame extends javax.swing.JFrame {
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
+        btnEliminar.setText("Eliminar");
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -207,6 +218,8 @@ public class FonoEliminarFrame extends javax.swing.JFrame {
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnEliminar)
                         .addContainerGap())))
         );
         layout.setVerticalGroup(
@@ -219,7 +232,9 @@ public class FonoEliminarFrame extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE))
                 .addContainerGap(22, Short.MAX_VALUE))
         );
 
@@ -239,7 +254,8 @@ public class FonoEliminarFrame extends javax.swing.JFrame {
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         // TODO add your handling code here:
-        //Revisar que tenga datos
+        limpiarTabla();
+
         if(!txtNumero.getText().equals("")){
             //Obtener todas las ventanas abiertas. la 0 es la main, ella tiene la DB
             //System.out.println("Total " + JFrame.getFrames().length);
@@ -254,11 +270,8 @@ public class FonoEliminarFrame extends javax.swing.JFrame {
             if(encontrados.size()==0){
                 JOptionPane.showMessageDialog(rootPane, "No se encontró el teléfono", "Error al intentar buscar", JOptionPane.WARNING_MESSAGE);
             } else {
-                //Mostrar correctamente la información proveniente de la DB
-                /*
-                DefaultTableModel modeloTable = (DefaultTableModel) datosTable.getModel();
-                modeloTable.addRow(new Object[]{"Column 1", "Column 2", "Column 3"});
-                */
+                telefonos = encontrados;
+                cargar();
             }
         } else {
             String mensaje ="Debe ingresar ";
@@ -271,11 +284,49 @@ public class FonoEliminarFrame extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(rootPane, mensaje, "Error al intentar buscar", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnBuscarActionPerformed
-
+    /**
+     * Carga la información de los teléfonos
+     */
+    private void cargar(){
+        DefaultTableModel modeloTable = (DefaultTableModel) datosTable.getModel();
+        Iterator it = telefonos.iterator();
+        while(it.hasNext()){
+        Telefonia unTelefono = (Telefonia)it.next();
+            modeloTable.addRow(new Object[]{unTelefono.getUsuario().getRun(),unTelefono.getUsuario().getNombre(),unTelefono.getUsuario().getApellido(),unTelefono.getCompania().getNombre(),unTelefono.getNumeroFono()});
+        }
+        datosTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+    }
+    
+    private void limpiarTabla(){
+        DefaultTableModel modeloTable = (DefaultTableModel) datosTable.getModel();
+        int rowCount = modeloTable.getRowCount();
+        for (int i = rowCount - 1; i >= 0; i--) {
+            modeloTable.removeRow(i);
+        }
+    }
+    
     private void volverButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_volverButtonActionPerformed
         // TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_volverButtonActionPerformed
+
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+        // TODO add your handling code here:
+        System.out.println(datosTable.getSelectedRow());
+        if(datosTable.getSelectedRow()>=0){
+            int id = datosTable.getSelectedRow();
+            Telefonia telefono = telefonos.get(id);
+            System.out.println(telefono.toString());            
+            if(telefonoBorrar(telefono)){
+                JOptionPane.showMessageDialog(rootPane, "Teléfono eliminado correctamente", "Eliminado correcto", JOptionPane.INFORMATION_MESSAGE);
+                limpiarTabla();                
+            } else {
+                JOptionPane.showMessageDialog(rootPane, "El teléfono no se pudo eliminar", "Error al intentar eliminar", JOptionPane.WARNING_MESSAGE);
+            }
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "Debe seleccionar al menos una", "Error al intentar eliminar", JOptionPane.WARNING_MESSAGE);
+        }        
+    }//GEN-LAST:event_btnEliminarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -314,6 +365,7 @@ public class FonoEliminarFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscar;
+    private javax.swing.JButton btnEliminar;
     private javax.swing.JTable datosTable;
     private javax.swing.ButtonGroup filtroGrupo;
     private javax.swing.JPanel jPanel1;

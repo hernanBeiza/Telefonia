@@ -1,11 +1,10 @@
 package gui;
 
 
-import gui.MenuFrame;
-import java.awt.Dimension;
-import java.awt.Toolkit;
-import java.util.ArrayList;
-import javax.swing.JFrame;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import javax.swing.JOptionPane;
 import telefonia.Usuario;
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -17,20 +16,15 @@ import telefonia.Usuario;
  *
  * @author aosorio
  */
-public class UsuarioAgregarFrame extends javax.swing.JFrame {
-    //Esto no podrá ir acá, debe ir en un "ultra" main... El main en dónde parte la aplicación.
-    private static ArrayList <Usuario> usuarios = new ArrayList<Usuario>();
+//public class UsuarioAgregarFrame extends javax.swing.JFrame {
+public class UsuarioAgregarFrame extends Ventana {
 
     /**
      * Creates new form UsuarioAgregar
      */
     public UsuarioAgregarFrame() {
         initComponents();
-        this.setAlwaysOnTop(true);
-        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
-        this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
-        this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-
+        iniciarCentrada();
     }
 
     /**
@@ -42,7 +36,6 @@ public class UsuarioAgregarFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         lblnombre = new javax.swing.JLabel();
@@ -77,9 +70,15 @@ public class UsuarioAgregarFrame extends javax.swing.JFrame {
 
         lblfecnac.setText("Fec.Nacimiento");
 
-        txtfecnac.setText("20/11/2015");
+        txtfecnac.setText("20/11/1955");
 
         lbledad.setText("Edad");
+
+        txtedad.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtedadFocusGained(evt);
+            }
+        });
 
         lblestciv.setText("Estado Civil");
 
@@ -119,7 +118,7 @@ public class UsuarioAgregarFrame extends javax.swing.JFrame {
                                 .addComponent(txtnombre)
                                 .addComponent(txtapellido, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(txtfecnac, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(76, Short.MAX_VALUE))
+                .addContainerGap(248, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -171,9 +170,9 @@ public class UsuarioAgregarFrame extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(btnVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnVolver)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnAgregar)
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
@@ -185,59 +184,93 @@ public class UsuarioAgregarFrame extends javax.swing.JFrame {
                     .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(37, Short.MAX_VALUE))
-        );
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(34, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
-        Usuario usuarioNuevo = new Usuario(txtnombre.getText(), txtapellido.getText(), txtrut.getText(), txtfecnac.getText(), Integer.parseInt(txtedad.getText()), cboEstadoCivil.getSelectedItem().toString());
-        //ahora hay que guardarlok, pero como no tenemos la Db hecha, lo dejamos así por ahora
-        //Revisamos el usuarioNuevo
-        System.out.println(usuarioNuevo.toString());
+        
+        //Validar que estén todos los campos rellenados antes de guardar
+        boolean guardar = true;
+        String mensajeError = "Le faltaron los siguientes datos:";
+        if(txtnombre.getText().equals("")){
+            guardar = false;
+            mensajeError+="\n Nombre";
+        }
+        if(txtapellido.getText().equals("")){
+            guardar = false;
+            mensajeError+="\n Apellido";
+        }
+        if(txtrut.getText().equals("")){
+            guardar = false;
+            mensajeError+="\n Rut";
+        }
+        if(txtfecnac.getText().equals("")){
+            guardar = false;
+            mensajeError+="\n Fecha de nacimiento";
+        }
+        if(txtedad.getText().equals("")){
+            guardar = false;
+            mensajeError+="\n Edad";
+        }
+        
+        if(guardar){
+            Usuario usuarioNuevo = new Usuario(txtnombre.getText(), txtapellido.getText(), txtrut.getText(), txtfecnac.getText(), Integer.parseInt(txtedad.getText()), cboEstadoCivil.getSelectedItem().toString());
+            if(usuarioGuardar(usuarioNuevo)){
+                JOptionPane.showMessageDialog(rootPane, "Usuario guardado correctamente", "Guardado correcto", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(rootPane, "El usuario no se pudo guardar. Ya existe un usuario con ese rut", "Error al intentar guardar", JOptionPane.WARNING_MESSAGE);
+            }
+            
+        } else {
+             JOptionPane.showMessageDialog(rootPane,mensajeError, "Error al intentar guardar", JOptionPane.WARNING_MESSAGE);
+        }   
+        
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
         this.dispose();
     }//GEN-LAST:event_btnVolverActionPerformed
+
+    private void txtedadFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtedadFocusGained
+        String fechaNacimiento = txtfecnac.getText();
+        String[] fechaComponentes = fechaNacimiento.split("/");
+        if(fechaComponentes.length==3){
+            System.out.println(fechaComponentes[2]);
+            int year = Integer.parseInt(fechaComponentes[2]);
+            System.out.println(year);
+            DateFormat dateFormat = new SimpleDateFormat("yyyy");
+            Date actualFecha = new Date();
+            int actualYear = Integer.parseInt(dateFormat.format(actualFecha));
+            System.out.println(actualYear);
+            int dif = actualYear-year;
+            System.out.println(dif);
+            txtedad.setText(String.valueOf(dif));            
+        }
+    }//GEN-LAST:event_txtedadFocusGained
 
     /**
      * @param args the command line arguments
@@ -283,7 +316,6 @@ public class UsuarioAgregarFrame extends javax.swing.JFrame {
     private javax.swing.JButton btnVolver;
     private javax.swing.JComboBox cboEstadoCivil;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JLabel lblapellido;
