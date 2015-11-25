@@ -31,6 +31,24 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Planes Telef&#xf3;nicos"/>
           </Properties>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="planAgregarMenuItem">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Agregar plan"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="planAgregarMenuItemActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="listarMenuItem">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Listar planes"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="listarMenuItemActionPerformed"/>
+              </Events>
+            </MenuItem>
+          </SubComponents>
         </Menu>
         <Menu class="javax.swing.JMenu" name="companiaMenu">
           <Properties>
@@ -106,10 +124,13 @@
                 <Property name="text" type="java.lang.String" value="Mostrar cuenta simple"/>
               </Properties>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem5">
+            <MenuItem class="javax.swing.JMenuItem" name="cuentasSobreMenuItem">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Cantidad de cuentas sobre 250 minutos"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cuentasSobreMenuItemActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>
@@ -118,15 +139,21 @@
             <Property name="text" type="java.lang.String" value="Servicio T&#xe9;cnico"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem6">
+            <MenuItem class="javax.swing.JMenuItem" name="servicioAplicarMenuItem">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Aplicar servicio a un tel&#xe9;fono"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="servicioAplicarMenuItemActionPerformed"/>
+              </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem7">
+            <MenuItem class="javax.swing.JMenuItem" name="servicioBuscarMenuItem">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Buscar tel&#xe9;fonos llevados al servicio t&#xe9;cnico"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="servicioBuscarMenuItemActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>

@@ -18,7 +18,7 @@ import telefonia.PlanTelefonico;
 //public class CompaniaAgregarFrame extends javax.swing.JFrame {
 public class CompaniaAgregarFrame extends Ventana {
 
-    private ArrayList <PlanTelefonico> planes = new ArrayList<PlanTelefonico>();
+    private ArrayList <PlanTelefonico> planes;
 
     /**
      * Creates new form CompaniagregarFrame
@@ -27,7 +27,7 @@ public class CompaniaAgregarFrame extends Ventana {
         initComponents();
         iniciarCentrada();
         //Cargar Planes
-        planes = obtenerPlanes();
+        planes = planesObtener();
         DefaultTableModel modeloTable = (DefaultTableModel) planesTable.getModel();
         Iterator it = planes.iterator();
         int rowCount = modeloTable.getRowCount();
@@ -104,7 +104,7 @@ public class CompaniaAgregarFrame extends Ventana {
                         .addComponent(txtrut, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnConsultar)
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addGap(0, 198, Short.MAX_VALUE))
                     .addComponent(cmbnombreplan, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(txtdireccion, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(txtnombre))
@@ -152,9 +152,9 @@ public class CompaniaAgregarFrame extends Ventana {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(331, Short.MAX_VALUE)
+                .addContainerGap()
                 .addComponent(btnVolver)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnAgregar)
                 .addContainerGap())
         );

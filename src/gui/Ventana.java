@@ -43,7 +43,7 @@ public class Ventana extends JFrame{
      * Obtener los usuarios desde la DB
      * @return ArrayList de tipo usuario con los usuarios ingresados al sistema
      */
-    protected ArrayList <Usuario> obtenerUsuarios(){
+    protected ArrayList <Usuario> usuariosObtener(){
         MainFrame frame = (MainFrame)JFrame.getFrames()[0];
         //System.out.println(frame.getDb().getCompanias());
         return frame.getDb().getUsuarios();
@@ -68,12 +68,23 @@ public class Ventana extends JFrame{
      * Retorna la lista de planes telefónicos disponibles en el sistema
      * @return ArrayList de tipo PlanTelefónico. size(9 = 0 en caso de no tener nada
      */
-    protected ArrayList <PlanTelefonico> obtenerPlanes(){
+    protected ArrayList <PlanTelefonico> planesObtener(){
         MainFrame frame = (MainFrame)JFrame.getFrames()[0];
         //System.out.println(frame.getDb().getCompanias());
         return frame.getDb().getPlanes();
     }
-
+    /**
+     * Guarda un plan teléfonico en el sistema
+     * @param elPlan instancia de PlanTelefónico a guardar
+     * @return true si se guarda correctamente. false en caso contrario (ya existe)
+     */
+    protected boolean planesGuardar(PlanTelefonico elPlan){
+        boolean estado = false;
+        if(obtenerDB().planesGuardar(elPlan)){
+            estado = true;
+        }        
+        return estado;
+    }
     /**
      * Guarda una compañía en el sistema
      * @param unaCompania Instancia de Compania. 
@@ -89,14 +100,36 @@ public class Ventana extends JFrame{
         }        
         return estado;
     }
+    /**
+     * Retorna los teléfonos registrados en el sistema
+     * @return ArrayList de Telefonía
+     */
+    protected ArrayList <Telefonia> telefonosObtener(){
+        MainFrame frame = (MainFrame)JFrame.getFrames()[0];
+        //System.out.println(frame.getDb().getCompanias());
+        return frame.getDb().getTelefonos();
+    }
     
+    protected ArrayList <Telefonia> telefonosServicioObtener(){
+        MainFrame frame = (MainFrame)JFrame.getFrames()[0];
+        //System.out.println(frame.getDb().getCompanias());
+        return frame.getDb().telefonosServicio();
+    }
+    
+    /**
+     * Borrar un teléfono ingresado
+     * @param elTelefono Instancia de Telefonia. 
+     * @return true si se borra con èxito. false en caso contrario
+     */
     protected boolean telefonoBorrar (Telefonia elTelefono){
         if(this.obtenerDB().getTelefonos().remove(elTelefono)){
             return true;
-        } else {
-            return false;
         }
+        return false;
     }
     
+    protected ArrayList cuentasSobre (){
+        return this.obtenerDB().cuentasSobre();
+    }
 
 }

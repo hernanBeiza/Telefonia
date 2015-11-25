@@ -159,25 +159,31 @@ public abstract class Telefonia implements ServicioTecnico, Impuestos{
     }
 
     @Override
-    public float impuestoAplicado() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public float impuestoAplicado() {        
+        int cantidadMinutosUsados = getCantidadMinutosUsadosFijos()+getCantidadMinutosUsadosMovil();
+        if(cantidadMinutosUsados>100){
+            return impEsp;
+        } else {
+            return impNormal;
+        }
     }
 
     @Override
     public float pagoPorMinutosUsados() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        float totalPagar = getValorMinutoMovil()*getCantidadMinutosUsadosMovil()+getValorMinutoFijo()*getCantidadMinutosUsadosFijos();
+        return totalPagar;
     }
 
     @Override
     public float totalAPagar() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return pagoPorMinutosUsados()+getTarifaFija() - descuento()+impuestoAplicado();
     }
-
     @Override
     public float descuento() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        float elDescuento = 0.0f;
+        return elDescuento;
     }
-
+    
     @Override
     public String toString() {
         return "Telefonia{" + "compania=" + compania + ", usuario=" + usuario + ", region=" + region + ", comuna=" + comuna + ", fechaContrato=" + fechaContrato + ", valorMinutoFijo=" + valorMinutoFijo + ", valorMinutoMovil=" + valorMinutoMovil + ", tarifaFija=" + tarifaFija + ", cantidadMinutosUsadosFijos=" + cantidadMinutosUsadosFijos + ", cantidadMinutosUsadosMovil=" + cantidadMinutosUsadosMovil + ", planTelefonico=" + planTelefonico + ", numeroFono=" + numeroFono + ", costoEquipo=" + costoEquipo + '}';

@@ -51,6 +51,8 @@ public class MainFrame extends javax.swing.JFrame {
         usuariosAgregarMenuItem = new javax.swing.JMenuItem();
         usuariosListarMenuItem = new javax.swing.JMenuItem();
         planesMenu = new javax.swing.JMenu();
+        planAgregarMenuItem = new javax.swing.JMenuItem();
+        listarMenuItem = new javax.swing.JMenuItem();
         companiaMenu = new javax.swing.JMenu();
         companiaAgregarMenuItem = new javax.swing.JMenuItem();
         companiaConsultarMenuItem = new javax.swing.JMenuItem();
@@ -62,10 +64,10 @@ public class MainFrame extends javax.swing.JFrame {
         cuentasMenu = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenuItem4 = new javax.swing.JMenuItem();
-        jMenuItem5 = new javax.swing.JMenuItem();
+        cuentasSobreMenuItem = new javax.swing.JMenuItem();
         servicioMenu = new javax.swing.JMenu();
-        jMenuItem6 = new javax.swing.JMenuItem();
-        jMenuItem7 = new javax.swing.JMenuItem();
+        servicioAplicarMenuItem = new javax.swing.JMenuItem();
+        servicioBuscarMenuItem = new javax.swing.JMenuItem();
         salirMenu = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -92,6 +94,23 @@ public class MainFrame extends javax.swing.JFrame {
         jMenuBar1.add(usuariosMenu);
 
         planesMenu.setText("Planes Telefónicos");
+
+        planAgregarMenuItem.setText("Agregar plan");
+        planAgregarMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                planAgregarMenuItemActionPerformed(evt);
+            }
+        });
+        planesMenu.add(planAgregarMenuItem);
+
+        listarMenuItem.setText("Listar planes");
+        listarMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                listarMenuItemActionPerformed(evt);
+            }
+        });
+        planesMenu.add(listarMenuItem);
+
         jMenuBar1.add(planesMenu);
 
         companiaMenu.setText("Compañia");
@@ -153,18 +172,33 @@ public class MainFrame extends javax.swing.JFrame {
         jMenuItem4.setText("Mostrar cuenta simple");
         cuentasMenu.add(jMenuItem4);
 
-        jMenuItem5.setText("Cantidad de cuentas sobre 250 minutos");
-        cuentasMenu.add(jMenuItem5);
+        cuentasSobreMenuItem.setText("Cantidad de cuentas sobre 250 minutos");
+        cuentasSobreMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cuentasSobreMenuItemActionPerformed(evt);
+            }
+        });
+        cuentasMenu.add(cuentasSobreMenuItem);
 
         jMenuBar1.add(cuentasMenu);
 
         servicioMenu.setText("Servicio Técnico");
 
-        jMenuItem6.setText("Aplicar servicio a un teléfono");
-        servicioMenu.add(jMenuItem6);
+        servicioAplicarMenuItem.setText("Aplicar servicio a un teléfono");
+        servicioAplicarMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                servicioAplicarMenuItemActionPerformed(evt);
+            }
+        });
+        servicioMenu.add(servicioAplicarMenuItem);
 
-        jMenuItem7.setText("Buscar teléfonos llevados al servicio técnico");
-        servicioMenu.add(jMenuItem7);
+        servicioBuscarMenuItem.setText("Buscar teléfonos llevados al servicio técnico");
+        servicioBuscarMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                servicioBuscarMenuItemActionPerformed(evt);
+            }
+        });
+        servicioMenu.add(servicioBuscarMenuItem);
 
         jMenuBar1.add(servicioMenu);
 
@@ -262,6 +296,42 @@ public class MainFrame extends javax.swing.JFrame {
         });
     }//GEN-LAST:event_companiaAgregarMenuItemActionPerformed
 
+    private void cuentasSobreMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cuentasSobreMenuItemActionPerformed
+        /*
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new CuentasSobreFrame().setVisible(true);
+            }
+        });
+        */
+        CuentasSobreFrame cuentasFrame = new CuentasSobreFrame();
+        cuentasFrame.setVisible(true);        
+    }//GEN-LAST:event_cuentasSobreMenuItemActionPerformed
+
+    private void listarMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listarMenuItemActionPerformed
+        // TODO add your handling code here:
+        PlanTelefonicoListarFrame listarFrame = new PlanTelefonicoListarFrame();
+        listarFrame.setVisible(true);
+    }//GEN-LAST:event_listarMenuItemActionPerformed
+
+    private void planAgregarMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_planAgregarMenuItemActionPerformed
+        // TODO add your handling code here:
+        PlanTelefonicoAgregarFrame planAgregar = new PlanTelefonicoAgregarFrame();
+        planAgregar.setVisible(true);
+    }//GEN-LAST:event_planAgregarMenuItemActionPerformed
+
+    private void servicioAplicarMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_servicioAplicarMenuItemActionPerformed
+        // TODO add your handling code here:
+        ServicioTecnicoAplicarFrame servicioFrame = new ServicioTecnicoAplicarFrame();
+        servicioFrame.setVisible(true);
+    }//GEN-LAST:event_servicioAplicarMenuItemActionPerformed
+
+    private void servicioBuscarMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_servicioBuscarMenuItemActionPerformed
+        // TODO add your handling code here:
+        ServicioTecnicoListarFrame servicioFrame = new ServicioTecnicoListarFrame();
+        servicioFrame.setVisible(true);
+    }//GEN-LAST:event_servicioBuscarMenuItemActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -304,16 +374,18 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JMenuItem companiaConsultarMenuItem;
     private javax.swing.JMenu companiaMenu;
     private javax.swing.JMenu cuentasMenu;
+    private javax.swing.JMenuItem cuentasSobreMenuItem;
     private javax.swing.JMenuItem eliminarNumeroItem;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem5;
-    private javax.swing.JMenuItem jMenuItem6;
-    private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;
+    private javax.swing.JMenuItem listarMenuItem;
+    private javax.swing.JMenuItem planAgregarMenuItem;
     private javax.swing.JMenu planesMenu;
     private javax.swing.JMenu salirMenu;
+    private javax.swing.JMenuItem servicioAplicarMenuItem;
+    private javax.swing.JMenuItem servicioBuscarMenuItem;
     private javax.swing.JMenu servicioMenu;
     private javax.swing.JMenu telefonosMenu;
     private javax.swing.JMenuItem usuariosAgregarMenuItem;

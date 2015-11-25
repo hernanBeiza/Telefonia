@@ -19,17 +19,15 @@ import telefonia.Telefonia;
  *
  * @author hernanBeiza
  */
-public class FonoCantidadFrame extends javax.swing.JFrame {
+//public class FonoCantidadFrame extends javax.swing.JFrame {
+public class FonoCantidadFrame extends Ventana {
 
     /**
      * Creates new form FonoCantidad
      */
     public FonoCantidadFrame() {
         initComponents();
-        this.setAlwaysOnTop(true);
-        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
-        this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
-        this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        iniciarCentrada();
     }
 
     /**

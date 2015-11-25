@@ -24,7 +24,7 @@ public class UsuarioListarFrame extends Ventana {
         initComponents();
         iniciarCentrada();
         
-        ArrayList<Usuario> usuarios = obtenerUsuarios();    
+        ArrayList<Usuario> usuarios = usuariosObtener();    
         DefaultTableModel modeloTable = (DefaultTableModel) usuariosTable.getModel();
         Iterator it = usuarios.iterator();
         int rowCount = modeloTable.getRowCount();
@@ -162,8 +162,11 @@ public class UsuarioListarFrame extends Ventana {
 
     private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarActionPerformed
         int idConsulta = usuariosTable.getSelectedRow();
-        Usuario usuarioSeleccionado = obtenerUsuarios().get(idConsulta);
+        Usuario usuarioSeleccionado = usuariosObtener().get(idConsulta);
         System.out.println(usuarioSeleccionado);
+        UsuarioEditarFrame editarFrame = new UsuarioEditarFrame();
+        editarFrame.setVisible(true);
+        editarFrame.cargarUsuario(usuarioSeleccionado);
     }//GEN-LAST:event_btnConsultarActionPerformed
 
     /**

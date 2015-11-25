@@ -139,7 +139,7 @@ public class DB {
         PlanTelefonico normalEntel = new PlanTelefonico("ABC123", "NORMAL", "ANDRÉS", 50, false);
         PlanTelefonico premiumEntel = new PlanTelefonico("ABC123", "PREMIUM", "HERNAN", 100, false);
         PlanTelefonico normalMovistar = new PlanTelefonico("ABC123", "NORMAL", "GRACIELA", 50, false);
-        PlanTelefonico premiumMovistar = new PlanTelefonico("ABC123", "PREMIUM", "HERNAN", 100, false);
+        PlanTelefonico premiumMovistar = new PlanTelefonico("ABC123", "PREMIUM", "Victor", 100, false);
         planes.add(economicoEntel);
         planes.add(normalEntel);
         planes.add(premiumEntel);
@@ -168,8 +168,9 @@ public class DB {
         
         //Teléfonos Fijo
         //    public Privado(boolean identificadorLlamada, int codigoZona, Compania compania, Usuario usuario, String region, String comuna, String fechaContrato, int valorMinutoFijo, int valorMinutoMovil, float tarifaFija, int cantidadMinutosUsadosFijos, int cantidadMinutosUsadosMovil, PlanTelefonico planTelefonico, String numeroFono, int costoEquipo) {
-        Privado telefonoPrivado = new Privado(false, 033, movistar, domingo, "Petorca", "Papudo", "04/07/2010", 10, 100, 1000, 0, 0, premiumEntel, "790123", 5000);
+        Privado telefonoPrivado = new Privado(false, 033, movistar, domingo, "Petorca", "Papudo", "04/07/2010", 10, 100, 1000, 100, 200, premiumEntel, "790123", 5000);
         telefonos.add(telefonoPrivado);
+        telefonoPrivado.descuento();
         //Teléfono Comercial
         //    public Comerciales(int cantidadAnexos, int codigoZona, Compania compania, Usuario usuario, String region, String comuna, String fechaContrato, int valorMinutoFijo, int valorMinutoMovil, float tarifaFija, int cantidadMinutosUsadosFijos, int cantidadMinutosUsadosMovil, PlanTelefonico planTelefonico, String numeroFono, int costoEquipo) {
         Comerciales telefonoComercial = new Comerciales(10, 02, entel, doris, "RM", "La Florida", "01/01/1990", 10, 100, 22000, 0,0, economicoEntel, "2813797", 1000);
@@ -212,12 +213,33 @@ public class DB {
      * @param rutUsuario String. Rut del usuario a buscar
      * @return usuario si existe. null en caso contrario
      */
-    public Usuario usuarioBuscar (String rutUsuario){
+    public Usuario usuarioBuscarPorRut (String rutUsuario){
         Iterator it = usuarios.iterator();
         while(it.hasNext()){
             Usuario usuario = (Usuario)it.next();
             if(usuario.getRun().equals(rutUsuario)){
                 return usuario;
+            }
+        }
+        return null;
+    }
+    
+    public boolean planesGuardar(PlanTelefonico unPlan){
+        boolean estado = true;
+        if(planesBuscar(unPlan)==null){
+            this.planes.add(unPlan);
+        } else {
+            estado = false;
+        }
+        return estado;
+    }
+    
+    public PlanTelefonico planesBuscar(PlanTelefonico unPlan){
+        Iterator it = planes.iterator();
+        while(it.hasNext()){
+            PlanTelefonico plan = (PlanTelefonico)it.next();
+            if(plan.getCodigo().equals(unPlan.getCodigo())){
+                return plan;
             }
         }
         return null;
@@ -269,7 +291,22 @@ public class DB {
         }
         return totalPrivados;
     }
-    
+    /**
+     * Retorna los teléfonos que están en el servici técnico
+     * @return ArrayList de Telefonia
+     */    
+    public ArrayList <Telefonia> telefonosServicio(){
+        ArrayList<Telefonia>servicio = new ArrayList<Telefonia>();
+        Iterator it = telefonos.iterator();
+        while(it.hasNext()){
+            Telefonia unTelefono = (Telefonia)it.next();
+            if(unTelefono.getPlanTelefonico().isEstadoServicioTecnico()){
+                System.out.println("Fono Encontrado");
+                servicio.add(unTelefono);
+            }
+        }              
+        return servicio;            
+    }
     /**
      * Retorna la cantidad de teléfonos iOS
      * @return int con la cantidad
@@ -358,6 +395,17 @@ public class DB {
         return telefonosRut;
     }
     
+    public ArrayList <Telefonia> cuentasSobre(){
+        ArrayList <Telefonia> cuentas = new ArrayList<Telefonia>();
+        Iterator it = telefonos.iterator();
+        while(it.hasNext()){
+            Telefonia unTelefono = (Telefonia)it.next();
+            if(unTelefono.getCantidadMinutosUsadosFijos()+unTelefono.getCantidadMinutosUsadosMovil()>=250){
+                cuentas.add(unTelefono);
+            }            
+        }
+        return cuentas;
+    }
     /**
      * Busca los teléfonos según la marca
      * @param marca a buscar

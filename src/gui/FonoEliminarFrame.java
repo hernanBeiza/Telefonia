@@ -296,7 +296,10 @@ public class FonoEliminarFrame extends Ventana {
         }
         datosTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
     }
-    
+
+    /**
+     * Limpia la tabla de los datos para poder ser rellenada de nuevo
+     */
     private void limpiarTabla(){
         DefaultTableModel modeloTable = (DefaultTableModel) datosTable.getModel();
         int rowCount = modeloTable.getRowCount();

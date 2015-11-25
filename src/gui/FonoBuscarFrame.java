@@ -9,7 +9,6 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.util.ArrayList;
 import java.util.Iterator;
-import javax.swing.BoxLayout;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
@@ -19,19 +18,16 @@ import telefonia.Telefonia;
  *
  * @author hernanBeiza
  */
-public class FonoBuscarFrame extends javax.swing.JFrame {
+
+//public class FonoBuscarFrame extends javax.swing.JFrame {
+public class FonoBuscarFrame extends Ventana {
 
     /**
      * Creates new form FonoBuscar
      */
     public FonoBuscarFrame() {
         initComponents();
-        
-        //buscarPanel.setLayout(new BoxLayout(buscarPanel, BoxLayout.Y_AXIS)); //Setting Box layout, and set the direction to Y axis.
-        this.setAlwaysOnTop(true);
-        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
-        this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
-        this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        iniciarCentrada();        
     }
 
     /**

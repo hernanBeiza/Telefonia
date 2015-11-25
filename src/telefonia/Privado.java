@@ -22,6 +22,16 @@ public class Privado extends Fijo{
         this.identificadorLlamada = identificadorLlamada;
     }
 
+    
+    @Override
+    public float descuento() {
+        float minutos = getCantidadMinutosUsadosFijos()+getCantidadMinutosUsadosMovil();
+        if(minutos<50){
+            return 9.0f;            
+        }
+        return 0.0f;
+    }
+    
     @Override
     public String toString() {
         return "Privado{" + "identificadorLlamada=" + identificadorLlamada + ", "+super.toString()+'}';

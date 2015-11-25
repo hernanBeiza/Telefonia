@@ -40,6 +40,16 @@ public class Tradicional extends Movil{
     }
 
     @Override
+    public float descuento() {
+        System.out.println("descuento tradicional");     
+        if(getPlanTelefonico().getTipoPlan().equals("ECONOMICO")){
+           return 0.17f; 
+        }
+        return 0.0f;
+    }
+    
+    
+    @Override
     public String toString() {
         return "Tradicional{" + "pantallaColor=" + pantallaColor + ", tipoFono=" + tipoFono +", "+super.toString()+'}';
     }    

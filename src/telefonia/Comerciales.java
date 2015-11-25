@@ -22,6 +22,15 @@ public class Comerciales extends Fijo {
     }
 
     @Override
+    public float descuento() {
+        if(getCantidadAnexos()>100){
+            return 7.0f;
+        }
+        return 0.0f;
+    }
+    
+    
+    @Override
     public String toString() {
         return "Comerciales{" + "cantidadAnexos=" + cantidadAnexos +  ", "+super.toString()+'}';
     }
