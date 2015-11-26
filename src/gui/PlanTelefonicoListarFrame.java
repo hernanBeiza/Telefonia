@@ -5,13 +5,14 @@
  */
 package gui;
 
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import java.util.Iterator;
 import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 import telefonia.PlanTelefonico;
-import telefonia.Telefonia;
 /**
  *
  * @author hernanBeiza
@@ -26,12 +27,19 @@ public class PlanTelefonicoListarFrame extends Ventana {
         initComponents();
         iniciarCentrada();
         cargarInformacion();
+        //Actualizar la tabla cada vez que gana foco, para que la información se mantenga al día en caso de editar un usuario
+        addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowActivated(WindowEvent e) {
+                cargarInformacion();        
+            }
+        });
     }
     
     private void cargarInformacion(){
-        ArrayList <PlanTelefonico> planes = planesObtener();
+        ArrayList <PlanTelefonico> planes = obtenerDB().planesObtener();
         System.out.println(planes.toString());
-        if(planes.size()==0){
+        if(planes.isEmpty()){
             JOptionPane.showMessageDialog(rootPane, "No se encontraron planes", "Error al intentar listar", JOptionPane.WARNING_MESSAGE);
         } else {
             DefaultTableModel modeloTable = (DefaultTableModel) datosTable.getModel();
@@ -64,6 +72,7 @@ public class PlanTelefonicoListarFrame extends Ventana {
         datosTable = new javax.swing.JTable();
         jPanel4 = new javax.swing.JPanel();
         volverButton = new javax.swing.JButton();
+        consultarButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -115,17 +124,28 @@ public class PlanTelefonicoListarFrame extends Ventana {
             }
         });
 
+        consultarButton.setText("Consultar");
+        consultarButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                consultarButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addComponent(volverButton)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(consultarButton)
+                .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(volverButton, javax.swing.GroupLayout.DEFAULT_SIZE, 41, Short.MAX_VALUE)
+            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(volverButton, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(consultarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -159,6 +179,21 @@ public class PlanTelefonicoListarFrame extends Ventana {
         // TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_volverButtonActionPerformed
+
+    private void consultarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultarButtonActionPerformed
+        int id = datosTable.getSelectedRow();
+        final PlanTelefonico plan = this.obtenerDB().planesObtener().get(id);
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                //new PlanTelefonicoEditarFrame().setVisible(true);
+                PlanTelefonicoEditarFrame editar = new PlanTelefonicoEditarFrame();
+                editar.iniciarConPlan(plan);
+                editar.setVisible(true);
+            }
+        });
+
+    }//GEN-LAST:event_consultarButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -196,6 +231,7 @@ public class PlanTelefonicoListarFrame extends Ventana {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton consultarButton;
     private javax.swing.JTable datosTable;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;

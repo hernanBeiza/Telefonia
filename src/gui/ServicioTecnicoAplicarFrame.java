@@ -37,7 +37,7 @@ public class ServicioTecnicoAplicarFrame extends Ventana {
     }
 
     private void cargarInformacion(){
-        ArrayList <Telefonia> telefonos = telefonosObtener();
+        ArrayList <Telefonia> telefonos = obtenerDB().telefonosObtener();
         System.out.println(telefonos.toString());
         if(telefonos.isEmpty()){
             JOptionPane.showMessageDialog(rootPane, "No se encontraron teléfonos", "Error al intentar listar", JOptionPane.WARNING_MESSAGE);
@@ -180,7 +180,7 @@ public class ServicioTecnicoAplicarFrame extends Ventana {
 
     private void btnAplicarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAplicarActionPerformed
         int id = datosTable.getSelectedRow();
-        Telefonia telefonoSeleccionado = telefonosObtener().get(id);
+        Telefonia telefonoSeleccionado = obtenerDB().telefonosObtener().get(id);
         telefonoSeleccionado.aplicaServicio();
         int dialogButton = JOptionPane.showConfirmDialog (rootPane, "¿Está seguro que desea aplicar el servicio técnico?","¿Está seguro?", JOptionPane.YES_NO_OPTION,JOptionPane.WARNING_MESSAGE);
         if(dialogButton==0){

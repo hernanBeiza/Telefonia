@@ -5,8 +5,6 @@
  */
 package gui;
 
-import java.awt.Dimension;
-import java.awt.Toolkit;
 import java.util.ArrayList;
 import java.util.Iterator;
 import javax.swing.JFrame;
@@ -22,6 +20,7 @@ import telefonia.Telefonia;
 //public class FonoBuscarFrame extends javax.swing.JFrame {
 public class FonoBuscarFrame extends Ventana {
 
+    private ArrayList<Telefonia> encontrados = null;
     /**
      * Creates new form FonoBuscar
      */
@@ -251,16 +250,17 @@ public class FonoBuscarFrame extends Ventana {
             //Obtener todas las ventanas abiertas. la 0 es la main, ella tiene la DB
             //System.out.println("Total " + JFrame.getFrames().length);                       
             MainFrame frame = (MainFrame)JFrame.getFrames()[0];
-            System.out.println(frame.getDb().getTelefonos());
-            ArrayList<Telefonia> encontrados = null;
+            System.out.println(frame.getDb().telefonosObtener());
+            encontrados = null;
+            
             if(numeroRadio.isSelected()){                
-                encontrados = frame.getDb().buscarFonoPorNumero(txtNumero.getText());
+                encontrados = frame.getDb().telefonosBuscarPorNumero(txtNumero.getText());
             } else if(rutRadio.isSelected()){
-                encontrados = frame.getDb().buscarFonoPorRut(txtNumero.getText());
+                encontrados = frame.getDb().telefonosBuscarPorRut(txtNumero.getText());
             }else if(marcaRadio.isSelected()){
-                encontrados = frame.getDb().buscarFonoPorMarca(txtNumero.getText());
+                encontrados = frame.getDb().telefonosBuscarPorMarca(txtNumero.getText());
             }            
-            if(encontrados.size()==0){
+            if(encontrados.isEmpty()){
                 JOptionPane.showMessageDialog(rootPane, "No se encontró el teléfono", "Error al intentar buscar", JOptionPane.ERROR_MESSAGE);
             } else {
                 Iterator it = encontrados.iterator();
@@ -310,7 +310,11 @@ public class FonoBuscarFrame extends Ventana {
         // TODO add your handling code here:
         System.out.println(datosTable.getSelectedRow());
         if(datosTable.getSelectedRow()>=0){
-            
+            int id = datosTable.getSelectedRow();
+            System.out.println(id);
+            Telefonia telefono = encontrados.get(id);
+            System.out.println(telefono.toString());
+            JOptionPane.showMessageDialog(rootPane, "Acá hay que mostrar el formulario de andrés con la data cargada", "Error al ver detalle", JOptionPane.WARNING_MESSAGE);
         } else {
             JOptionPane.showMessageDialog(rootPane, "Debe seleccionar al menos una", "Error al ver detalle", JOptionPane.WARNING_MESSAGE);
         }        

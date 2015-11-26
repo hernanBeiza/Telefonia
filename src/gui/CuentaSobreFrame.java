@@ -5,6 +5,8 @@
  */
 package gui;
 
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import java.util.Iterator;
 import javax.swing.JOptionPane;
@@ -16,21 +18,26 @@ import telefonia.Telefonia;
  *
  * @author hernanBeiza
  */
-//public class CuentasSobreFrame extends javax.swing.JFrame {
-public class CuentasSobreFrame extends Ventana {
+//public class CuentaSobreFrame extends javax.swing.JFrame {
+public class CuentaSobreFrame extends Ventana {
 
     /**
      * Creates new form CuentasSuperadasFrame
      */
-    public CuentasSobreFrame() {
+    public CuentaSobreFrame() {
         initComponents();
         iniciarCentrada();
-        cargarInformacion();
+        
+        addWindowListener(new WindowAdapter() {
+            public void windowOpened(WindowEvent e) {
+                System.out.println("cargar ahora");
+                cargarInformacion();        
+            }
+        });
     }
-
         
     private void cargarInformacion(){
-        ArrayList <Telefonia>telefonos = cuentasSobre();
+        ArrayList <Telefonia>telefonos = obtenerDB().cuentasSobre();
         System.out.println(telefonos.toString());
         if(telefonos.isEmpty()){
             JOptionPane.showMessageDialog(rootPane, "No se encontraron teléfonos", "Error al intentar listar", JOptionPane.WARNING_MESSAGE);
@@ -163,21 +170,23 @@ public class CuentasSobreFrame extends Ventana {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(CuentasSobreFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CuentaSobreFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(CuentasSobreFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CuentaSobreFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(CuentasSobreFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CuentaSobreFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(CuentasSobreFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CuentaSobreFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new CuentasSobreFrame().setVisible(true);
+                new CuentaSobreFrame().setVisible(true);
             }
         });
     }

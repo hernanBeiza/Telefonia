@@ -52,6 +52,10 @@ public class DB {
      * Planes telefónicos
      */
     private ArrayList planes = new ArrayList<PlanTelefonico>();
+    /**
+     * Tipos de planes telefónicos
+     */
+    private String[] planesTipo = {"ECONOMICO","NORMAL","PREMIUM"};
     
     public DB() {
         System.out.println("DB: init");
@@ -128,7 +132,6 @@ public class DB {
     public void setPlanes(ArrayList planes) {
         this.planes = planes;
     }
-
     
     /**
      * Inicia la DB con data precargada
@@ -161,8 +164,8 @@ public class DB {
         companias.add(entel);
         
         //Usuarios
-        Usuario doris = new Usuario("Doris", "Napolitano", "5929028-2","05-02-1955" , 60, "SOLTERO");
-        Usuario domingo = new Usuario("Domingo", "Beiza", "9040207-4","25-12-1965" , 50, "SOLTERO");
+        Usuario doris = new Usuario("Doris", "Napolitano", "5929028-2","05/02/1955" , 60, "SOLTERO");
+        Usuario domingo = new Usuario("Domingo", "Beiza", "9040207-4","25/12/1965" , 50, "SOLTERO");
         usuarios.add(doris);
         usuarios.add(domingo);
         
@@ -170,7 +173,6 @@ public class DB {
         //    public Privado(boolean identificadorLlamada, int codigoZona, Compania compania, Usuario usuario, String region, String comuna, String fechaContrato, int valorMinutoFijo, int valorMinutoMovil, float tarifaFija, int cantidadMinutosUsadosFijos, int cantidadMinutosUsadosMovil, PlanTelefonico planTelefonico, String numeroFono, int costoEquipo) {
         Privado telefonoPrivado = new Privado(false, 033, movistar, domingo, "Petorca", "Papudo", "04/07/2010", 10, 100, 1000, 100, 200, premiumEntel, "790123", 5000);
         telefonos.add(telefonoPrivado);
-        telefonoPrivado.descuento();
         //Teléfono Comercial
         //    public Comerciales(int cantidadAnexos, int codigoZona, Compania compania, Usuario usuario, String region, String comuna, String fechaContrato, int valorMinutoFijo, int valorMinutoMovil, float tarifaFija, int cantidadMinutosUsadosFijos, int cantidadMinutosUsadosMovil, PlanTelefonico planTelefonico, String numeroFono, int costoEquipo) {
         Comerciales telefonoComercial = new Comerciales(10, 02, entel, doris, "RM", "La Florida", "01/01/1990", 10, 100, 22000, 0,0, economicoEntel, "2813797", 1000);
@@ -192,6 +194,10 @@ public class DB {
         }
         return estado;
     }
+    public boolean usuarioModificar(Usuario elUsuario){
+        Usuario antiguo = usuarioBuscar(elUsuario);
+        return false;
+    }
     /**
      * Busca si existe un usuario en la DB
      * @param unUsuario tipo Usuario. Usuario a buscar
@@ -206,6 +212,21 @@ public class DB {
             }
         }
         return null;
+    }
+    /**
+     * Elimina un usuario de la lista
+     * @param unUsuario instancia de Usuario. 
+     * @return true si se eliminó con éxito. false en caso contrario
+     */
+    public boolean usuarioEliminar(Usuario unUsuario){
+        return this.usuarios.remove(unUsuario);
+    }
+    /**
+     * retorna la lista de usuarios
+     * @return ArrayList de usuarios
+     */
+    public ArrayList <Usuario> usuariosObtener(){
+        return this.usuarios;
     }
     
     /**
@@ -224,6 +245,11 @@ public class DB {
         return null;
     }
     
+    /**
+     * Guarda un PlanTelefonico nuevo en el ArrayList
+     * @param unPlan instancia de PlanTelefonico
+     * @return true si se guardó correctamente.false en caso contrario (ya existre otro con el mismo código)
+     */
     public boolean planesGuardar(PlanTelefonico unPlan){
         boolean estado = true;
         if(planesBuscar(unPlan)==null){
@@ -233,7 +259,20 @@ public class DB {
         }
         return estado;
     }
-    
+    /**
+     * Modifica el plan
+     * @param elPlan
+     * @return true (siempre... revisar)
+     */
+    public boolean planesModificar(PlanTelefonico elPlan){
+        return true;
+    }
+
+    /**
+     * Busca un plan en el arraylist según el código
+     * @param unPlan Instancia de PlanTelefonico. 
+     * @return Instancia del PlanTelefonico encontrado. null en caso contrario
+     */
     public PlanTelefonico planesBuscar(PlanTelefonico unPlan){
         Iterator it = planes.iterator();
         while(it.hasNext()){
@@ -244,7 +283,31 @@ public class DB {
         }
         return null;
     }
-
+    /**
+     * Retorna la lista de planes
+     * @return Arraylist de tipo PlanTelefonico
+     */
+    public ArrayList <PlanTelefonico> planesObtener(){
+        return planes;
+    }
+    public String[] planesTipoObtener(){
+        return planesTipo;
+    }
+    /**
+     * Guarda un teléfono si es que no existe el número guardado de antes
+     * @param unTelefono Instancia de Telefonia a guardar
+     * @return true en caso de guardar. false en caso contrario
+     */
+    public boolean telefonosGuardar(Telefonia unTelefono){
+        boolean estado = true;
+        if(telefonosRevisarNumero(unTelefono.getNumeroFono())){
+            estado = false;
+        } else {
+            this.telefonos.add(unTelefono);    
+            estado = true;
+        }
+        return true;
+    }
     /**
      * Guarda una companía en la DB
      * @param unaCompania a guadar. Instancia de Compania
@@ -275,6 +338,13 @@ public class DB {
         }
         return null;
     }
+    /**
+     * Retorna la lista de compaías
+     * @return ArrayList de tipo Compania
+     */
+    public ArrayList <Compania> companiaObtener(){
+        return companias;
+    }
         
     /**
      * Devuelve la cantidad de teléfonos privados
@@ -291,11 +361,12 @@ public class DB {
         }
         return totalPrivados;
     }
+    
     /**
      * Retorna los teléfonos que están en el servici técnico
      * @return ArrayList de Telefonia
      */    
-    public ArrayList <Telefonia> telefonosServicio(){
+    public ArrayList <Telefonia> telefonosServicioObtener(){
         ArrayList<Telefonia>servicio = new ArrayList<Telefonia>();
         Iterator it = telefonos.iterator();
         while(it.hasNext()){
@@ -306,6 +377,39 @@ public class DB {
             }
         }              
         return servicio;            
+    }
+    /**
+     * Retorna la lista de teléfonos
+     * @return ArrayList de tipo Telefonia
+     */
+    public ArrayList <Telefonia> telefonosObtener(){
+        return telefonos;
+    }
+    /**
+     * Retorna los teléfonos encotnrados según el rut del usuario
+     * @param elUsuario Instancia de Usuario. Se buscará por su rut
+     * @return ArrayList de tipo Telefonia
+     */
+    public ArrayList <Telefonia> telefonosBuscarPorUsuario(Usuario elUsuario){
+        ArrayList <Telefonia> telefonosUsuario = new ArrayList<Telefonia>();
+        Iterator it = telefonos.iterator();
+        while(it.hasNext()){
+            Telefonia unTelefono = (Telefonia)it.next();
+            if(unTelefono.getUsuario().getRun().equals(elUsuario.getRun())){
+                telefonosUsuario.add(unTelefono);
+            }
+        }
+        return telefonosUsuario;
+    }
+    
+    
+    /**
+     * Elimina un teléfono de la lista de teléfonos
+     * @param unTelefono Instancia de Telefonia. Teléfono a eliminar
+     * @return true si se eliminó correctamente. false en caso contrario
+     */
+    public boolean telefonosEliminar(Telefonia unTelefono){
+        return telefonos.remove(unTelefono);       
     }
     /**
      * Retorna la cantidad de teléfonos iOS
@@ -327,7 +431,7 @@ public class DB {
      * @return ArrayList con los teléfonos
      */
     
-    public ArrayList <Telefonia> obtenerPrivados(){
+    public ArrayList <Telefonia> telefonosObtenerPrivados(){
         ArrayList<Telefonia>privados = new ArrayList<Telefonia>();
         Iterator it = telefonos.iterator();
         while(it.hasNext()){
@@ -345,7 +449,7 @@ public class DB {
      * Devuelve los teléfonos comerciales
      * @return ArrayList con los teléfonos
      */
-    public ArrayList <Telefonia> obtenerComerciales(){
+    public ArrayList <Telefonia> telefonosObtenerComerciales(){
         ArrayList<Telefonia>comerciales = new ArrayList<Telefonia>();
         Iterator it = telefonos.iterator();
         while(it.hasNext()){
@@ -364,7 +468,7 @@ public class DB {
      * @param numero a buscar
      * @return Telefonia. null en caso no encontrar
      */
-    public ArrayList <Telefonia>buscarFonoPorNumero(String numero){
+    public ArrayList <Telefonia>telefonosBuscarPorNumero(String numero){
         ArrayList<Telefonia>telefonosNumero = new ArrayList<Telefonia>();
         Iterator it = telefonos.iterator();
         while(it.hasNext()){
@@ -383,7 +487,7 @@ public class DB {
      * @param rut a buscar
      * @return Telefonia. null en caso de no encontrado
      */
-    public ArrayList <Telefonia> buscarFonoPorRut(String rut){
+    public ArrayList <Telefonia> telefonosBuscarPorRut(String rut){
         ArrayList<Telefonia>telefonosRut = new ArrayList<Telefonia>();
         Iterator it = telefonos.iterator();
         while(it.hasNext()){
@@ -411,7 +515,7 @@ public class DB {
      * @param marca a buscar
      * @return arraylist con los teléfonos 
      */
-    public ArrayList<Telefonia> buscarFonoPorMarca(String marca){
+    public ArrayList<Telefonia> telefonosBuscarPorMarca(String marca){
         ArrayList<Telefonia>telefonosAndroid = new ArrayList<Telefonia>();
         Iterator it = telefonos.iterator();
         while(it.hasNext()){
@@ -432,7 +536,7 @@ public class DB {
      * @param numero del teléfono
      * @return true si existe. false si no
      */    
-    public boolean revisarNumero(String numero){
+    public boolean telefonosRevisarNumero(String numero){
         boolean encontrado = false;
         Iterator iterador = telefonos.iterator();
         while(iterador.hasNext()){
@@ -449,7 +553,7 @@ public class DB {
      * @param numero del teléfono
      * @return true si es móvil. false si es fijo
      */
-    public boolean esMovil(String numero){
+    public boolean telefonosEsMovil(String numero){
         boolean resultado = false;
         if(numero.startsWith("9", 0) || numero.startsWith("8",0)){
             System.out.println("Es móvil");
@@ -465,7 +569,7 @@ public class DB {
     /**
      * Lista los números guardados. 
      */
-    public void listarNumeros(){
+    public void telefonosListar(){
         System.out.println("listarNumeros");
         Iterator it = telefonos.iterator();
         while(it.hasNext()){

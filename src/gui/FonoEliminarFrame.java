@@ -259,15 +259,13 @@ public class FonoEliminarFrame extends Ventana {
         if(!txtNumero.getText().equals("")){
             //Obtener todas las ventanas abiertas. la 0 es la main, ella tiene la DB
             //System.out.println("Total " + JFrame.getFrames().length);
-            MainFrame frame = (MainFrame)JFrame.getFrames()[0];
-            System.out.println(frame.getDb().getTelefonos());
             ArrayList<Telefonia> encontrados = null;
             if(numeroRadio.isSelected()){
-                encontrados = frame.getDb().buscarFonoPorNumero(txtNumero.getText());
+                encontrados = obtenerDB().telefonosBuscarPorNumero(txtNumero.getText());
             } else if(rutRadio.isSelected()){
-                encontrados = frame.getDb().buscarFonoPorRut(txtNumero.getText());
+                encontrados = obtenerDB().telefonosBuscarPorRut(txtNumero.getText());
             }
-            if(encontrados.size()==0){
+            if(encontrados.isEmpty()){
                 JOptionPane.showMessageDialog(rootPane, "No se encontró el teléfono", "Error al intentar buscar", JOptionPane.WARNING_MESSAGE);
             } else {
                 telefonos = encontrados;
@@ -320,9 +318,9 @@ public class FonoEliminarFrame extends Ventana {
             int id = datosTable.getSelectedRow();
             Telefonia telefono = telefonos.get(id);
             System.out.println(telefono.toString());            
-            if(telefonoBorrar(telefono)){
-                JOptionPane.showMessageDialog(rootPane, "Teléfono eliminado correctamente", "Eliminado correcto", JOptionPane.INFORMATION_MESSAGE);
+            if(obtenerDB().telefonosEliminar(telefono)){
                 limpiarTabla();                
+                JOptionPane.showMessageDialog(rootPane, "Teléfono eliminado correctamente", "Eliminado correcto", JOptionPane.INFORMATION_MESSAGE);
             } else {
                 JOptionPane.showMessageDialog(rootPane, "El teléfono no se pudo eliminar", "Error al intentar eliminar", JOptionPane.WARNING_MESSAGE);
             }

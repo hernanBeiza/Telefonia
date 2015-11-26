@@ -5,6 +5,8 @@
  */
 package gui;
 
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import java.util.Iterator;
 import javax.swing.JOptionPane;
@@ -25,11 +27,17 @@ public class ServicioTecnicoListarFrame extends Ventana {
     public ServicioTecnicoListarFrame() {
         initComponents();
         iniciarCentrada();
-        cargarInformacion();
+        addWindowListener(new WindowAdapter() {
+            public void windowOpened(WindowEvent e) {
+                cargarInformacion();        
+            }
+        });
+
     }
     
+    
     private void cargarInformacion(){
-        ArrayList <Telefonia>telefonos = telefonosServicioObtener();
+        ArrayList <Telefonia>telefonos = obtenerDB().telefonosServicioObtener();
         System.out.println(telefonos.toString());
         if(telefonos.size()==0){
             JOptionPane.showMessageDialog(rootPane, "No se encontraron teléfonos", "Error al intentar listar", JOptionPane.WARNING_MESSAGE);
@@ -71,10 +79,7 @@ public class ServicioTecnicoListarFrame extends Ventana {
 
         datosTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+
             },
             new String [] {
                 "Rut", "Teléfono", "Nombre", "Apellido", "Estado"

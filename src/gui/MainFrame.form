@@ -78,10 +78,13 @@
             <Property name="text" type="java.lang.String" value="Tel&#xe9;fonos"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem8">
+            <MenuItem class="javax.swing.JMenuItem" name="btnAgregarFono">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Agregar tel&#xe9;fono"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAgregarFonoActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="buscarNumeroItem">
               <Properties>
@@ -114,15 +117,21 @@
             <Property name="text" type="java.lang.String" value="Cuentas"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem3">
+            <MenuItem class="javax.swing.JMenuItem" name="cuentaCompletaMenuItem">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Mostrar cuenta"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cuentaCompletaMenuItemActionPerformed"/>
+              </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem4">
+            <MenuItem class="javax.swing.JMenuItem" name="cuentaSimpleMenuItem">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Mostrar cuenta simple"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cuentaSimpleMenuItemActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="cuentasSobreMenuItem">
               <Properties>
@@ -162,7 +171,7 @@
             <Property name="text" type="java.lang.String" value="Salir"/>
           </Properties>
           <Events>
-            <EventHandler event="menuSelected" listener="javax.swing.event.MenuListener" parameters="javax.swing.event.MenuEvent" handler="salirMenuMenuSelected"/>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="salirMenuMouseClicked"/>
           </Events>
         </Menu>
       </SubComponents>

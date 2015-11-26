@@ -5,8 +5,6 @@
  */
 package gui;
 
-import java.awt.Dimension;
-import java.awt.Toolkit;
 import java.util.ArrayList;
 import java.util.Iterator;
 import javax.swing.JFrame;
@@ -50,6 +48,7 @@ public class FonoCantidadFrame extends Ventana {
         datosTable = new javax.swing.JTable();
         jPanel3 = new javax.swing.JPanel();
         volverButton = new javax.swing.JButton();
+        lblCantidad = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -152,6 +151,8 @@ public class FonoCantidadFrame extends Ventana {
             }
         });
 
+        lblCantidad.setText("Total:");
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -159,11 +160,14 @@ public class FonoCantidadFrame extends Ventana {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(volverButton, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(volverButton, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
+            .addComponent(lblCantidad, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -207,17 +211,17 @@ public class FonoCantidadFrame extends Ventana {
 
     private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarActionPerformed
         // TODO add your handling code here:
-        MainFrame frame = (MainFrame)JFrame.getFrames()[0];
-        System.out.println(frame.getDb().getTelefonos());
         ArrayList<Telefonia> encontrados = null;
         if(privadosRadio.isSelected()){
-            encontrados = frame.getDb().obtenerPrivados();
+            encontrados = obtenerDB().telefonosObtenerPrivados();
         } else if(comercialesRadio.isSelected()){
-            encontrados = frame.getDb().obtenerComerciales();
+            encontrados = obtenerDB().telefonosObtenerPrivados();
         }
-        if(encontrados.size()==0){
+        if(encontrados.isEmpty()){
             JOptionPane.showMessageDialog(rootPane, "No se encontraron teléfonos", "Error al intentar listar", JOptionPane.WARNING_MESSAGE);
+            lblCantidad.setText("Total: 0");
         } else {
+            lblCantidad.setText("Total: " + encontrados.size());
             DefaultTableModel modeloTable = (DefaultTableModel) datosTable.getModel();
             Iterator it = encontrados.iterator();
             int rowCount = modeloTable.getRowCount();
@@ -282,6 +286,7 @@ public class FonoCantidadFrame extends Ventana {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblCantidad;
     private javax.swing.JRadioButton privadosRadio;
     private javax.swing.JLabel tituloLabel;
     private javax.swing.JButton volverButton;

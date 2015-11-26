@@ -5,8 +5,11 @@
  */
 package gui;
 
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import java.util.Iterator;
+import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 import telefonia.Usuario;
@@ -23,8 +26,18 @@ public class UsuarioListarFrame extends Ventana {
     public UsuarioListarFrame() {
         initComponents();
         iniciarCentrada();
-        
-        ArrayList<Usuario> usuarios = usuariosObtener();    
+        //Actualizar la tabla cada vez que gana foco, para que la información se mantenga al día en caso de editar un usuario
+        addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowActivated(WindowEvent e) {
+                cargarInformacion();        
+            }
+        });
+    }
+    
+    private void cargarInformacion(){
+        limpiar();
+        ArrayList<Usuario> usuarios = obtenerDB().usuariosObtener();    
         DefaultTableModel modeloTable = (DefaultTableModel) usuariosTable.getModel();
         Iterator it = usuarios.iterator();
         int rowCount = modeloTable.getRowCount();
@@ -35,7 +48,15 @@ public class UsuarioListarFrame extends Ventana {
             Usuario unUsuario = (Usuario)it.next();
             modeloTable.addRow(new Object[]{unUsuario.getRun(),unUsuario.getNombre(),unUsuario.getApellido(),unUsuario.getEdad(),unUsuario.getFechaNacimiento(),unUsuario.getEstadoCivil()});
         }
-        usuariosTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        usuariosTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);        
+    }
+    
+    private void limpiar(){
+        int rowCount = usuariosTable.getRowCount();
+        for (int i = rowCount - 1; i >= 0; i--) {
+            DefaultTableModel modeloTable = (DefaultTableModel) usuariosTable.getModel();
+            modeloTable.removeRow(i);
+        }
     }
     
 
@@ -162,11 +183,29 @@ public class UsuarioListarFrame extends Ventana {
 
     private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarActionPerformed
         int idConsulta = usuariosTable.getSelectedRow();
-        Usuario usuarioSeleccionado = usuariosObtener().get(idConsulta);
-        System.out.println(usuarioSeleccionado);
-        UsuarioEditarFrame editarFrame = new UsuarioEditarFrame();
-        editarFrame.setVisible(true);
-        editarFrame.cargarUsuario(usuarioSeleccionado);
+        if(idConsulta!=-1){
+            final Usuario usuarioSeleccionado = obtenerDB().usuariosObtener().get(idConsulta);
+            System.out.println(usuarioSeleccionado);
+            //
+            
+            java.awt.EventQueue.invokeLater(new Runnable() {
+                @Override
+                public void run() {
+                    UsuarioEditarFrame editarFrame = new UsuarioEditarFrame();
+                    editarFrame.setVisible(true);
+                    editarFrame.cargarUsuario(usuarioSeleccionado);
+                    //new UsuarioEditarFrame().setVisible(true);
+                }
+            });
+            /*
+            UsuarioEditarFrame editarFrame = new UsuarioEditarFrame();
+            editarFrame.setVisible(true);
+            editarFrame.cargarUsuario(usuarioSeleccionado);
+            */
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "Debe tener un usuario seleccionado para poder consultar", "Error al intentar consultar", JOptionPane.WARNING_MESSAGE);
+            
+        }
     }//GEN-LAST:event_btnConsultarActionPerformed
 
     /**

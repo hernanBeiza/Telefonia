@@ -47,7 +47,7 @@ public class UsuarioAgregarFrame extends Ventana {
         lblfecnac = new javax.swing.JLabel();
         txtfecnac = new javax.swing.JTextField();
         lbledad = new javax.swing.JLabel();
-        txtedad = new javax.swing.JTextField();
+        txtEdad = new javax.swing.JTextField();
         lblestciv = new javax.swing.JLabel();
         cboEstadoCivil = new javax.swing.JComboBox();
         jPanel3 = new javax.swing.JPanel();
@@ -74,9 +74,9 @@ public class UsuarioAgregarFrame extends Ventana {
 
         lbledad.setText("Edad");
 
-        txtedad.addFocusListener(new java.awt.event.FocusAdapter() {
+        txtEdad.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                txtedadFocusGained(evt);
+                txtEdadFocusGained(evt);
             }
         });
 
@@ -100,7 +100,7 @@ public class UsuarioAgregarFrame extends Ventana {
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGap(21, 21, 21)
-                                .addComponent(txtedad, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txtEdad, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGap(18, 18, 18)
                                 .addComponent(cboEstadoCivil, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE))))
@@ -142,7 +142,7 @@ public class UsuarioAgregarFrame extends Ventana {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbledad)
-                    .addComponent(txtedad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtEdad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblestciv)
@@ -232,14 +232,14 @@ public class UsuarioAgregarFrame extends Ventana {
             guardar = false;
             mensajeError+="\n Fecha de nacimiento";
         }
-        if(txtedad.getText().equals("")){
+        if(txtEdad.getText().equals("")){
             guardar = false;
             mensajeError+="\n Edad";
         }
         
         if(guardar){
-            Usuario usuarioNuevo = new Usuario(txtnombre.getText().toUpperCase(), txtapellido.getText().toUpperCase(), txtrut.getText(), txtfecnac.getText(), Integer.parseInt(txtedad.getText()), cboEstadoCivil.getSelectedItem().toString().toUpperCase());
-            if(usuarioGuardar(usuarioNuevo)){
+            Usuario usuarioNuevo = new Usuario(txtnombre.getText().toUpperCase(), txtapellido.getText().toUpperCase(), txtrut.getText(), txtfecnac.getText(), Integer.parseInt(txtEdad.getText()), cboEstadoCivil.getSelectedItem().toString().toUpperCase());
+            if(obtenerDB().usuarioGuardar(usuarioNuevo)){
                 JOptionPane.showMessageDialog(rootPane, "Usuario guardado correctamente", "Guardado correcto", JOptionPane.INFORMATION_MESSAGE);
             } else {
                 JOptionPane.showMessageDialog(rootPane, "El usuario no se pudo guardar. Ya existe un usuario con ese rut", "Error al intentar guardar", JOptionPane.WARNING_MESSAGE);
@@ -255,7 +255,7 @@ public class UsuarioAgregarFrame extends Ventana {
         this.dispose();
     }//GEN-LAST:event_btnVolverActionPerformed
 
-    private void txtedadFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtedadFocusGained
+    private void txtEdadFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtEdadFocusGained
         String fechaNacimiento = txtfecnac.getText();
         String[] fechaComponentes = fechaNacimiento.split("/");
         if(fechaComponentes.length==3){
@@ -268,9 +268,9 @@ public class UsuarioAgregarFrame extends Ventana {
             System.out.println(actualYear);
             int dif = actualYear-year;
             System.out.println(dif);
-            txtedad.setText(String.valueOf(dif));            
+            txtEdad.setText(String.valueOf(dif));            
         }
-    }//GEN-LAST:event_txtedadFocusGained
+    }//GEN-LAST:event_txtEdadFocusGained
 
     /**
      * @param args the command line arguments
@@ -324,8 +324,8 @@ public class UsuarioAgregarFrame extends Ventana {
     private javax.swing.JLabel lblfecnac;
     private javax.swing.JLabel lblnombre;
     private javax.swing.JLabel lblrut;
+    private javax.swing.JTextField txtEdad;
     private javax.swing.JTextField txtapellido;
-    private javax.swing.JTextField txtedad;
     private javax.swing.JTextField txtfecnac;
     private javax.swing.JTextField txtnombre;
     private javax.swing.JTextField txtrut;

@@ -5,11 +5,10 @@
  */
 package gui;
 
-import java.awt.Dimension;
-import java.awt.Toolkit;
 import java.util.ArrayList;
 import java.util.Iterator;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import telefonia.Compania;
 
@@ -25,7 +24,8 @@ public class CompaniaConsultarFrame extends Ventana {
     public CompaniaConsultarFrame() {
         initComponents();
         iniciarCentrada();
-        
+        //Consultar companias desactivado por el momento
+        btnConsultar.setVisible(false);
         ArrayList<Compania> companias = cargarDB();    
         DefaultTableModel modeloTable = (DefaultTableModel) companiasTable.getModel();
         Iterator it = companias.iterator();
@@ -45,7 +45,7 @@ public class CompaniaConsultarFrame extends Ventana {
     private ArrayList <Compania> cargarDB(){
         MainFrame frame = (MainFrame)JFrame.getFrames()[0];
         //System.out.println(frame.getDb().getCompanias());
-        return frame.getDb().getCompanias();
+        return frame.getDb().companiaObtener();
     }
 
     /**
@@ -164,8 +164,12 @@ public class CompaniaConsultarFrame extends Ventana {
 
     private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarActionPerformed
         int idConsulta = companiasTable.getSelectedRow();
+        if(idConsulta!=-1){
         Compania laCompaniaSeleccionada = this.cargarDB().get(idConsulta);
-        System.out.println(laCompaniaSeleccionada);
+        System.out.println(laCompaniaSeleccionada);            
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "Debe tener un usuario seleccionado para poder consultar", "Error al intentar consultar", JOptionPane.WARNING_MESSAGE);
+        }
     }//GEN-LAST:event_btnConsultarActionPerformed
 
     /**

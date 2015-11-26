@@ -18,7 +18,10 @@ import telefonia.Usuario;
  */
 //public class UsuarioEditar extends javax.swing.JFrame {
 public class UsuarioEditarFrame extends Ventana {
-
+    /**
+     * Usuario antiguo, al cual se le carga la información nueva.
+     */
+    private Usuario usuarioViejo;
     /**
      * Creates new form UsuarioEditar
      */
@@ -28,6 +31,7 @@ public class UsuarioEditarFrame extends Ventana {
     }
     
     public void cargarUsuario(Usuario unUsuario){
+        usuarioViejo = unUsuario;
         System.out.println("cargarUsuario");
         System.out.println(unUsuario);
         txtNombre.setText(unUsuario.getNombre());
@@ -62,7 +66,7 @@ public class UsuarioEditarFrame extends Ventana {
         cboEstadoCivil = new javax.swing.JComboBox();
         jPanel3 = new javax.swing.JPanel();
         btnVolver = new javax.swing.JButton();
-        btnAgregar = new javax.swing.JButton();
+        btnActualizar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -167,10 +171,10 @@ public class UsuarioEditarFrame extends Ventana {
             }
         });
 
-        btnAgregar.setText("Actualizar");
-        btnAgregar.addActionListener(new java.awt.event.ActionListener() {
+        btnActualizar.setText("Actualizar");
+        btnActualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAgregarActionPerformed(evt);
+                btnActualizarActionPerformed(evt);
             }
         });
 
@@ -182,7 +186,7 @@ public class UsuarioEditarFrame extends Ventana {
                 .addContainerGap()
                 .addComponent(btnVolver)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnAgregar)
+                .addComponent(btnActualizar)
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
@@ -191,7 +195,7 @@ public class UsuarioEditarFrame extends Ventana {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(btnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -221,7 +225,7 @@ public class UsuarioEditarFrame extends Ventana {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
+    private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
         
         //Validar que estén todos los campos rellenados antes de guardar
         boolean guardar = true;
@@ -248,17 +252,20 @@ public class UsuarioEditarFrame extends Ventana {
         }
         
         if(guardar){
-            Usuario usuarioNuevo = new Usuario(txtNombre.getText(), txtApellido.getText(), txtRut.getText(), txtFecNac.getText(), Integer.parseInt(txtEdad.getText()), cboEstadoCivil.getSelectedItem().toString());
-            if(usuarioGuardar(usuarioNuevo)){
-                JOptionPane.showMessageDialog(rootPane, "Usuario guardado correctamente", "Guardado correcto", JOptionPane.INFORMATION_MESSAGE);
-            } else {
-                JOptionPane.showMessageDialog(rootPane, "El usuario no se pudo guardar. Ya existe un usuario con ese rut", "Error al intentar guardar", JOptionPane.WARNING_MESSAGE);
-            }
+            //El usuario se pasó por referencia, es solo cosa de copiar el dato
+            usuarioViejo.setNombre(txtNombre.getText());
+            usuarioViejo.setApellido(txtApellido.getText());
+            usuarioViejo.setRun(txtRut.getText());
+            usuarioViejo.setFechaNacimiento(txtFecNac.getText());
+            usuarioViejo.setEdad(Integer.parseInt(txtEdad.getText()));
+            usuarioViejo.setEstadoCivil(cboEstadoCivil.getSelectedItem().toString().toUpperCase());
+            
+            JOptionPane.showMessageDialog(rootPane, "Usuario guardado correctamente", "Guardado correcto", JOptionPane.INFORMATION_MESSAGE);            
         } else {
              JOptionPane.showMessageDialog(rootPane,mensajeError, "Error al intentar guardar", JOptionPane.WARNING_MESSAGE);
         }   
         
-    }//GEN-LAST:event_btnAgregarActionPerformed
+    }//GEN-LAST:event_btnActualizarActionPerformed
 
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
         this.dispose();
@@ -323,7 +330,7 @@ public class UsuarioEditarFrame extends Ventana {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAgregar;
+    private javax.swing.JButton btnActualizar;
     private javax.swing.JButton btnVolver;
     private javax.swing.JComboBox cboEstadoCivil;
     private javax.swing.JLabel jLabel1;
