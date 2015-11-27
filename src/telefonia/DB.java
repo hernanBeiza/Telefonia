@@ -29,13 +29,28 @@ public class DB {
      */
     private ArrayList <Usuario> usuarios = new ArrayList<Usuario>();
     /**
+     * Pesos de equipo
+     */
+    private int[] pesos = {100,200,300};
+
+    /**
      * Módelos de teléfonos iPhone
      */
     private String[] modelosIOS = {"1","2","3","4","5","6"};
     /**
+     * OS iOS registrados en el sistema
+     */
+    private String[] versionesiOS = {"7.0","8.0","9.0"};
+
+    /**
      * Marcas Android registradas en el sistema
      */
     private String[] marcasAndroid = {"Samsung","Huawei","OWN"};
+    /**
+     * OS Android registrados en el sistema
+     */
+    private String[] versionesAndroid = {"4.3 Jelly Bean (Michel)","4.4 KitKat (Doger)","5.0 Lollipop","6.0 Marshmallow"};
+    
     /**
      * Tipos de teléfonos tradicionales
      */
@@ -132,6 +147,30 @@ public class DB {
     public void setPlanes(ArrayList planes) {
         this.planes = planes;
     }
+
+    public String[] getVersionesiOS() {
+        return versionesiOS;
+    }
+
+    public void setVersionesiOS(String[] versionesiOS) {
+        this.versionesiOS = versionesiOS;
+    }
+
+    public String[] getVersionesAndroid() {
+        return versionesAndroid;
+    }
+
+    public void setVersionesAndroid(String[] versionesAndroid) {
+        this.versionesAndroid = versionesAndroid;
+    }
+
+    public String[] getPlanesTipo() {
+        return planesTipo;
+    }
+
+    public void setPlanesTipo(String[] planesTipo) {
+        this.planesTipo = planesTipo;
+    }
     
     /**
      * Inicia la DB con data precargada
@@ -178,6 +217,14 @@ public class DB {
         Comerciales telefonoComercial = new Comerciales(10, 02, entel, doris, "RM", "La Florida", "01/01/1990", 10, 100, 22000, 0,0, economicoEntel, "2813797", 1000);
         telefonos.add(telefonoComercial);
         
+    }
+
+    public int[] getPesos() {
+        return pesos;
+    }
+
+    public void setPesos(int[] pesos) {
+        this.pesos = pesos;
     }
     
     /**

@@ -5,14 +5,24 @@
  */
 package gui;
 
+import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils.IO;
 import java.awt.Component;
 import java.util.ArrayList;
 import java.util.Iterator;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import telefonia.Android;
+import telefonia.Comerciales;
 import telefonia.Compania;
+
 import telefonia.PlanTelefonico;
+import telefonia.Privado;
+import telefonia.Tradicional;
+import telefonia.IOS;
+import telefonia.SmartPhone;
+
+
 import telefonia.Usuario;
 
 /**
@@ -24,17 +34,21 @@ public class FonoAgregarFrame extends Ventana {
     /**
      * Creates new form AgregarTelefonia
      */
+    private String tradicionalTipo = "";
+    
     public FonoAgregarFrame() {
         initComponents();
         iniciarCentrada();
+        
         cargarInfoCompania();
-        //Prueba de uso
+        cargarMarcasAndroid();
+        cargarDatosMovil();
         bloquearTab(0);
         bloquearTab(1);
         bloquearTab(2);
         bloquearTab(3);
-        desbloquearTab(1);
-    }
+    }   
+    
     
     private void bloquearTab(int indice){
         TabSmart.setEnabledAt(indice, false);
@@ -47,10 +61,10 @@ public class FonoAgregarFrame extends Ventana {
                 panel = JPComercial;
                 break;
             case 2:
-                panel = JPTradicional;
-                break;
-            case 3:
                 panel = JPSmartphone;
+            break;
+            case 3:
+                panel = JPTradicional;
                 break;
         }
         for (Component component : panel.getComponents()) {
@@ -72,10 +86,10 @@ public class FonoAgregarFrame extends Ventana {
                 panel = JPComercial;
                 break;
             case 2:
-                panel = JPTradicional;
-                break;
-            case 3:
                 panel = JPSmartphone;
+            break;
+            case 3:
+                panel = JPTradicional;
                 break;
         }
   
@@ -86,6 +100,20 @@ public class FonoAgregarFrame extends Ventana {
         }        
     }
     
+    private void cargarDatosMovil(){
+        //Peso
+        int[] pesos = obtenerDB().getPesos();
+        DefaultComboBoxModel mdlPeso = (DefaultComboBoxModel)cboPeso.getModel();
+        DefaultComboBoxModel mdlPesoTradiciona = (DefaultComboBoxModel)cboTradicionalPeso.getModel();
+
+        cboPeso.removeAllItems();
+        cboTradicionalPeso.removeAllItems();
+        
+        for (int peso : pesos) {
+            mdlPeso.addElement(String.valueOf(peso));
+            mdlPesoTradiciona.addElement(String.valueOf(peso));
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -95,21 +123,21 @@ public class FonoAgregarFrame extends Ventana {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTabbedPane1 = new javax.swing.JTabbedPane();
         menuBar1 = new java.awt.MenuBar();
         menu1 = new java.awt.Menu();
         menu2 = new java.awt.Menu();
         SmarthGroup = new javax.swing.ButtonGroup();
+        tipoTradicionalButtonGroup = new javax.swing.ButtonGroup();
         jPanel2 = new javax.swing.JPanel();
         lblCompañia = new javax.swing.JLabel();
-        CmbCompañia = new javax.swing.JComboBox();
+        cboCompania = new javax.swing.JComboBox();
         LblRut = new javax.swing.JLabel();
         TxtRut = new javax.swing.JTextField();
         LblFono = new javax.swing.JLabel();
         TxtFono = new javax.swing.JTextField();
         LblNombre = new javax.swing.JLabel();
         LblComuna = new javax.swing.JLabel();
-        TxtComuna = new javax.swing.JTextField();
+        txtComuna = new javax.swing.JTextField();
         LblRegion = new javax.swing.JLabel();
         LblContrato = new javax.swing.JLabel();
         TxtFechadeContrato = new javax.swing.JTextField();
@@ -117,57 +145,62 @@ public class FonoAgregarFrame extends Ventana {
         TxtCostoEquipo = new javax.swing.JTextField();
         LblPlanT = new javax.swing.JLabel();
         CmbPlanTelefonico = new javax.swing.JComboBox();
-        CmbRegion = new javax.swing.JComboBox();
+        cboRegion = new javax.swing.JComboBox();
         TabSmart = new javax.swing.JTabbedPane();
         JPPrivado = new javax.swing.JPanel();
         LblIdentifLlamadas = new javax.swing.JLabel();
         CmbIdeLlamadas = new javax.swing.JComboBox();
+        jLabel1 = new javax.swing.JLabel();
+        txtCodigoZona = new javax.swing.JTextField();
         JPComercial = new javax.swing.JPanel();
         LblCantidadAnexos = new javax.swing.JLabel();
-        CmbAnexos = new javax.swing.JComboBox();
-        JPTradicional = new javax.swing.JPanel();
-        RbtNormal = new javax.swing.JRadioButton();
-        RbtSlide = new javax.swing.JRadioButton();
-        RbtAlmeja = new javax.swing.JRadioButton();
-        LblPantallaColor = new javax.swing.JLabel();
-        CmbPantallaColor = new javax.swing.JComboBox();
+        jLabel2 = new javax.swing.JLabel();
+        txtCantidadAnexos = new javax.swing.JTextField();
+        txtCodigoZonaComercial1 = new javax.swing.JTextField();
         JPSmartphone = new javax.swing.JPanel();
-        jPanel10 = new javax.swing.JPanel();
-        RbtIphone = new javax.swing.JRadioButton();
-        RbtAndroid = new javax.swing.JRadioButton();
+        iPhoneRadioButton = new javax.swing.JRadioButton();
+        androidRadioButton = new javax.swing.JRadioButton();
         LblSop = new javax.swing.JLabel();
-        CmbSop = new javax.swing.JComboBox();
+        cboOS = new javax.swing.JComboBox();
         LblMemoriaIphone = new javax.swing.JLabel();
-        CmbMemoriaIphone = new javax.swing.JComboBox();
-        LblModelo = new javax.swing.JLabel();
-        CmbModelo = new javax.swing.JComboBox();
+        cboMemoria = new javax.swing.JComboBox();
+        lblModelo = new javax.swing.JLabel();
+        cboModelo = new javax.swing.JComboBox();
         LblMarca = new javax.swing.JLabel();
-        CmbMarca = new javax.swing.JComboBox();
-        LblMemoriaAndroid = new javax.swing.JLabel();
-        CmbMemoriaAndroid = new javax.swing.JComboBox();
+        cboMarcaAndroid = new javax.swing.JComboBox();
         LblDuracionBateria = new javax.swing.JLabel();
-        CmbDuración1 = new javax.swing.JComboBox();
+        cboDuracion = new javax.swing.JComboBox();
         LblPeso = new javax.swing.JLabel();
-        CmbPeso1 = new javax.swing.JComboBox();
+        cboPeso = new javax.swing.JComboBox();
+        LblSop1 = new javax.swing.JLabel();
+        cboCodigoAntena = new javax.swing.JComboBox();
+        JPTradicional = new javax.swing.JPanel();
+        normalRadioButton = new javax.swing.JRadioButton();
+        sliderRadioButton = new javax.swing.JRadioButton();
+        almejaRadioButton = new javax.swing.JRadioButton();
+        LblPantallaColor = new javax.swing.JLabel();
+        cboPantallaColor = new javax.swing.JComboBox();
+        LblSop2 = new javax.swing.JLabel();
+        cboTradicionalAntena = new javax.swing.JComboBox();
+        LblPeso1 = new javax.swing.JLabel();
+        cboTradicionalPeso = new javax.swing.JComboBox();
+        LblDuracionBateria1 = new javax.swing.JLabel();
+        cboTradicionalBateria = new javax.swing.JComboBox();
         jPanel11 = new javax.swing.JPanel();
         LblValorMinutoFijo1 = new javax.swing.JLabel();
-        TxtValorMinutoFijo1 = new javax.swing.JTextField();
+        TxtValorMinutoFijo = new javax.swing.JTextField();
         LblValorMinutoMovil1 = new javax.swing.JLabel();
-        TxtValorMinutoMovil1 = new javax.swing.JTextField();
+        TxtValorMinutoMovil = new javax.swing.JTextField();
         LblTarifaFija1 = new javax.swing.JLabel();
         LblMinutosUsadosFijo1 = new javax.swing.JLabel();
-        TxtMinutosUsadosFijo1 = new javax.swing.JTextField();
-        TxtTarifaFija1 = new javax.swing.JTextField();
+        TxtMinutosUsadosFijo = new javax.swing.JTextField();
+        TxtTarifaFija = new javax.swing.JTextField();
         LblMinutosUsadosMovil1 = new javax.swing.JLabel();
-        TxtMinutosUsadosMovil1 = new javax.swing.JTextField();
+        TxtMinutosUsadosMovil = new javax.swing.JTextField();
         BtnCerrar = new javax.swing.JButton();
+        BtnAgregar = new javax.swing.JButton();
 
         menu1.setLabel("File");
-        menu1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menu1ActionPerformed(evt);
-            }
-        });
         menuBar1.add(menu1);
 
         menu2.setLabel("Edit");
@@ -180,17 +213,9 @@ public class FonoAgregarFrame extends Ventana {
 
         lblCompañia.setText("Compañia");
 
-        CmbCompañia.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                CmbCompañiaMouseClicked(evt);
-            }
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                CmbCompañiaMousePressed(evt);
-            }
-        });
-        CmbCompañia.addActionListener(new java.awt.event.ActionListener() {
+        cboCompania.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CmbCompañiaActionPerformed(evt);
+                cboCompaniaActionPerformed(evt);
             }
         });
 
@@ -202,23 +227,12 @@ public class FonoAgregarFrame extends Ventana {
                 TxtRutActionPerformed(evt);
             }
         });
-        TxtRut.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                TxtRutKeyPressed(evt);
-            }
-        });
 
         LblFono.setText("Numero Telefono ");
 
-        TxtFono.setText("0225430903");
         TxtFono.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TxtFonoActionPerformed(evt);
-            }
-        });
-        TxtFono.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                TxtFonoKeyPressed(evt);
             }
         });
 
@@ -226,14 +240,14 @@ public class FonoAgregarFrame extends Ventana {
 
         LblComuna.setText("Comuna");
 
-        TxtComuna.addActionListener(new java.awt.event.ActionListener() {
+        txtComuna.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TxtComunaActionPerformed(evt);
+                txtComunaActionPerformed(evt);
             }
         });
-        TxtComuna.addKeyListener(new java.awt.event.KeyAdapter() {
+        txtComuna.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                TxtComunaKeyPressed(evt);
+                txtComunaKeyPressed(evt);
             }
         });
 
@@ -263,7 +277,7 @@ public class FonoAgregarFrame extends Ventana {
             }
         });
 
-        CmbRegion.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Arica y Parinacota", "Tarapacá", "Antofagasta", "Atacama", "Coquimbo", "Valparaíso", "Libertador General", "Bernardo O'Higgins", "Maule", "Biobío", "Araucanía", "Los Ríos", "Los Lagos", "Aysén del General", "Carlos Ibáñez del Campo", "Magallanes y de la", "Antártica Chilena", "Metropolitana de SantiagoArica y Parinacota" }));
+        cboRegion.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Arica y Parinacota", "Tarapacá", "Antofagasta", "Atacama", "Coquimbo", "Valparaíso", "Libertador General", "Bernardo O'Higgins", "Maule", "Biobío", "Araucanía", "Los Ríos", "Los Lagos", "Aysén del General", "Carlos Ibáñez del Campo", "Magallanes y de la", "Antártica Chilena", "Metropolitana de Santiago" }));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -272,76 +286,91 @@ public class FonoAgregarFrame extends Ventana {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                            .addComponent(LblComuna)
-                            .addGap(26, 26, 26)
-                            .addComponent(TxtComuna, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(LblRegion)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(CmbRegion, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGroup(jPanel2Layout.createSequentialGroup()
-                            .addComponent(lblCompañia)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(CmbCompañia, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(LblContrato)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(TxtFechadeContrato, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(LblCosto)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(TxtCostoEquipo, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPanel2Layout.createSequentialGroup()
-                            .addComponent(LblPlanT)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(CmbPlanTelefonico, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(LblRut)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(TxtRut, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(4, 4, 4)
-                        .addComponent(LblNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addComponent(lblCompañia)
+                                        .addGap(28, 28, 28))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                        .addComponent(LblComuna)
+                                        .addGap(36, 36, 36)))
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtComuna, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(cboCompania, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(LblCosto)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(TxtCostoEquipo, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(90, 90, 90)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(LblPlanT)
+                                .addGap(18, 18, 18)
+                                .addComponent(CmbPlanTelefonico, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(LblContrato)
+                                .addGap(18, 18, 18)
+                                .addComponent(TxtFechadeContrato, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(LblRegion)
+                                    .addComponent(LblRut))
+                                .addGap(71, 71, 71)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(cboRegion, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addComponent(TxtRut, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(LblNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(LblFono)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(TxtFono, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(21, 21, 21)
+                .addGap(15, 15, 15)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(LblRut)
-                    .addComponent(TxtRut, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(LblFono)
                     .addComponent(TxtFono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(LblRut)
+                    .addComponent(TxtRut, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(LblNombre))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(LblComuna)
-                    .addComponent(TxtComuna, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(LblRegion)
-                    .addComponent(CmbRegion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(CmbCompañia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(LblContrato)
-                    .addComponent(TxtFechadeContrato, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(LblCosto)
-                    .addComponent(TxtCostoEquipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblCompañia))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(LblPlanT)
-                    .addComponent(CmbPlanTelefonico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(27, Short.MAX_VALUE))
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(LblComuna)
+                        .addComponent(LblRegion)
+                        .addComponent(cboRegion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtComuna, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(cboCompania, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblCompañia))
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(CmbPlanTelefonico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(LblPlanT)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(LblCosto)
+                    .addComponent(TxtCostoEquipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(LblContrato)
+                    .addComponent(TxtFechadeContrato, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(21, 21, 21))
         );
 
         TabSmart.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         TabSmart.setTabLayoutPolicy(javax.swing.JTabbedPane.SCROLL_TAB_LAYOUT);
+        TabSmart.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                TabSmartMouseClicked(evt);
+            }
+        });
 
         JPPrivado.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         JPPrivado.setEnabled(false);
@@ -350,35 +379,46 @@ public class FonoAgregarFrame extends Ventana {
 
         CmbIdeLlamadas.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "SI", "NO" }));
 
+        jLabel1.setText("Código Zona");
+
         javax.swing.GroupLayout JPPrivadoLayout = new javax.swing.GroupLayout(JPPrivado);
         JPPrivado.setLayout(JPPrivadoLayout);
         JPPrivadoLayout.setHorizontalGroup(
             JPPrivadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(JPPrivadoLayout.createSequentialGroup()
                 .addGap(124, 124, 124)
-                .addComponent(LblIdentifLlamadas)
+                .addGroup(JPPrivadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel1)
+                    .addComponent(LblIdentifLlamadas))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(CmbIdeLlamadas, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(213, Short.MAX_VALUE))
+                .addGroup(JPPrivadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(CmbIdeLlamadas, 0, 88, Short.MAX_VALUE)
+                    .addComponent(txtCodigoZona))
+                .addContainerGap(300, Short.MAX_VALUE))
         );
         JPPrivadoLayout.setVerticalGroup(
             JPPrivadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(JPPrivadoLayout.createSequentialGroup()
-                .addGap(117, 117, 117)
+                .addGap(83, 83, 83)
+                .addGroup(JPPrivadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(txtCodigoZona, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(JPPrivadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(LblIdentifLlamadas)
                     .addComponent(CmbIdeLlamadas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(55, Short.MAX_VALUE))
+                .addContainerGap(217, Short.MAX_VALUE))
         );
 
         TabSmart.addTab("Privado", JPPrivado);
+        JPPrivado.getAccessibleContext().setAccessibleParent(JPPrivado);
 
         JPComercial.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         JPComercial.setEnabled(false);
 
         LblCantidadAnexos.setText("Cantidad de Anexos");
 
-        CmbAnexos.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "10", "20", "30", "40", "50", "60", "70", "80", "90", "100" }));
+        jLabel2.setText("Código Zona");
 
         javax.swing.GroupLayout JPComercialLayout = new javax.swing.GroupLayout(JPComercial);
         JPComercial.setLayout(JPComercialLayout);
@@ -386,233 +426,74 @@ public class FonoAgregarFrame extends Ventana {
             JPComercialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(JPComercialLayout.createSequentialGroup()
                 .addGap(152, 152, 152)
-                .addComponent(LblCantidadAnexos, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(CmbAnexos, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(210, Short.MAX_VALUE))
+                .addGroup(JPComercialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(LblCantidadAnexos, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addGap(18, 18, 18)
+                .addGroup(JPComercialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtCantidadAnexos, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtCodigoZonaComercial1, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(324, Short.MAX_VALUE))
         );
         JPComercialLayout.setVerticalGroup(
             JPComercialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(JPComercialLayout.createSequentialGroup()
-                .addGap(115, 115, 115)
+                .addGap(90, 90, 90)
+                .addGroup(JPComercialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(txtCodigoZonaComercial1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(16, 16, 16)
                 .addGroup(JPComercialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(LblCantidadAnexos)
-                    .addComponent(CmbAnexos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(57, Short.MAX_VALUE))
+                    .addComponent(txtCantidadAnexos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(205, Short.MAX_VALUE))
         );
 
         TabSmart.addTab("Comercial", JPComercial);
-
-        JPTradicional.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        JPTradicional.setEnabled(false);
-
-        SmarthGroup.add(RbtNormal);
-        RbtNormal.setText("Normal");
-
-        SmarthGroup.add(RbtSlide);
-        RbtSlide.setText("Slide");
-
-        SmarthGroup.add(RbtAlmeja);
-        RbtAlmeja.setText("Almeja");
-
-        LblPantallaColor.setText("Pantalla Color");
-
-        CmbPantallaColor.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "SI", "NO" }));
-
-        javax.swing.GroupLayout JPTradicionalLayout = new javax.swing.GroupLayout(JPTradicional);
-        JPTradicional.setLayout(JPTradicionalLayout);
-        JPTradicionalLayout.setHorizontalGroup(
-            JPTradicionalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(JPTradicionalLayout.createSequentialGroup()
-                .addGap(42, 42, 42)
-                .addComponent(RbtNormal)
-                .addGap(138, 138, 138)
-                .addComponent(RbtSlide)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(RbtAlmeja)
-                .addGap(89, 89, 89))
-            .addGroup(JPTradicionalLayout.createSequentialGroup()
-                .addGap(190, 190, 190)
-                .addComponent(LblPantallaColor)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(CmbPantallaColor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(256, Short.MAX_VALUE))
-        );
-        JPTradicionalLayout.setVerticalGroup(
-            JPTradicionalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(JPTradicionalLayout.createSequentialGroup()
-                .addGap(35, 35, 35)
-                .addGroup(JPTradicionalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(LblPantallaColor)
-                    .addComponent(CmbPantallaColor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(50, 50, 50)
-                .addGroup(JPTradicionalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(RbtNormal)
-                    .addComponent(RbtSlide)
-                    .addComponent(RbtAlmeja))
-                .addContainerGap(64, Short.MAX_VALUE))
-        );
-
-        TabSmart.addTab("Tradicional", JPTradicional);
+        JPComercial.getAccessibleContext().setAccessibleParent(JPComercial);
 
         JPSmartphone.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         JPSmartphone.setEnabled(false);
 
-        SmarthGroup.add(RbtIphone);
-        RbtIphone.setText(" Iphone");
-        RbtIphone.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                RbtIphoneMouseClicked(evt);
-            }
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                RbtIphoneMousePressed(evt);
-            }
+        SmarthGroup.add(iPhoneRadioButton);
+        iPhoneRadioButton.setText("iPhone");
+        iPhoneRadioButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
-                RbtIphoneMouseReleased(evt);
-            }
-        });
-        RbtIphone.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                RbtIphoneActionPerformed(evt);
-            }
-        });
-        RbtIphone.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                RbtIphoneKeyPressed(evt);
+                iPhoneRadioButtonMouseReleased(evt);
             }
         });
 
-        SmarthGroup.add(RbtAndroid);
-        RbtAndroid.setText("Android");
-        RbtAndroid.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                RbtAndroidMouseClicked(evt);
-            }
+        SmarthGroup.add(androidRadioButton);
+        androidRadioButton.setText("Android");
+        androidRadioButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
-                RbtAndroidMouseReleased(evt);
+                androidRadioButtonMouseReleased(evt);
             }
         });
 
         LblSop.setText("Sistema Operativo");
 
-        CmbSop.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "7.0", "8.0", "9.0" }));
-        CmbSop.setEnabled(false);
-
         LblMemoriaIphone.setText("Memoria");
 
-        CmbMemoriaIphone.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "16", "32", "36", "128" }));
-        CmbMemoriaIphone.setEnabled(false);
+        cboMemoria.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "16", "32", "36", "128" }));
 
-        LblModelo.setText("Modelo");
+        lblModelo.setText("Modelo");
 
-        CmbModelo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6" }));
-        CmbModelo.setEnabled(false);
+        cboModelo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4", "5", "6" }));
 
         LblMarca.setText("Marca");
 
-        CmbMarca.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "7.0", "8.0", "9.0" }));
-        CmbMarca.setEnabled(false);
-
-        LblMemoriaAndroid.setText("Memoria");
-
-        CmbMemoriaAndroid.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "16", "32", "36", "128" }));
-        CmbMemoriaAndroid.setEnabled(false);
+        cboMarcaAndroid.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "7.0", "8.0", "9.0" }));
 
         LblDuracionBateria.setText("Duración Bateria");
 
-        CmbDuración1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6" }));
-        CmbDuración1.setEnabled(false);
+        cboDuracion.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4", "5", "6" }));
 
         LblPeso.setText("Peso");
 
-        CmbPeso1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "100 Gr", "200 Gr", "300 Gr", "400 Gr" }));
-        CmbPeso1.setEnabled(false);
+        LblSop1.setText("Codigo Antena");
 
-        javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
-        jPanel10.setLayout(jPanel10Layout);
-        jPanel10Layout.setHorizontalGroup(
-            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel10Layout.createSequentialGroup()
-                .addGap(38, 38, 38)
-                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel10Layout.createSequentialGroup()
-                        .addGap(40, 40, 40)
-                        .addComponent(RbtIphone)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(RbtAndroid)
-                        .addGap(68, 68, 68))
-                    .addGroup(jPanel10Layout.createSequentialGroup()
-                        .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel10Layout.createSequentialGroup()
-                                .addComponent(LblSop)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(CmbSop, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel10Layout.createSequentialGroup()
-                                .addComponent(LblMemoriaIphone)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(CmbMemoriaIphone, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel10Layout.createSequentialGroup()
-                                .addComponent(LblModelo)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(CmbModelo, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 98, Short.MAX_VALUE)
-                        .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel10Layout.createSequentialGroup()
-                                .addComponent(LblMarca)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(CmbMarca, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel10Layout.createSequentialGroup()
-                                .addComponent(LblMemoriaAndroid)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(CmbMemoriaAndroid, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel10Layout.createSequentialGroup()
-                                .addComponent(LblDuracionBateria)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(CmbDuración1, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel10Layout.createSequentialGroup()
-                                .addComponent(LblPeso)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(CmbPeso1, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap())
-        );
-        jPanel10Layout.setVerticalGroup(
-            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel10Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(RbtIphone)
-                    .addComponent(RbtAndroid))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(LblSop)
-                    .addComponent(CmbSop, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(LblMarca)
-                    .addComponent(CmbMarca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel10Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(LblMemoriaIphone)
-                            .addComponent(CmbMemoriaIphone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(LblModelo)
-                            .addComponent(CmbModelo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel10Layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(LblMemoriaAndroid)
-                            .addComponent(CmbMemoriaAndroid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(8, 8, 8)
-                        .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(LblDuracionBateria)
-                            .addComponent(CmbDuración1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(LblPeso)
-                            .addComponent(CmbPeso1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        cboCodigoAntena.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9" }));
 
         javax.swing.GroupLayout JPSmartphoneLayout = new javax.swing.GroupLayout(JPSmartphone);
         JPSmartphone.setLayout(JPSmartphoneLayout);
@@ -620,36 +501,232 @@ public class FonoAgregarFrame extends Ventana {
             JPSmartphoneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(JPSmartphoneLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(JPSmartphoneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(JPSmartphoneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(JPSmartphoneLayout.createSequentialGroup()
+                            .addGroup(JPSmartphoneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(LblSop1)
+                                .addComponent(LblPeso))
+                            .addGap(27, 27, 27)
+                            .addGroup(JPSmartphoneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(cboPeso, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(cboCodigoAntena, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JPSmartphoneLayout.createSequentialGroup()
+                            .addComponent(LblMemoriaIphone)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cboMemoria, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JPSmartphoneLayout.createSequentialGroup()
+                            .addComponent(LblSop)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(cboOS, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addContainerGap())
+                        .addGroup(JPSmartphoneLayout.createSequentialGroup()
+                            .addGroup(JPSmartphoneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(iPhoneRadioButton)
+                                .addComponent(lblModelo))
+                            .addGroup(JPSmartphoneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(JPSmartphoneLayout.createSequentialGroup()
+                                    .addGap(18, 18, 18)
+                                    .addComponent(androidRadioButton))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JPSmartphoneLayout.createSequentialGroup()
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(cboModelo, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                    .addGroup(JPSmartphoneLayout.createSequentialGroup()
+                        .addGroup(JPSmartphoneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(LblDuracionBateria)
+                            .addComponent(LblMarca))
+                        .addGap(25, 25, 25)
+                        .addGroup(JPSmartphoneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(cboMarcaAndroid, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cboDuracion, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)))))
         );
         JPSmartphoneLayout.setVerticalGroup(
             JPSmartphoneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(JPSmartphoneLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(16, 16, 16)
+                .addGroup(JPSmartphoneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(JPSmartphoneLayout.createSequentialGroup()
+                        .addGroup(JPSmartphoneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(iPhoneRadioButton)
+                            .addComponent(androidRadioButton))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblModelo)
+                        .addGap(12, 12, 12))
+                    .addComponent(cboModelo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(9, 9, 9)
+                .addGroup(JPSmartphoneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cboMemoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(LblMemoriaIphone))
+                .addGap(13, 13, 13)
+                .addGroup(JPSmartphoneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(LblSop)
+                    .addComponent(cboOS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(25, 25, 25)
+                .addGroup(JPSmartphoneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(LblSop1)
+                    .addComponent(cboCodigoAntena, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(25, 25, 25)
+                .addGroup(JPSmartphoneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(LblPeso)
+                    .addComponent(cboPeso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(25, 25, 25)
+                .addGroup(JPSmartphoneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(LblDuracionBateria)
+                    .addComponent(cboDuracion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(JPSmartphoneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cboMarcaAndroid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(LblMarca))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
 
         TabSmart.addTab("SmartPhone", JPSmartphone);
+
+        JPTradicional.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        JPTradicional.setEnabled(false);
+
+        tipoTradicionalButtonGroup.add(normalRadioButton);
+        normalRadioButton.setText("Normal");
+        normalRadioButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                normalRadioButtonMouseClicked(evt);
+            }
+        });
+
+        tipoTradicionalButtonGroup.add(sliderRadioButton);
+        sliderRadioButton.setText("Slide");
+        sliderRadioButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                sliderRadioButtonMouseClicked(evt);
+            }
+        });
+
+        tipoTradicionalButtonGroup.add(almejaRadioButton);
+        almejaRadioButton.setText("Almeja");
+        almejaRadioButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                almejaRadioButtonMouseClicked(evt);
+            }
+        });
+
+        LblPantallaColor.setText("Pantalla Color");
+
+        cboPantallaColor.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "SI", "NO" }));
+
+        LblSop2.setText("Codigo Antena");
+
+        cboTradicionalAntena.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9" }));
+
+        LblPeso1.setText("Peso");
+
+        LblDuracionBateria1.setText("Duración Bateria");
+
+        cboTradicionalBateria.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4", "5", "6" }));
+
+        javax.swing.GroupLayout JPTradicionalLayout = new javax.swing.GroupLayout(JPTradicional);
+        JPTradicional.setLayout(JPTradicionalLayout);
+        JPTradicionalLayout.setHorizontalGroup(
+            JPTradicionalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(JPTradicionalLayout.createSequentialGroup()
+                .addGap(42, 42, 42)
+                .addComponent(normalRadioButton)
+                .addGap(138, 138, 138)
+                .addComponent(sliderRadioButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 202, Short.MAX_VALUE)
+                .addComponent(almejaRadioButton)
+                .addGap(89, 89, 89))
+            .addGroup(JPTradicionalLayout.createSequentialGroup()
+                .addGap(190, 190, 190)
+                .addGroup(JPTradicionalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(JPTradicionalLayout.createSequentialGroup()
+                        .addGroup(JPTradicionalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(LblSop2)
+                            .addComponent(LblPeso1))
+                        .addGap(27, 27, 27)
+                        .addGroup(JPTradicionalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cboTradicionalPeso, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cboTradicionalAntena, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(JPTradicionalLayout.createSequentialGroup()
+                        .addComponent(LblDuracionBateria1)
+                        .addGap(25, 25, 25)
+                        .addComponent(cboTradicionalBateria, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(JPTradicionalLayout.createSequentialGroup()
+                        .addComponent(LblPantallaColor)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cboPantallaColor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        JPTradicionalLayout.setVerticalGroup(
+            JPTradicionalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(JPTradicionalLayout.createSequentialGroup()
+                .addGap(35, 35, 35)
+                .addGroup(JPTradicionalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(LblPantallaColor)
+                    .addComponent(cboPantallaColor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(50, 50, 50)
+                .addGroup(JPTradicionalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(normalRadioButton)
+                    .addComponent(sliderRadioButton)
+                    .addComponent(almejaRadioButton))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(JPTradicionalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(LblSop2)
+                    .addComponent(cboTradicionalAntena, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(25, 25, 25)
+                .addGroup(JPTradicionalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(LblPeso1)
+                    .addComponent(cboTradicionalPeso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(25, 25, 25)
+                .addGroup(JPTradicionalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(LblDuracionBateria1)
+                    .addComponent(cboTradicionalBateria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(95, Short.MAX_VALUE))
+        );
+
+        TabSmart.addTab("Tradicional", JPTradicional);
+        JPTradicional.getAccessibleContext().setAccessibleParent(JPTradicional);
 
         jPanel11.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         LblValorMinutoFijo1.setText("Valor Minuto Fijo");
 
-        TxtValorMinutoFijo1.addActionListener(new java.awt.event.ActionListener() {
+        TxtValorMinutoFijo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TxtValorMinutoFijo1ActionPerformed(evt);
+                TxtValorMinutoFijoActionPerformed(evt);
             }
         });
 
         LblValorMinutoMovil1.setText("Valor Minuto Movil");
 
+        TxtValorMinutoMovil.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TxtValorMinutoMovilActionPerformed(evt);
+            }
+        });
+
         LblTarifaFija1.setText("Tarifa Fija");
 
         LblMinutosUsadosFijo1.setText("Cantidad Minutos Usados Fijos");
 
+        TxtMinutosUsadosFijo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TxtMinutosUsadosFijoActionPerformed(evt);
+            }
+        });
+
+        TxtTarifaFija.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TxtTarifaFijaActionPerformed(evt);
+            }
+        });
+
         LblMinutosUsadosMovil1.setText("Cantidad Minutos Usados Moviles");
+
+        TxtMinutosUsadosMovil.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TxtMinutosUsadosMovilActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
         jPanel11.setLayout(jPanel11Layout);
@@ -661,24 +738,24 @@ public class FonoAgregarFrame extends Ventana {
                     .addGroup(jPanel11Layout.createSequentialGroup()
                         .addComponent(LblValorMinutoFijo1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(TxtValorMinutoFijo1, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(TxtValorMinutoFijo, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(LblValorMinutoMovil1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(TxtValorMinutoMovil1, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(TxtValorMinutoMovil, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(LblTarifaFija1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(TxtTarifaFija1, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(TxtTarifaFija, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(567, 567, 567))
                     .addGroup(jPanel11Layout.createSequentialGroup()
                         .addComponent(LblMinutosUsadosFijo1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(TxtMinutosUsadosFijo1, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(TxtMinutosUsadosFijo, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(LblMinutosUsadosMovil1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(TxtMinutosUsadosMovil1, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(TxtMinutosUsadosMovil, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPanel11Layout.setVerticalGroup(
@@ -687,18 +764,18 @@ public class FonoAgregarFrame extends Ventana {
                 .addContainerGap()
                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(LblValorMinutoFijo1)
-                    .addComponent(TxtValorMinutoFijo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(TxtValorMinutoFijo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(LblValorMinutoMovil1)
-                    .addComponent(TxtValorMinutoMovil1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(TxtValorMinutoMovil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(LblTarifaFija1)
-                    .addComponent(TxtTarifaFija1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(TxtTarifaFija, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(LblMinutosUsadosFijo1)
-                    .addComponent(TxtMinutosUsadosFijo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(TxtMinutosUsadosFijo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(LblMinutosUsadosMovil1)
-                    .addComponent(TxtMinutosUsadosMovil1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(38, Short.MAX_VALUE))
+                    .addComponent(TxtMinutosUsadosMovil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         BtnCerrar.setText("Cerrar");
@@ -709,105 +786,51 @@ public class FonoAgregarFrame extends Ventana {
             }
         });
 
+        BtnAgregar.setText("Agregar");
+        BtnAgregar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        BtnAgregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnAgregarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(TabSmart, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jPanel11, javax.swing.GroupLayout.DEFAULT_SIZE, 0, Short.MAX_VALUE)
-                            .addComponent(TabSmart, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(57, 57, 57)
-                        .addComponent(BtnCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(BtnCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(BtnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(90, 90, 90))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(TabSmart, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(TabSmart, javax.swing.GroupLayout.PREFERRED_SIZE, 423, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(BtnCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(BtnCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BtnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         TabSmart.getAccessibleContext().setAccessibleName("");
+        TabSmart.getAccessibleContext().setAccessibleDescription("");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void RbtIphoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RbtIphoneActionPerformed
-        // TODO add your handling code here:
-        
-    }//GEN-LAST:event_RbtIphoneActionPerformed
-
-    private void RbtIphoneMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RbtIphoneMouseClicked
-        // TODO add your handling code here:
-            this.CmbSop.setEnabled(true);
-            this.CmbMemoriaIphone.setEnabled(true);
-            this.CmbModelo.setEnabled(true);
-            
-            this.CmbMarca.setEnabled(false);
-            this.CmbMemoriaAndroid.setEnabled(false);
-            this.CmbPeso1.setEnabled(false);
-            this.CmbDuración1.setEnabled(false);
-
-    }//GEN-LAST:event_RbtIphoneMouseClicked
-
-    private void RbtIphoneMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RbtIphoneMousePressed
-        // TODO add your handling code here
-    }//GEN-LAST:event_RbtIphoneMousePressed
-
-    private void RbtIphoneKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RbtIphoneKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_RbtIphoneKeyPressed
-
-    private void RbtAndroidMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RbtAndroidMouseClicked
-        // TODO add your handling code here:
-            this.CmbSop.setEnabled(false);
-            this.CmbMemoriaIphone.setEnabled(false);
-            this.CmbModelo.setEnabled(false);
-            
-            this.CmbMarca.setEnabled(true);
-            this.CmbMemoriaAndroid.setEnabled(true);
-            this.CmbPeso1.setEnabled(true);
-            this.CmbDuración1.setEnabled(true);
-            
-    }//GEN-LAST:event_RbtAndroidMouseClicked
-
-    private void RbtIphoneMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RbtIphoneMouseReleased
-        // TODO add your handling code here:
-            this.CmbSop.setEnabled(true);
-            this.CmbMemoriaIphone.setEnabled(true);
-            this.CmbModelo.setEnabled(true);
-            
-            this.CmbMarca.setEnabled(false);
-            this.CmbMemoriaAndroid.setEnabled(false);
-            this.CmbPeso1.setEnabled(false);
-            this.CmbDuración1.setEnabled(false);
-
-    }//GEN-LAST:event_RbtIphoneMouseReleased
-
-    private void RbtAndroidMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RbtAndroidMouseReleased
-        // TODO add your handling code here:
-            this.CmbSop.setEnabled(false);
-            this.CmbMemoriaIphone.setEnabled(false);
-            this.CmbModelo.setEnabled(false);
-            
-            this.CmbMarca.setEnabled(true);
-            this.CmbMemoriaAndroid.setEnabled(true);
-            this.CmbPeso1.setEnabled(true);
-            this.CmbDuración1.setEnabled(true);        
-    }//GEN-LAST:event_RbtAndroidMouseReleased
 
     private void BtnCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCerrarActionPerformed
         // TODO add your handling code here:
@@ -815,121 +838,406 @@ public class FonoAgregarFrame extends Ventana {
         
     }//GEN-LAST:event_BtnCerrarActionPerformed
 
+    private void BtnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAgregarActionPerformed
+        // TODO add your handling code here:
+        System.out.println("Agregar");
+        boolean guardar = true;
+        String mensajeError = "Le faltaron los siguientes datos:";
+        if(TxtRut.getText().equals("")){
+            guardar = false;
+            mensajeError+="\n Rut";
+        }
+        if(TxtFono.getText().equals("")){
+            guardar = false;
+            mensajeError+="\n Telelfono";
+        }
+        if(txtComuna.getText().equals("")){
+            guardar = false;
+            mensajeError+="\n Comuna";
+        }
+       if(TxtCostoEquipo.getText().equals("")){
+            guardar = false;
+            mensajeError+="\n Costo Equipo";
+        }
+       if(TxtFechadeContrato.getText().equals("")){
+            guardar = false;
+            mensajeError+="\n Fecha de Contrato";
+        }       
+        if(TxtValorMinutoFijo.getText().equals("")){
+            guardar = false;
+            mensajeError+="\n Valor Minuto Fijo";
+        }
+        if(TxtValorMinutoMovil.getText().equals("")){
+            guardar = false;
+            mensajeError+="\n Valor Minuto Movil";
+        }
+        if(TxtTarifaFija.getText().equals("")){
+            guardar = false;
+            mensajeError+="\n Tarifa Fija";
+        }
+        if(TxtMinutosUsadosFijo.getText().equals("")){
+            guardar = false;
+            mensajeError+="\n Minutos Usados Fijo";
+        }
+        if(TxtMinutosUsadosMovil.getText().equals("")){
+            guardar = false;
+            mensajeError+="\n Minutos Usados Movil";
+        }
+        Usuario usuario = obtenerDB().usuarioBuscarPorRut(TxtRut.getText());
+        
+        if(usuario == null){
+            guardar = false;
+            mensajeError+="\n Usuario no encontrado";            
+        }
+        
+        if(guardar){
+            System.out.println("Data requerida");
+            
+            String numero = this.TxtFono.getText();
+            if(obtenerDB().telefonosRevisarNumero(numero)){
+                
+                System.out.println("Número de Teléfono ya Existe");
+                JOptionPane.showMessageDialog(null, "Número de Teléfono ya Existe");
+               
+            } else {
+                System.out.println("Número de teléfono No Existe");
+                //Data en común para todos los móviles 
+                String numeroTelefono = TxtFono.getText();
+                String rut = TxtRut.getText();
+
+                String comuna = txtComuna.getText();
+                String region = cboRegion.getSelectedItem().toString().toUpperCase();                
+                System.out.println(region);
+                // tomo indice de combo
+                int IndCom = cboCompania.getSelectedIndex();
+                //Repasa dato completo  
+                Compania  compania =  obtenerDB().companiaObtener().get(IndCom);
+                System.out.println(compania);
+                int IndPlan = CmbPlanTelefonico.getSelectedIndex();
+                //Obtener plan teléfono de la companía seleccionada
+                PlanTelefonico planTelefonico = compania.getPlan().get(IndPlan);
+                System.out.println(planTelefonico);
+                int costoEquipo = Integer.parseInt(TxtCostoEquipo.getText());
+                String fechaContrato = TxtFechadeContrato.getText();
+                
+                int valorMinutoFijo = Integer.parseInt(TxtValorMinutoFijo.getText());
+                int valorMinutoMovil =  Integer.parseInt(TxtValorMinutoMovil.getText());
+                int tarifaFija = Integer.parseInt(TxtTarifaFija.getText());
+                int cantidadMinutosFijos = Integer.parseInt(TxtMinutosUsadosFijo.getText());
+                int cantidadMinutosMoviles = Integer.parseInt(TxtMinutosUsadosMovil.getText());
+                
+                if (obtenerDB().telefonosEsMovil(numero)){
+                    System.out.println("Telefono Movil");
+
+                    String versionOS = "";
+                    int codigoAntena = 0;
+                    int peso = 0;
+                    int duracionBateria = 0;
+                    
+                    if (TabSmart.getSelectedIndex()==2){
+                        System.out.println("Smartphone");
+                        //Validar smartphone
+                        //Memoria
+                        int cantidadMemoria =Integer.parseInt(cboMemoria.getSelectedItem().toString());
+                        
+                        if(!iPhoneRadioButton.isSelected() && !androidRadioButton.isSelected()){
+                            mensajeError +="Elegir un tipo de smartphone";
+                        }
+                        //peso móvil
+                        peso = Integer.parseInt(cboPeso.getSelectedItem().toString());
+                        //duracion
+                        duracionBateria = Integer.parseInt(cboDuracion.getSelectedItem().toString());
+                        //Sistema Operativo
+                        versionOS = cboOS.getSelectedItem().toString();
+                        //Código antena
+                        codigoAntena = Integer.parseInt(cboCodigoAntena.getSelectedItem().toString());
+                        
+                        System.out.println("codigoAntena " + codigoAntena);
+                        System.out.println("versionOS " + versionOS);
+                        System.out.println("cantidadMemoria " + cantidadMemoria);
+                        
+                        if (iPhoneRadioButton.isSelected() == true){
+                            System.out.println("ios");
+                            //Modelo
+                            String modelo = cboModelo.getSelectedItem().toString();
+                            System.out.println("modelo " + modelo);
+
+                            IOS ios = new IOS(modelo, 
+                                    versionOS, 
+                                    cantidadMemoria, 
+                                    codigoAntena, 
+                                    peso, duracionBateria, 
+                                    compania, 
+                                    usuario, 
+                                    region, 
+                                    comuna, 
+                                    fechaContrato, 
+                                    valorMinutoFijo,
+                                    valorMinutoMovil,
+                                    tarifaFija,
+                                    cantidadMinutosFijos,                                     
+                                    cantidadMinutosMoviles, 
+                                    planTelefonico, 
+                                    numero, 
+                                    costoEquipo);
+                            System.out.println(ios.toString());
+                            
+                            if(obtenerDB().telefonosGuardar(ios)){
+                                JOptionPane.showMessageDialog(rootPane, "Número guardado correctamente", "Guardado correcto", JOptionPane.INFORMATION_MESSAGE);
+                            } else {
+                                JOptionPane.showMessageDialog(rootPane, "El número no se pudo guardar.", "Error al intentar guardar", JOptionPane.WARNING_MESSAGE);
+                            }
+                            
+                        }else{
+                            System.out.println("Android");
+                            //Marca
+                            String marca = cboMarcaAndroid.getSelectedItem().toString();
+
+                            Android android = new Android(
+                                    marca, 
+                                    versionOS, 
+                                    cantidadMemoria, 
+                                    codigoAntena, 
+                                    peso, 
+                                    duracionBateria, 
+                                    compania, 
+                                    usuario, 
+                                    region, 
+                                    comuna, 
+                                    fechaContrato, 
+                                    valorMinutoFijo, 
+                                    valorMinutoMovil, 
+                                    tarifaFija,
+                                    cantidadMinutosFijos, 
+                                    cantidadMinutosMoviles, 
+                                    planTelefonico, 
+                                    numero, 
+                                    costoEquipo);
+                            
+                            System.out.println(android.toString());
+                            if(obtenerDB().telefonosGuardar(android)){
+                                JOptionPane.showMessageDialog(rootPane, "Número guardado correctamente", "Guardado correcto", JOptionPane.INFORMATION_MESSAGE);
+                            } else {
+                                JOptionPane.showMessageDialog(rootPane, "El número no se pudo guardar.", "Error al intentar guardar", JOptionPane.WARNING_MESSAGE);
+                            }
+                        }
+                        
+                    } else if (TabSmart.getSelectedIndex()==3){
+                        System.out.println("Tradicional");
+                        String pantallaColor = cboPantallaColor.getSelectedItem().toString();
+                        boolean pantalla = false;
+                        if(pantallaColor.equals("SI")){
+                            pantalla = true;
+                        }
+                        System.out.println("tradicionalTipo " + tradicionalTipo);
+                        //peso móvil
+                        peso = Integer.parseInt(cboTradicionalPeso.getSelectedItem().toString());
+                        //duracion
+                        duracionBateria = Integer.parseInt(cboTradicionalBateria.getSelectedItem().toString());
+                        //Código antena
+                        codigoAntena = Integer.parseInt(cboTradicionalAntena.getSelectedItem().toString());
+                        System.out.println("peso " + peso);
+                        System.out.println("codigoAntena " + codigoAntena);
+                        System.out.println("versionOS " + versionOS);
+                        //Crear
+                        Tradicional tradicional = new Tradicional(pantalla, tradicionalTipo, codigoAntena, peso, duracionBateria, compania, usuario, region,comuna, fechaContrato, valorMinutoFijo, valorMinutoMovil, tarifaFija, cantidadMinutosFijos,cantidadMinutosMoviles, planTelefonico,numeroTelefono,costoEquipo);
+                        System.out.println(tradicional);
+                        if(obtenerDB().telefonosGuardar(tradicional)){
+                            JOptionPane.showMessageDialog(rootPane, "Número guardado correctamente", "Guardado correcto", JOptionPane.INFORMATION_MESSAGE);
+                        } else {
+                            JOptionPane.showMessageDialog(rootPane, "El número no se pudo guardar.", "Error al intentar guardar", JOptionPane.WARNING_MESSAGE);
+                        }
+                    }
+                }else{
+                    System.out.println("Telefono Fijo");
+
+                    if (TabSmart.getSelectedIndex()==0){
+                        System.out.println("privado");
+                        int codigoZona = Integer.parseInt(txtCodigoZona.getText());
+                        int Identif = CmbIdeLlamadas.getSelectedIndex();
+                        int CostoEquipo = Integer.parseInt(TxtCostoEquipo.getText());
+                        String  Id = CmbIdeLlamadas.getSelectedItem().toString();
+                        Boolean Identificador = false;
+                        if (Id.equals("SI")){
+                            Identificador = true;
+                        }
+                        int Zona = 2;
+                        Privado PrivadoNuevo = new Privado(Identificador,Zona,compania,usuario,region,txtComuna.getText(),TxtFechadeContrato.getText(),Integer.parseInt(TxtValorMinutoFijo.getText()),Integer.parseInt(TxtValorMinutoMovil.getText()),Float.parseFloat(TxtTarifaFija.getText()),Integer.parseInt(TxtMinutosUsadosFijo.getText()),Integer.parseInt(TxtMinutosUsadosMovil.getText()),planTelefonico,TxtFono.getText(),Integer.parseInt(TxtCostoEquipo.getText()));
+                        System.out.println(PrivadoNuevo.toString());
+                        if (obtenerDB().telefonosGuardar(PrivadoNuevo)){
+                            JOptionPane.showMessageDialog(null, "Númmero creado exitosamente");
+                        } else {
+                            JOptionPane.showMessageDialog(null, "El teléfono no se pudo crear.");
+                        }
+                    }else{
+                        System.out.println("comercial");
+                        int codigoZona = Integer.parseInt(txtCodigoZonaComercial1.getText());
+                        System.out.println("codigoZona " + codigoZona);
+
+                        int cantidadAnexos = Integer.parseInt(txtCantidadAnexos.getText());
+                        System.out.println("cantidadAnexos " + cantidadAnexos);
+
+                        int  CostoEquipo = Integer.parseInt(TxtCostoEquipo.getText());
+                        String Region = cboRegion.getSelectedItem().toString();
+                        Comerciales NuevoFonoCom = new Comerciales(cantidadAnexos,codigoZona,compania,usuario,Region,txtComuna.getText(),TxtFechadeContrato.getText(),Integer.parseInt(TxtValorMinutoFijo.getText()),Integer.parseInt(TxtValorMinutoMovil.getText()),Float.parseFloat(TxtTarifaFija.getText()),Integer.parseInt(TxtMinutosUsadosFijo.getText()),Integer.parseInt(TxtMinutosUsadosMovil.getText()),planTelefonico,TxtFono.getText(),Integer.parseInt(TxtCostoEquipo.getText()));
+                        System.out.println(NuevoFonoCom.toString());
+                        if (obtenerDB().telefonosGuardar(NuevoFonoCom)){
+                            JOptionPane.showMessageDialog(null, "Númmero creado exitosamente");
+                        } else {
+                            JOptionPane.showMessageDialog(null, "El teléfono no se pudo crear.");
+                        }
+                    }   
+                }
+                }
+        } else {
+            JOptionPane.showMessageDialog(rootPane, mensajeError, "Error al intentar guardar", JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_BtnAgregarActionPerformed
+
     private void CmbPlanTelefonicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CmbPlanTelefonicoActionPerformed
         // TODO add your handling code here:
         CmbPlanTelefonico.transferFocus();
     }//GEN-LAST:event_CmbPlanTelefonicoActionPerformed
-
-    private void TxtRutKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TxtRutKeyPressed
-        // TODO add your handling code here:
-        
-    }//GEN-LAST:event_TxtRutKeyPressed
-
-    private void TxtRutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtRutActionPerformed
-        // TODO add your handling code here:
-        this.TxtRut.transferFocus();
-
-        //int NomUsu = CmbCompañia.getSelectedIndex();
-        String RutUsu = TxtRut.getText();
-        Usuario Obj_Usuario = obtenerDB().usuarioBuscarPorRut(RutUsu);
-        System.out.println(Obj_Usuario);
-                    String Nombre = Obj_Usuario.getNombre() +" "+Obj_Usuario.getApellido(); 
-                    System.out.println("Nombre Usuario "+Nombre);
-                    LblNombre.setText(Nombre);
-
-        
-        //aca agregar que lea de la tabla usuarios y rescate el nombre 
-            
-    }//GEN-LAST:event_TxtRutActionPerformed
-
-    private void TxtFonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtFonoActionPerformed
-        // TODO add your handling code here:
-        this.TxtFono.transferFocus();
-        
-     
-        
-    }//GEN-LAST:event_TxtFonoActionPerformed
-
-    private void TxtComunaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtComunaActionPerformed
-        // TODO add your handling code here:}
-        this.TxtComuna.transferFocus();
-        
-    }//GEN-LAST:event_TxtComunaActionPerformed
-
-    private void CmbCompañiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CmbCompañiaActionPerformed
-        // TODO add your handling code here:
-        CmbCompañia.transferFocus();
-        CmbPlanTelefonico.removeAllItems();
-        int NomCom = CmbCompañia.getSelectedIndex();
-        Compania Paso = obtenerDB().companiaObtener().get(NomCom);
-      
-        DefaultComboBoxModel mdlCombo= (DefaultComboBoxModel)CmbPlanTelefonico.getModel();
-                        Iterator it = Paso.getPlan().iterator();
-                        int rowCount = mdlCombo.getSize();
-                        for (int i = rowCount - 1; i >= 0; i--) {
-                            mdlCombo.removeElement(i);
-                        }
-               while(it.hasNext()){
-                PlanTelefonico plan = (PlanTelefonico)it.next();
-                String NombrePlan = plan.getNombrePlan();
-                mdlCombo.addElement(NombrePlan);
-                System.out.println("nombre plan "+plan.getNombrePlan());
-               }
-
-    }//GEN-LAST:event_CmbCompañiaActionPerformed
-
-    private void TxtFechadeContratoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtFechadeContratoActionPerformed
-        // TODO add your handling code here:
-        TxtFechadeContrato.transferFocus();
-    }//GEN-LAST:event_TxtFechadeContratoActionPerformed
 
     private void TxtCostoEquipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtCostoEquipoActionPerformed
         // TODO add your handling code here:
         TxtCostoEquipo.transferFocus();
     }//GEN-LAST:event_TxtCostoEquipoActionPerformed
 
-    private void TxtComunaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TxtComunaKeyPressed
+    private void TxtFechadeContratoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtFechadeContratoActionPerformed
         // TODO add your handling code here:
-//               TransformaMayuscula(TxtComuna.getText());
-    }//GEN-LAST:event_TxtComunaKeyPressed
+        TxtFechadeContrato.transferFocus();
+    }//GEN-LAST:event_TxtFechadeContratoActionPerformed
 
-    private void TxtFonoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TxtFonoKeyPressed
+    private void txtComunaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtComunaKeyPressed
         // TODO add your handling code here:
-    String numero = this.TxtFono.getText();
-     //   esMovil(numero);
-        
+        //               TransformaMayuscula(TxtComuna.getText());
+
+    }//GEN-LAST:event_txtComunaKeyPressed
+
+    private void txtComunaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtComunaActionPerformed
+        // TODO add your handling code here:}
+        this.txtComuna.transferFocus();
+        String Comuna = this.txtComuna.getText();
+        this.txtComuna.setText(Comuna.toUpperCase());
+    }//GEN-LAST:event_txtComunaActionPerformed
+
+    private void TxtFonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtFonoActionPerformed
+        // TODO add your handling code here:
+        this.TxtFono.transferFocus();
+        String numero = this.TxtFono.getText();
         if (obtenerDB().telefonosEsMovil(numero)){
-            System.out.println("false");
-        }else{
-    
-            System.out.println("true");
-//        TabSmart.setEnabledAt(0, true);
-//        int p = TabSmart.getTabCount();
-//            System.out.println(p);
-//            for (int i = 0; i<p;i++){
-//                    System.out.println(TabSmart.isEnabledAt(i));
-//            }
+            bloquearTab(0);
+            bloquearTab(1);
+            desbloquearTab(2);
+            desbloquearTab(3);
+        } else {
+            desbloquearTab(0);
+            desbloquearTab(1);
+            bloquearTab(2);
+            bloquearTab(3);
         }
-/// agregar validacion fojos o moviles
-    }//GEN-LAST:event_TxtFonoKeyPressed
+    }//GEN-LAST:event_TxtFonoActionPerformed
 
-    private void TxtValorMinutoFijo1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtValorMinutoFijo1ActionPerformed
+    private void TxtRutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtRutActionPerformed
+        this.TxtRut.transferFocus();
+        //int NomUsu = CmbCompañia.getSelectedIndex();
+        String RutUsu = TxtRut.getText();
+        Usuario Obj_Usuario = obtenerDB().usuarioBuscarPorRut(RutUsu);
+        System.out.println(Obj_Usuario);
+
+        if (Obj_Usuario !=null){
+            String Nombre = Obj_Usuario.getNombre() +" "+Obj_Usuario.getApellido();
+            System.out.println("Nombre Usuario "+Nombre);
+            LblNombre.setText(Nombre);
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "No se encontro Usuario", "Error al Realizar la Busiqueda", JOptionPane.WARNING_MESSAGE);
+        }
+
+    }//GEN-LAST:event_TxtRutActionPerformed
+
+    private void cboCompaniaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboCompaniaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_TxtValorMinutoFijo1ActionPerformed
+        cboCompania.transferFocus();
+        CmbPlanTelefonico.removeAllItems();
+        int NomCom = cboCompania.getSelectedIndex();
+        Compania Paso = obtenerDB().companiaObtener().get(NomCom);
 
-    private void CmbCompañiaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CmbCompañiaMouseClicked
+        DefaultComboBoxModel mdlCombo= (DefaultComboBoxModel)CmbPlanTelefonico.getModel();
+        Iterator it = Paso.getPlan().iterator();
+        int rowCount = mdlCombo.getSize();
+        for (int i = rowCount - 1; i >= 0; i--) {
+            mdlCombo.removeElement(i);
+        }
+        while(it.hasNext()){
+            PlanTelefonico plan = (PlanTelefonico)it.next();
+            String NombrePlan = plan.getNombrePlan();
+            mdlCombo.addElement(NombrePlan);
+            //System.out.println("nombre plan "+plan.getNombrePlan());
+        }
+    }//GEN-LAST:event_cboCompaniaActionPerformed
 
-    }//GEN-LAST:event_CmbCompañiaMouseClicked
-
-    private void CmbCompañiaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CmbCompañiaMousePressed
-    // TODO add your handling code here:
-        //aca mejor
-
-    }//GEN-LAST:event_CmbCompañiaMousePressed
-
-    private void menu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu1ActionPerformed
+    private void TxtMinutosUsadosMovilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtMinutosUsadosMovilActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_menu1ActionPerformed
+        TxtMinutosUsadosMovil.transferFocus();
+    }//GEN-LAST:event_TxtMinutosUsadosMovilActionPerformed
+
+    private void TxtTarifaFijaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtTarifaFijaActionPerformed
+        // TODO add your handling code here:
+        TxtTarifaFija.transferFocus();
+    }//GEN-LAST:event_TxtTarifaFijaActionPerformed
+
+    private void TxtMinutosUsadosFijoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtMinutosUsadosFijoActionPerformed
+        // TODO add your handling code here:
+        TxtMinutosUsadosFijo.transferFocus();
+    }//GEN-LAST:event_TxtMinutosUsadosFijoActionPerformed
+
+    private void TxtValorMinutoMovilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtValorMinutoMovilActionPerformed
+        // TODO add your handling code here:
+        TxtValorMinutoMovil.transferFocus();
+    }//GEN-LAST:event_TxtValorMinutoMovilActionPerformed
+
+    private void TxtValorMinutoFijoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtValorMinutoFijoActionPerformed
+        // TODO add your handling code here:
+        TxtValorMinutoFijo.transferFocus();
+
+    }//GEN-LAST:event_TxtValorMinutoFijoActionPerformed
+
+    private void TabSmartMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabSmartMouseClicked
+        // TODO add your handling code here:
+        JPPrivado.setName(null);
+    }//GEN-LAST:event_TabSmartMouseClicked
+
+    private void almejaRadioButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_almejaRadioButtonMouseClicked
+        // TODO add your handling code here:
+        tradicionalTipo = "Almeja";
+    }//GEN-LAST:event_almejaRadioButtonMouseClicked
+
+    private void sliderRadioButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_sliderRadioButtonMouseClicked
+        // TODO add your handling code here:
+        tradicionalTipo = "Slider";
+    }//GEN-LAST:event_sliderRadioButtonMouseClicked
+
+    // Tipo de móvil tradicioanl
+    private void normalRadioButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_normalRadioButtonMouseClicked
+        // TODO add your handling code here:
+        tradicionalTipo = "Normal";
+    }//GEN-LAST:event_normalRadioButtonMouseClicked
+
+    private void androidRadioButtonMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_androidRadioButtonMouseReleased
+        // TODO add your handling code here:
+        //cargar OS Android
+        cargarOSAndroid();
+        this.cboMarcaAndroid.setEnabled(true);       
+        this.cboModelo.setEnabled(false);
+    }//GEN-LAST:event_androidRadioButtonMouseReleased
+
+    private void iPhoneRadioButtonMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_iPhoneRadioButtonMouseReleased
+        // TODO add your handling code here:
+        cargarOSiPhone();
+        this.cboModelo.setEnabled(true);
+        this.cboMarcaAndroid.setEnabled(false);
+    }//GEN-LAST:event_iPhoneRadioButtonMouseReleased
 
     /**
      * @param args the command line arguments
@@ -957,13 +1265,7 @@ public class FonoAgregarFrame extends Ventana {
             java.util.logging.Logger.getLogger(FonoAgregarFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
+ 
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -979,39 +1281,52 @@ public class FonoAgregarFrame extends Ventana {
         if(compania.isEmpty()){
             JOptionPane.showMessageDialog(rootPane, "No se encontraron planes", "Error al intentar listar", JOptionPane.WARNING_MESSAGE);
         } else {
-            DefaultComboBoxModel mdlCombo= (DefaultComboBoxModel)CmbCompañia.getModel();
+            DefaultComboBoxModel mdlCombo= (DefaultComboBoxModel)cboCompania.getModel();
             Iterator it = compania.iterator();
             int rowCount = mdlCombo.getSize();
             for (int i = rowCount - 1; i >= 0; i--) {
                 mdlCombo.removeElement(i);
             }
             while(it.hasNext()){
-
                 Compania Obj_Compania = (Compania)it.next();
                 String Comp = Obj_Compania.getNombre();
                 mdlCombo.addElement(Comp);
-                System.out.println("nombre plan "+Obj_Compania.getNombre());
              }
         }
-  }
+    }
    
- 
+   private void cargarMarcasAndroid(){
+        String[] marcas = obtenerDB().getMarcasAndroid();
+        DefaultComboBoxModel mdlCombo= (DefaultComboBoxModel)cboMarcaAndroid.getModel();
+        cboMarcaAndroid.removeAllItems();
+        for (String marca : marcas) {
+            mdlCombo.addElement(marca);
+        }
+    }
+   
+   private void cargarOSAndroid(){
+        String[] versiones = obtenerDB().getVersionesAndroid();
+        DefaultComboBoxModel mdlCombo= (DefaultComboBoxModel)cboOS.getModel();
+        cboOS.removeAllItems();
+        for (String marca : versiones) {
+            mdlCombo.addElement(marca);
+        }
+    }
+   private void cargarOSiPhone(){
+        String[] versiones = obtenerDB().getVersionesiOS();
+        DefaultComboBoxModel mdlCombo= (DefaultComboBoxModel)cboOS.getModel();
+        cboOS.removeAllItems();
+        for (String marca : versiones) {
+            mdlCombo.addElement(marca);
+        }
+    }
+   
   
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BtnAgregar;
     private javax.swing.JButton BtnCerrar;
-    private javax.swing.JComboBox CmbAnexos;
-    private javax.swing.JComboBox CmbCompañia;
-    private javax.swing.JComboBox CmbDuración1;
     private javax.swing.JComboBox CmbIdeLlamadas;
-    private javax.swing.JComboBox CmbMarca;
-    private javax.swing.JComboBox CmbMemoriaAndroid;
-    private javax.swing.JComboBox CmbMemoriaIphone;
-    private javax.swing.JComboBox CmbModelo;
-    private javax.swing.JComboBox CmbPantallaColor;
-    private javax.swing.JComboBox CmbPeso1;
     private javax.swing.JComboBox CmbPlanTelefonico;
-    private javax.swing.JComboBox CmbRegion;
-    private javax.swing.JComboBox CmbSop;
     private javax.swing.JPanel JPComercial;
     private javax.swing.JPanel JPPrivado;
     private javax.swing.JPanel JPSmartphone;
@@ -1021,48 +1336,68 @@ public class FonoAgregarFrame extends Ventana {
     private javax.swing.JLabel LblContrato;
     private javax.swing.JLabel LblCosto;
     private javax.swing.JLabel LblDuracionBateria;
+    private javax.swing.JLabel LblDuracionBateria1;
     private javax.swing.JLabel LblFono;
     private javax.swing.JLabel LblIdentifLlamadas;
     private javax.swing.JLabel LblMarca;
-    private javax.swing.JLabel LblMemoriaAndroid;
     private javax.swing.JLabel LblMemoriaIphone;
     private javax.swing.JLabel LblMinutosUsadosFijo1;
     private javax.swing.JLabel LblMinutosUsadosMovil1;
-    private javax.swing.JLabel LblModelo;
     private javax.swing.JLabel LblNombre;
     private javax.swing.JLabel LblPantallaColor;
     private javax.swing.JLabel LblPeso;
+    private javax.swing.JLabel LblPeso1;
     private javax.swing.JLabel LblPlanT;
     private javax.swing.JLabel LblRegion;
     private javax.swing.JLabel LblRut;
     private javax.swing.JLabel LblSop;
+    private javax.swing.JLabel LblSop1;
+    private javax.swing.JLabel LblSop2;
     private javax.swing.JLabel LblTarifaFija1;
     private javax.swing.JLabel LblValorMinutoFijo1;
     private javax.swing.JLabel LblValorMinutoMovil1;
-    private javax.swing.JRadioButton RbtAlmeja;
-    private javax.swing.JRadioButton RbtAndroid;
-    private javax.swing.JRadioButton RbtIphone;
-    private javax.swing.JRadioButton RbtNormal;
-    private javax.swing.JRadioButton RbtSlide;
     private javax.swing.ButtonGroup SmarthGroup;
     private javax.swing.JTabbedPane TabSmart;
-    private javax.swing.JTextField TxtComuna;
     private javax.swing.JTextField TxtCostoEquipo;
     private javax.swing.JTextField TxtFechadeContrato;
     private javax.swing.JTextField TxtFono;
-    private javax.swing.JTextField TxtMinutosUsadosFijo1;
-    private javax.swing.JTextField TxtMinutosUsadosMovil1;
+    private javax.swing.JTextField TxtMinutosUsadosFijo;
+    private javax.swing.JTextField TxtMinutosUsadosMovil;
     private javax.swing.JTextField TxtRut;
-    private javax.swing.JTextField TxtTarifaFija1;
-    private javax.swing.JTextField TxtValorMinutoFijo1;
-    private javax.swing.JTextField TxtValorMinutoMovil1;
-    private javax.swing.JPanel jPanel10;
+    private javax.swing.JTextField TxtTarifaFija;
+    private javax.swing.JTextField TxtValorMinutoFijo;
+    private javax.swing.JTextField TxtValorMinutoMovil;
+    private javax.swing.JRadioButton almejaRadioButton;
+    private javax.swing.JRadioButton androidRadioButton;
+    private javax.swing.JComboBox cboCodigoAntena;
+    private javax.swing.JComboBox cboCompania;
+    private javax.swing.JComboBox cboDuracion;
+    private javax.swing.JComboBox cboMarcaAndroid;
+    private javax.swing.JComboBox cboMemoria;
+    private javax.swing.JComboBox cboModelo;
+    private javax.swing.JComboBox cboOS;
+    private javax.swing.JComboBox cboPantallaColor;
+    private javax.swing.JComboBox cboPeso;
+    private javax.swing.JComboBox cboRegion;
+    private javax.swing.JComboBox cboTradicionalAntena;
+    private javax.swing.JComboBox cboTradicionalBateria;
+    private javax.swing.JComboBox cboTradicionalPeso;
+    private javax.swing.JRadioButton iPhoneRadioButton;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JLabel lblCompañia;
+    private javax.swing.JLabel lblModelo;
     private java.awt.Menu menu1;
     private java.awt.Menu menu2;
     private java.awt.MenuBar menuBar1;
+    private javax.swing.JRadioButton normalRadioButton;
+    private javax.swing.JRadioButton sliderRadioButton;
+    private javax.swing.ButtonGroup tipoTradicionalButtonGroup;
+    private javax.swing.JTextField txtCantidadAnexos;
+    private javax.swing.JTextField txtCodigoZona;
+    private javax.swing.JTextField txtCodigoZonaComercial1;
+    private javax.swing.JTextField txtComuna;
     // End of variables declaration//GEN-END:variables
 }
