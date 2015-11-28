@@ -332,11 +332,8 @@ public class CuentaCompletaFrame extends Ventana {
     private void buscarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarButtonActionPerformed
         // TODO add your handling code here:
         if(txtRun.getText().equals("")){
-<<<<<<< HEAD
             JOptionPane.showMessageDialog(rootPane, "Debe escribir el rut del Usuario", "Error al buscar", JOptionPane.WARNING_MESSAGE);
-=======
             JOptionPane.showMessageDialog(rootPane, "Debe escribir el rut del usuario", "Error al buscar", JOptionPane.WARNING_MESSAGE);
->>>>>>> origin/master
         } else {
             Usuario unUsuario = obtenerDB().usuarioBuscarPorRut(txtRun.getText());
             if(unUsuario==null){

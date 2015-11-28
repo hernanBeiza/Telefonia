@@ -5,11 +5,8 @@
  */
 package gui;
 
-<<<<<<< HEAD
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-=======
->>>>>>> origin/master
 import java.util.ArrayList;
 import java.util.Iterator;
 import javax.swing.JFrame;
@@ -28,7 +25,6 @@ public class CompaniaConsultarFrame extends Ventana {
      */
     public CompaniaConsultarFrame() {
         initComponents();
-<<<<<<< HEAD
         iniciarCentrada();        
         //Actualizar la tabla cada vez que gana foco, para que la información se mantenga al día en caso de editar un usuario
         addWindowListener(new WindowAdapter() {
@@ -39,7 +35,6 @@ public class CompaniaConsultarFrame extends Ventana {
         });
     }
     private void cargarInformacion(){
-=======
         iniciarCentrada();
         //Consultar companias desactivado por el momento
         btnConsultar.setVisible(false);
@@ -195,7 +190,6 @@ public class CompaniaConsultarFrame extends Ventana {
     private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarActionPerformed
         int idConsulta = companiasTable.getSelectedRow();
         if(idConsulta!=-1){
-<<<<<<< HEAD
             final Compania laCompaniaSeleccionada = this.cargarDB().get(idConsulta);
             System.out.println(laCompaniaSeleccionada);   
             java.awt.EventQueue.invokeLater(new Runnable() {
@@ -206,10 +200,8 @@ public class CompaniaConsultarFrame extends Ventana {
                     editarFrame.cargarCompania(laCompaniaSeleccionada);
                 }
             });
-=======
         Compania laCompaniaSeleccionada = this.cargarDB().get(idConsulta);
         System.out.println(laCompaniaSeleccionada);            
->>>>>>> origin/master
         } else {
             JOptionPane.showMessageDialog(rootPane, "Debe tener un usuario seleccionado para poder consultar", "Error al intentar consultar", JOptionPane.WARNING_MESSAGE);
         }

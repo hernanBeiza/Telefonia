@@ -283,8 +283,6 @@ public class CompaniaAgregarFrame extends Ventana {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-<<<<<<< HEAD
-=======
     private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarActionPerformed
         // TODO add your handling code here:
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -296,7 +294,6 @@ public class CompaniaAgregarFrame extends Ventana {
         this.dispose();
     }//GEN-LAST:event_btnConsultarActionPerformed
 
->>>>>>> origin/master
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
         //Validar que estén todos los campos rellenados antes de guardar
         boolean guardar = true;
