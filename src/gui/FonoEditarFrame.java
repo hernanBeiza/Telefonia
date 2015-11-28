@@ -19,6 +19,7 @@ import telefonia.PlanTelefonico;
 import telefonia.Privado;
 import telefonia.IOS;
 import telefonia.Telefonia;
+import telefonia.Tradicional;
 import telefonia.Usuario;
 
 /**
@@ -169,6 +170,47 @@ public class FonoEditarFrame extends Ventana {
     }
     
     
+    public void cargarTradicional(Tradicional tradicional){
+        System.out.println("cargarTradicional");
+        
+        fonoViejo = tradicional;
+        
+        cargar(fonoViejo);
+        
+        cargarOSAndroid();
+        
+        bloquearTab(0);
+        bloquearTab(1);
+        bloquearTab(2);
+        bloquearTab(3);
+        desbloquearTab(3);
+        
+        if(tradicional.isPantallaColor()){
+            cboPantallaColor.setSelectedItem("SI");
+        } else {
+            cboPantallaColor.setSelectedItem("NO");
+        }
+        //    private String[] tipos = {"Almeja","Normal","Slider"};
+
+        switch(tradicional.getTipoFono()){
+            case "Almeja":
+                almejaRadioButton.setSelected(true);
+                break;  
+            case "Normal":
+                normalRadioButton.setSelected(true);
+                break;
+            case "Slice":
+                sliderRadioButton.setSelected(true);
+                break;
+        }
+        cboTradicionalAntena.setSelectedItem(String.valueOf(tradicional.getCodigoAntena()));
+        cboTradicionalPeso.setSelectedItem(String.valueOf(tradicional.getPeso()));
+        cboTradicionalBateria.setSelectedItem(String.valueOf(tradicional.getDuracionBateria()));
+        
+    }
+    
+    
+    
     public void cargarPrivado(Privado privado){
         System.out.println("cargarPrivado");
         fonoViejo = privado;
@@ -186,7 +228,6 @@ public class FonoEditarFrame extends Ventana {
         } else {
             CmbIdeLlamadas.setSelectedIndex(1);
         }
- 
     }
     
     public void cargarComercial(Comerciales comercial){
@@ -1202,6 +1243,13 @@ public class FonoEditarFrame extends Ventana {
                     if(pantallaColor.equals("SI")){
                         pantalla = true;
                     }
+                    if(almejaRadioButton.isSelected()){
+                        tradicionalTipo = "Almeja";   
+                    }else if(sliderRadioButton.isSelected()){
+                        tradicionalTipo = "Slice";
+                    } else {
+                        tradicionalTipo = "Normal";
+                    }
                     System.out.println("tradicionalTipo " + tradicionalTipo);
                     //peso móvil
                     peso = Integer.parseInt(cboTradicionalPeso.getSelectedItem().toString());
@@ -1211,7 +1259,11 @@ public class FonoEditarFrame extends Ventana {
                     codigoAntena = Integer.parseInt(cboTradicionalAntena.getSelectedItem().toString());
                     System.out.println("peso " + peso);
                     System.out.println("codigoAntena " + codigoAntena);
-                    System.out.println("versionOS " + versionOS);
+                    Tradicional tradicional = (Tradicional)fonoViejo;
+                    tradicional.setCodigoAntena(codigoAntena);
+                    tradicional.setDuracionBateria(duracionBateria);
+                    tradicional.setPantallaColor(pantalla);
+                    tradicional.setTipoFono(tradicionalTipo);
                     //Crear
                     JOptionPane.showMessageDialog(rootPane, "Número guardado correctamente", "Guardado correcto", JOptionPane.INFORMATION_MESSAGE);
                     LimpiaFono();

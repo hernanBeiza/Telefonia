@@ -362,22 +362,20 @@ public class FonoBuscarFrame extends Ventana {
                     editarFrame.setVisible(true);
 
                     if(telefono instanceof Privado){
-                        System.out.println("Es un teléfono privado");
                         Privado unPrivado = (Privado)telefono;
                         editarFrame.cargarPrivado(unPrivado);
                     } else if(telefono instanceof Comerciales){
-                        System.out.println("Es un teléfono comercial");
                         Comerciales unComercial = (Comerciales)telefono;
                         editarFrame.cargarComercial(unComercial);
                     } else if(telefono instanceof Android){
-                        System.out.println("Es una mugre Android");
                         Android unAndroid = (Android)telefono;
                         editarFrame.cargarAndroid(unAndroid);
                     } else if(telefono instanceof IOS){
                         IOS unIOS = (IOS)telefono;
                         editarFrame.cargarIOS(unIOS);
                     } else if (telefono instanceof Tradicional){
-                        System.out.println("Este lo usan los abuelitos Tradicional");
+                        Tradicional unTradicional = (Tradicional)telefono;
+                        editarFrame.cargarTradicional(unTradicional);
                     }            
 
                 }
