@@ -12,19 +12,40 @@ import telefonia.PlanTelefonico;
  */
 
 //public class PlanTelefonicoAgregarFrame extends javax.swing.JFrame {
-public class PlanTelefonicoAgregarFrame extends Ventana {
+public class PlanTelefonicoEditarFrame extends Ventana {
     /**
-     * Creates new form PlanTelefonicoAgregarForm
+     * PlanTelefonico antiguo, al cual se le carga la información nueva.
      */
-    public PlanTelefonicoAgregarFrame() {
+    private PlanTelefonico planViejo;
+
+    public PlanTelefonicoEditarFrame() {
         initComponents();
         iniciarCentrada();
+        //Cargar Planes desde la DB
         cboTipoPlan.removeAllItems();
         for (String plan : this.obtenerDB().planesTipoObtener()) {
             cboTipoPlan.addItem(plan);
         }
     }
 
+    public void iniciarConPlan(PlanTelefonico plan){
+        planViejo = plan;
+        txtCodigo.setText(plan.getCodigo());
+        txtNombrePlan.setText(plan.getNombrePlan());
+        txtValorPlan.setText(String.valueOf(plan.getValorPlan()));
+        for (int i = 0; i < cboTipoPlan.getItemCount(); i++) {
+            //System.out.println(plan.getTipoPlan() +" " + cboTipoPlan.getItemAt(i));
+            if(plan.getTipoPlan().equals(cboTipoPlan.getItemAt(i))){
+                cboTipoPlan.setSelectedIndex(i);
+                break;
+            }
+        }
+        if(plan.isEstadoServicioTecnico()){
+            cboEstadoServicio.setSelectedIndex(1);
+        } else {
+            cboEstadoServicio.setSelectedIndex(0);
+        }        
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -34,7 +55,6 @@ public class PlanTelefonicoAgregarFrame extends Ventana {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel2 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         lblcodigo = new javax.swing.JLabel();
         txtCodigo = new javax.swing.JTextField();
@@ -46,23 +66,12 @@ public class PlanTelefonicoAgregarFrame extends Ventana {
         lbledad = new javax.swing.JLabel();
         cboTipoPlan = new javax.swing.JComboBox();
         cboEstadoServicio = new javax.swing.JComboBox();
-        jPanel3 = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
         btnVolver = new javax.swing.JButton();
-        btnAgregar = new javax.swing.JButton();
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 324, Short.MAX_VALUE)
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 51, Short.MAX_VALUE)
-        );
+        btnActualizar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("INGRESO PLAN TELEFONICO");
+        setTitle("MODIFICAR PLAN TELEFONICO");
 
         jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
@@ -86,9 +95,15 @@ public class PlanTelefonicoAgregarFrame extends Ventana {
 
         lblfecnac.setText("Valor Plan");
 
+        txtValorPlan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtValorPlanActionPerformed(evt);
+            }
+        });
+
         lbledad.setText("Estado Servicio Tecníco");
 
-        cboTipoPlan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "ECONOMICO", "NORMAL", "PREMIUN" }));
+        cboTipoPlan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "ECONOMICO", "NORMAL", "PREMIUM" }));
 
         cboEstadoServicio.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "SI", "NO" }));
 
@@ -96,8 +111,8 @@ public class PlanTelefonicoAgregarFrame extends Ventana {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(36, 36, 36)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -118,13 +133,13 @@ public class PlanTelefonicoAgregarFrame extends Ventana {
                         .addGap(73, 73, 73)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(cboTipoPlan, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(36, 36, 36))
+                            .addComponent(txtCodigo))))
+                .addContainerGap(38, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(24, 24, 24)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblcodigo)
                     .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -133,21 +148,21 @@ public class PlanTelefonicoAgregarFrame extends Ventana {
                     .addComponent(lblapellido)
                     .addComponent(cboTipoPlan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtNombrePlan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblrut))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtValorPlan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblfecnac))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cboEstadoServicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lbledad))
-                .addContainerGap(36, Short.MAX_VALUE))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
 
-        jPanel3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         btnVolver.setText("Volver");
         btnVolver.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -157,33 +172,32 @@ public class PlanTelefonicoAgregarFrame extends Ventana {
             }
         });
 
-        btnAgregar.setText("Agregar");
-        btnAgregar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        btnAgregar.addActionListener(new java.awt.event.ActionListener() {
+        btnActualizar.setText("Actualizar");
+        btnActualizar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnActualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAgregarActionPerformed(evt);
+                btnActualizarActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(23, 23, 23)
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
                 .addComponent(btnVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(24, 24, 24))
+                .addComponent(btnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(19, 19, 19))
         );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -193,26 +207,26 @@ public class PlanTelefonicoAgregarFrame extends Ventana {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 12, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
+    private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
         // TODO add your handling code here:
-        //Validar
+        // Validar
         boolean guardar = true;
         String mensajeError = "Le faltó completar:";
         if(txtCodigo.getText().equals("")){
@@ -239,19 +253,24 @@ public class PlanTelefonicoAgregarFrame extends Ventana {
             guardar = false;
             mensajeError+="\nNo es un código válido";
         }
+
         if(guardar){
             String vof = cboEstadoServicio.getSelectedItem().toString();
             boolean vof1 = false;
             if (vof.equals("SI")){
-                 vof1 = true;
-            }   else if (vof.equals("NO")){
+                vof1 = true;
+            } else if (vof.equals("NO")){
                 vof1 = false;
             }
-            System.out.println(vof);
-            PlanTelefonico plan = new PlanTelefonico(txtCodigo.getText().toUpperCase(), cboTipoPlan.getSelectedItem().toString().toUpperCase(), txtNombrePlan.getText().toUpperCase(), Integer.parseInt(txtValorPlan.getText()), vof1);
-            System.out.println(plan.toString());
-            if(obtenerDB().planesGuardar(plan)){
-                JOptionPane.showMessageDialog(rootPane, "Registro Grabado con Exito", "Registro exitoso", JOptionPane.PLAIN_MESSAGE);                
+            //Actualizar la información
+            planViejo.setCodigo(txtCodigo.getText().toUpperCase());
+            planViejo.setTipoPlan(cboTipoPlan.getSelectedItem().toString().toUpperCase());
+            planViejo.setNombrePlan(txtNombrePlan.getText().toUpperCase());
+            planViejo.setValorPlan(Integer.parseInt(txtValorPlan.getText()));
+            planViejo.setEstadoServicioTecnico(vof1);
+            
+            if(obtenerDB().planesModificar(planViejo)){
+                JOptionPane.showMessageDialog(rootPane, "Registro actualizado con Exito", "Registro exitoso", JOptionPane.PLAIN_MESSAGE);                
                 txtCodigo.setText(null);txtNombrePlan.setText(null);txtValorPlan.setText(null);
             } else {
                 JOptionPane.showMessageDialog(rootPane, "Error al grabar registro", "Error al guardar", JOptionPane.WARNING_MESSAGE);
@@ -259,7 +278,8 @@ public class PlanTelefonicoAgregarFrame extends Ventana {
         } else {
             JOptionPane.showMessageDialog(rootPane, mensajeError, "Error al guardar", JOptionPane.WARNING_MESSAGE);            
         }
-    }//GEN-LAST:event_btnAgregarActionPerformed
+                
+    }//GEN-LAST:event_btnActualizarActionPerformed
 
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
         this.dispose();
@@ -275,6 +295,11 @@ public class PlanTelefonicoAgregarFrame extends Ventana {
         txtNombrePlan.transferFocus();
         txtNombrePlan.setText(TransformaMayuscula(txtNombrePlan.getText()));
     }//GEN-LAST:event_txtNombrePlanActionPerformed
+
+    private void txtValorPlanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtValorPlanActionPerformed
+        // TODO add your handling code here:
+        txtValorPlan.transferFocus();
+    }//GEN-LAST:event_txtValorPlanActionPerformed
 
     /**
      * @param args the command line arguments
@@ -293,33 +318,35 @@ public class PlanTelefonicoAgregarFrame extends Ventana {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(PlanTelefonicoAgregarFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PlanTelefonicoEditarFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(PlanTelefonicoAgregarFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PlanTelefonicoEditarFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(PlanTelefonicoAgregarFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PlanTelefonicoEditarFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(PlanTelefonicoAgregarFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PlanTelefonicoEditarFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
-                new PlanTelefonicoAgregarFrame().setVisible(true);
+                new PlanTelefonicoEditarFrame().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAgregar;
+    private javax.swing.JButton btnActualizar;
     private javax.swing.JButton btnVolver;
     private javax.swing.JComboBox cboEstadoServicio;
     private javax.swing.JComboBox cboTipoPlan;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JLabel lblapellido;
     private javax.swing.JLabel lblcodigo;
     private javax.swing.JLabel lbledad;

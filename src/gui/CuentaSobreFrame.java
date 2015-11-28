@@ -5,6 +5,8 @@
  */
 package gui;
 
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import java.util.Iterator;
 import javax.swing.JOptionPane;
@@ -16,21 +18,26 @@ import telefonia.Telefonia;
  *
  * @author hernanBeiza
  */
-//public class CuentasSobreFrame extends javax.swing.JFrame {
-public class CuentasSobreFrame extends Ventana {
+//public class CuentaSobreFrame extends javax.swing.JFrame {
+public class CuentaSobreFrame extends Ventana {
 
     /**
      * Creates new form CuentasSuperadasFrame
      */
-    public CuentasSobreFrame() {
+    public CuentaSobreFrame() {
         initComponents();
         iniciarCentrada();
-        cargarInformacion();
+        
+        addWindowListener(new WindowAdapter() {
+            public void windowOpened(WindowEvent e) {
+                System.out.println("cargar ahora");
+                cargarInformacion();        
+            }
+        });
     }
-
         
     private void cargarInformacion(){
-        ArrayList <Telefonia>telefonos = cuentasSobre();
+        ArrayList <Telefonia>telefonos = obtenerDB().cuentasSobre();
         System.out.println(telefonos.toString());
         if(telefonos.isEmpty()){
             JOptionPane.showMessageDialog(rootPane, "No se encontraron teléfonos", "Error al intentar listar", JOptionPane.WARNING_MESSAGE);
@@ -43,7 +50,7 @@ public class CuentasSobreFrame extends Ventana {
             }
             while(it.hasNext()){
                 Telefonia telefono = (Telefonia)it.next();
-                modeloTable.addRow(new Object[]{telefono.getUsuario().getRun(),telefono.getUsuario().getNombre(),telefono.getNumeroFono(),telefono.getValorMinutoFijo(), telefono.getValorMinutoMovil(),telefono.getCantidadMinutosUsadosMovil()+telefono.getCantidadMinutosUsadosFijos(),telefono.getTarifaFija()});
+                modeloTable.addRow(new Object[]{telefono.getUsuario().getRun(),telefono.getUsuario().getNombre(),telefono.getNumeroFono(),telefono.getValorMinutoFijo(), telefono.getValorMinutoMovil(),telefono.getCantidadMinutosUsadosMovil()+telefono.getCantidadMinutosUsadosFijos(),telefono.getTarifaFija(),telefono.getCantidadMinutosUsadosFijos(),telefono.getCantidadMinutosUsadosMovil()});
             }
             cuentasTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         }
@@ -65,17 +72,22 @@ public class CuentasSobreFrame extends Ventana {
         btnVolver = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("CUENTA SOBRE");
+
+        jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        jScrollPane1.setBorder(null);
 
         cuentasTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Rut", "Nombre", "Teléfono", "Minutos Fijo", "Minutos Móviles", "Total", "Tarifa Fija"
+                "Rut", "Nombre", "Teléfono", "Valor Min Fijo", "valor Min Móvil", "Total", "Tarifa Fija", "Cant. Min. Fijos", "Cant. Min. Móviles"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -88,12 +100,16 @@ public class CuentasSobreFrame extends Ventana {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 883, Short.MAX_VALUE)
+                .addGap(3, 3, 3))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
+
+        jPanel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         btnVolver.setText("Volver");
         btnVolver.addActionListener(new java.awt.event.ActionListener() {
@@ -107,8 +123,9 @@ public class CuentasSobreFrame extends Ventana {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addComponent(btnVolver)
-                .addContainerGap(651, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(btnVolver, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -136,7 +153,7 @@ public class CuentasSobreFrame extends Ventana {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(42, Short.MAX_VALUE))
         );
 
         pack();
@@ -163,21 +180,23 @@ public class CuentasSobreFrame extends Ventana {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(CuentasSobreFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CuentaSobreFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(CuentasSobreFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CuentaSobreFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(CuentasSobreFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CuentaSobreFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(CuentasSobreFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CuentaSobreFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new CuentasSobreFrame().setVisible(true);
+                new CuentaSobreFrame().setVisible(true);
             }
         });
     }

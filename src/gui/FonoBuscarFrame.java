@@ -5,11 +5,8 @@
  */
 package gui;
 
-import java.awt.Dimension;
-import java.awt.Toolkit;
 import java.util.ArrayList;
-import java.util.Iterator;
-import javax.swing.JFrame;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
@@ -22,14 +19,26 @@ import telefonia.Telefonia;
 //public class FonoBuscarFrame extends javax.swing.JFrame {
 public class FonoBuscarFrame extends Ventana {
 
+    private ArrayList<Telefonia> encontrados = null;
     /**
      * Creates new form FonoBuscar
      */
     public FonoBuscarFrame() {
         initComponents();
-        iniciarCentrada();        
+        iniciarCentrada();  
+        cboMarca.setEnabled(false);
+        cargarMarcasAndroid();
     }
 
+       
+   private void cargarMarcasAndroid(){
+        String[] marcas = obtenerDB().getMarcasAndroid();
+        DefaultComboBoxModel mdlCombo= (DefaultComboBoxModel)cboMarca.getModel();
+        cboMarca.removeAllItems();
+        for (String marca : marcas) {
+            mdlCombo.addElement(marca);
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -47,8 +56,8 @@ public class FonoBuscarFrame extends Ventana {
         buscarPanel = new javax.swing.JPanel();
         btnBuscar = new javax.swing.JButton();
         txtNumero = new javax.swing.JTextField();
+        cboMarca = new javax.swing.JComboBox();
         jPanel4 = new javax.swing.JPanel();
-        tituloLabel = new javax.swing.JLabel();
         numeroRadio = new javax.swing.JRadioButton();
         rutRadio = new javax.swing.JRadioButton();
         marcaRadio = new javax.swing.JRadioButton();
@@ -57,10 +66,23 @@ public class FonoBuscarFrame extends Ventana {
         volverButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("BUSCAR TELEFONO ");
 
+        jPanel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        datosTable.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         datosTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
                 "Rut", "Nombre", "Apellido", "Compañia", "Teléfono"
@@ -95,7 +117,10 @@ public class FonoBuscarFrame extends Ventana {
             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
+        buscarPanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
         btnBuscar.setText("Buscar");
+        btnBuscar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBuscarActionPerformed(evt);
@@ -107,8 +132,11 @@ public class FonoBuscarFrame extends Ventana {
         buscarPanelLayout.setHorizontalGroup(
             buscarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(buscarPanelLayout.createSequentialGroup()
-                .addComponent(txtNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(20, 20, 20)
+                .addComponent(txtNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(cboMarca, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -118,12 +146,12 @@ public class FonoBuscarFrame extends Ventana {
                 .addContainerGap()
                 .addGroup(buscarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtNumero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnBuscar))
+                    .addComponent(btnBuscar)
+                    .addComponent(cboMarca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        tituloLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        tituloLabel.setText("Buscar teléfono por Número");
+        jPanel4.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         filtroGrupo.add(numeroRadio);
         numeroRadio.setSelected(true);
@@ -154,30 +182,30 @@ public class FonoBuscarFrame extends Ventana {
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(tituloLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(36, 36, 36)
                 .addComponent(numeroRadio)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(117, 117, 117)
                 .addComponent(rutRadio)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(marcaRadio)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(74, 74, 74))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(tituloLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(17, 17, 17)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(numeroRadio)
                     .addComponent(rutRadio)
                     .addComponent(marcaRadio))
-                .addContainerGap())
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
+        jPanel3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
         verDetalleButton.setText("Ver Detalle");
+        verDetalleButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         verDetalleButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 verDetalleButtonActionPerformed(evt);
@@ -185,6 +213,7 @@ public class FonoBuscarFrame extends Ventana {
         });
 
         volverButton.setText("Volver");
+        volverButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         volverButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 volverButtonActionPerformed(evt);
@@ -196,31 +225,31 @@ public class FonoBuscarFrame extends Ventana {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addComponent(volverButton)
+                .addGap(24, 24, 24)
+                .addComponent(volverButton, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(verDetalleButton)
-                .addContainerGap())
+                .addComponent(verDetalleButton, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(23, 23, 23))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(volverButton, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
-            .addComponent(verDetalleButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(verDetalleButton, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
+                .addComponent(volverButton, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(buscarPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jPanel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addContainerGap())))
+                    .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -233,7 +262,7 @@ public class FonoBuscarFrame extends Ventana {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(65, 65, 65))
+                .addContainerGap())
         );
 
         pack();
@@ -247,70 +276,69 @@ public class FonoBuscarFrame extends Ventana {
         for (int i = rowCount - 1; i >= 0; i--) {
             modeloTable.removeRow(i);
         }
-        if(!txtNumero.getText().equals("")){
-            //Obtener todas las ventanas abiertas. la 0 es la main, ella tiene la DB
-            //System.out.println("Total " + JFrame.getFrames().length);                       
-            MainFrame frame = (MainFrame)JFrame.getFrames()[0];
-            System.out.println(frame.getDb().getTelefonos());
-            ArrayList<Telefonia> encontrados = null;
-            if(numeroRadio.isSelected()){                
-                encontrados = frame.getDb().buscarFonoPorNumero(txtNumero.getText());
-            } else if(rutRadio.isSelected()){
-                encontrados = frame.getDb().buscarFonoPorRut(txtNumero.getText());
-            }else if(marcaRadio.isSelected()){
-                encontrados = frame.getDb().buscarFonoPorMarca(txtNumero.getText());
-            }            
-            if(encontrados.size()==0){
-                JOptionPane.showMessageDialog(rootPane, "No se encontró el teléfono", "Error al intentar buscar", JOptionPane.ERROR_MESSAGE);
+        if(marcaRadio.isSelected()){
+            encontrados = obtenerDB().telefonosBuscarPorMarca(cboMarca.getSelectedItem().toString());
+            
+        }
+        if(numeroRadio.isSelected() || rutRadio.isSelected()){
+            if(!txtNumero.getText().equals("")){
+                //Obtener todas las ventanas abiertas. la 0 es la main, ella tiene la DB
+                //System.out.println("Total " + JFrame.getFrames().length);                       
+                encontrados = null;
+                if(numeroRadio.isSelected()){                
+                    encontrados = obtenerDB().telefonosBuscarPorNumero(txtNumero.getText());
+                } else if(rutRadio.isSelected()){
+                    encontrados = obtenerDB().telefonosBuscarPorRut(txtNumero.getText());
+                }            
             } else {
-                Iterator it = encontrados.iterator();
-                while(it.hasNext()){
-                    Telefonia unTelefono = (Telefonia)it.next();
-                    modeloTable.addRow(new Object[]{unTelefono.getUsuario().getRun(),unTelefono.getUsuario().getNombre(),unTelefono.getUsuario().getApellido(),unTelefono.getCompania().getNombre(),unTelefono.getNumeroFono()});
+                String mensaje ="Debe ingresar ";
+                if(numeroRadio.isSelected()){
+                    mensaje +="el número ";
+                } else if(rutRadio.isSelected()){
+                    mensaje +="el rut";
+                mensaje +=" para buscar";
+                JOptionPane.showMessageDialog(rootPane, mensaje, "Error al intentar buscar", JOptionPane.WARNING_MESSAGE);
                 }
-                datosTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
             }
+        }
+                
+        if(encontrados.isEmpty()){
+            JOptionPane.showMessageDialog(rootPane, "No se encontraron teléfonos", "Error al intentar buscar", JOptionPane.ERROR_MESSAGE);
         } else {
-            String mensaje ="Debe ingresar ";
-            if(numeroRadio.isSelected()){
-                mensaje +="el número ";
-            } else if(rutRadio.isSelected()){
-                mensaje +="el rut";
-            }else if(marcaRadio.isSelected()){
-                mensaje +="la marca";
+            for (Telefonia unTelefono : encontrados) {
+                modeloTable.addRow(new Object[]{unTelefono.getUsuario().getRun(),unTelefono.getUsuario().getNombre(),unTelefono.getUsuario().getApellido(),unTelefono.getCompania().getNombre(),unTelefono.getNumeroFono()});
             }
-            mensaje +=" para buscar";
-            JOptionPane.showMessageDialog(rootPane, mensaje, "Error al intentar buscar", JOptionPane.WARNING_MESSAGE);
+            datosTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         }
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void numeroRadioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numeroRadioActionPerformed
-        // TODO add your handling code here:
-        tituloLabel.setText("Buscar teléfono por número");
+        txtNumero.setText("");     
+        cboMarca.setEnabled(false);
+        txtNumero.setEnabled(true);
     }//GEN-LAST:event_numeroRadioActionPerformed
 
     private void rutRadioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rutRadioActionPerformed
-        // TODO add your handling code here:
-        tituloLabel.setText("Buscar teléfono por rut");
+        txtNumero.setText("");     
+        txtNumero.setEnabled(true);
+        cboMarca.setEnabled(false);
     }//GEN-LAST:event_rutRadioActionPerformed
 
     private void marcaRadioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_marcaRadioActionPerformed
-        // TODO add your handling code here:
-        tituloLabel.setText("Buscar teléfono por marca");
-        /*
-        buscarPanel.remove(txtNumero);
-        buscarPanel.add(marcasCBO);
-        this.revalidate();
-        this.repaint();
-        */
-        System.out.println("Quiero hacer que aparezca un combobox con las marcas y oculta el campo... Y viceversa");
+        txtNumero.setText("");     
+        cboMarca.setEnabled(true);
+        txtNumero.setEnabled(false);
     }//GEN-LAST:event_marcaRadioActionPerformed
 
     private void verDetalleButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verDetalleButtonActionPerformed
         // TODO add your handling code here:
         System.out.println(datosTable.getSelectedRow());
         if(datosTable.getSelectedRow()>=0){
-            
+            int id = datosTable.getSelectedRow();
+            System.out.println(id);
+            Telefonia telefono = encontrados.get(id);
+            System.out.println(telefono.toString());
+            JOptionPane.showMessageDialog(rootPane, "Acá hay que mostrar el formulario de andrés con la data cargada", "Error al ver detalle", JOptionPane.WARNING_MESSAGE);
         } else {
             JOptionPane.showMessageDialog(rootPane, "Debe seleccionar al menos una", "Error al ver detalle", JOptionPane.WARNING_MESSAGE);
         }        
@@ -360,6 +388,7 @@ public class FonoBuscarFrame extends Ventana {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscar;
     private javax.swing.JPanel buscarPanel;
+    private javax.swing.JComboBox cboMarca;
     private javax.swing.JTable datosTable;
     private javax.swing.ButtonGroup filtroGrupo;
     private javax.swing.JPanel jPanel2;
@@ -370,7 +399,6 @@ public class FonoBuscarFrame extends Ventana {
     private javax.swing.JComboBox marcasCBO;
     private javax.swing.JRadioButton numeroRadio;
     private javax.swing.JRadioButton rutRadio;
-    private javax.swing.JLabel tituloLabel;
     private javax.swing.JTextField txtNumero;
     private javax.swing.JButton verDetalleButton;
     private javax.swing.JButton volverButton;

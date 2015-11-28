@@ -57,13 +57,13 @@ public class MainFrame extends javax.swing.JFrame {
         companiaAgregarMenuItem = new javax.swing.JMenuItem();
         companiaConsultarMenuItem = new javax.swing.JMenuItem();
         telefonosMenu = new javax.swing.JMenu();
-        jMenuItem8 = new javax.swing.JMenuItem();
+        btnAgregarFono = new javax.swing.JMenuItem();
         buscarNumeroItem = new javax.swing.JMenuItem();
         eliminarNumeroItem = new javax.swing.JMenuItem();
         cantidadMenuItem = new javax.swing.JMenuItem();
         cuentasMenu = new javax.swing.JMenu();
-        jMenuItem3 = new javax.swing.JMenuItem();
-        jMenuItem4 = new javax.swing.JMenuItem();
+        cuentaCompletaMenuItem = new javax.swing.JMenuItem();
+        cuentaSimpleMenuItem = new javax.swing.JMenuItem();
         cuentasSobreMenuItem = new javax.swing.JMenuItem();
         servicioMenu = new javax.swing.JMenu();
         servicioAplicarMenuItem = new javax.swing.JMenuItem();
@@ -71,11 +71,12 @@ public class MainFrame extends javax.swing.JFrame {
         salirMenu = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle(" EMPRESA DE MANTENCIONES DE TELEFONIA DE SANTIAGO                                                                                                                                                                                           V.1.0");
         setMinimumSize(new java.awt.Dimension(630, 400));
 
         usuariosMenu.setText("Usuarios");
 
-        usuariosAgregarMenuItem.setText("Agregar usuario");
+        usuariosAgregarMenuItem.setText("Agregar Usuarios");
         usuariosAgregarMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 usuariosAgregarMenuItemActionPerformed(evt);
@@ -83,7 +84,7 @@ public class MainFrame extends javax.swing.JFrame {
         });
         usuariosMenu.add(usuariosAgregarMenuItem);
 
-        usuariosListarMenuItem.setText("Listar usuarios");
+        usuariosListarMenuItem.setText("Listar Usuarios");
         usuariosListarMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 usuariosListarMenuItemActionPerformed(evt);
@@ -95,7 +96,7 @@ public class MainFrame extends javax.swing.JFrame {
 
         planesMenu.setText("Planes Telefónicos");
 
-        planAgregarMenuItem.setText("Agregar plan");
+        planAgregarMenuItem.setText("Agregar Plan");
         planAgregarMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 planAgregarMenuItemActionPerformed(evt);
@@ -103,7 +104,7 @@ public class MainFrame extends javax.swing.JFrame {
         });
         planesMenu.add(planAgregarMenuItem);
 
-        listarMenuItem.setText("Listar planes");
+        listarMenuItem.setText("Listar Planes");
         listarMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 listarMenuItemActionPerformed(evt);
@@ -115,7 +116,7 @@ public class MainFrame extends javax.swing.JFrame {
 
         companiaMenu.setText("Compañia");
 
-        companiaAgregarMenuItem.setText("Agregar compañía");
+        companiaAgregarMenuItem.setText("Agregar Compañía");
         companiaAgregarMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 companiaAgregarMenuItemActionPerformed(evt);
@@ -123,7 +124,7 @@ public class MainFrame extends javax.swing.JFrame {
         });
         companiaMenu.add(companiaAgregarMenuItem);
 
-        companiaConsultarMenuItem.setText("Listar compañías");
+        companiaConsultarMenuItem.setText("Listar Compañías");
         companiaConsultarMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 companiaConsultarMenuItemActionPerformed(evt);
@@ -135,10 +136,15 @@ public class MainFrame extends javax.swing.JFrame {
 
         telefonosMenu.setText("Teléfonos");
 
-        jMenuItem8.setText("Agregar teléfono");
-        telefonosMenu.add(jMenuItem8);
+        btnAgregarFono.setText("Agregar Teléfono");
+        btnAgregarFono.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarFonoActionPerformed(evt);
+            }
+        });
+        telefonosMenu.add(btnAgregarFono);
 
-        buscarNumeroItem.setText("Buscar teléfono");
+        buscarNumeroItem.setText("Buscar Teléfono");
         buscarNumeroItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buscarNumeroItemActionPerformed(evt);
@@ -146,7 +152,7 @@ public class MainFrame extends javax.swing.JFrame {
         });
         telefonosMenu.add(buscarNumeroItem);
 
-        eliminarNumeroItem.setText("Eliminar teléfono");
+        eliminarNumeroItem.setText("Eliminar Teléfono");
         eliminarNumeroItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 eliminarNumeroItemActionPerformed(evt);
@@ -154,7 +160,7 @@ public class MainFrame extends javax.swing.JFrame {
         });
         telefonosMenu.add(eliminarNumeroItem);
 
-        cantidadMenuItem.setText("Cantidad números privados");
+        cantidadMenuItem.setText("Cantidad Números");
         cantidadMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cantidadMenuItemActionPerformed(evt);
@@ -166,13 +172,23 @@ public class MainFrame extends javax.swing.JFrame {
 
         cuentasMenu.setText("Cuentas");
 
-        jMenuItem3.setText("Mostrar cuenta");
-        cuentasMenu.add(jMenuItem3);
+        cuentaCompletaMenuItem.setText("Mostrar Cuenta");
+        cuentaCompletaMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cuentaCompletaMenuItemActionPerformed(evt);
+            }
+        });
+        cuentasMenu.add(cuentaCompletaMenuItem);
 
-        jMenuItem4.setText("Mostrar cuenta simple");
-        cuentasMenu.add(jMenuItem4);
+        cuentaSimpleMenuItem.setText("Mostrar Cuenta Simple");
+        cuentaSimpleMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cuentaSimpleMenuItemActionPerformed(evt);
+            }
+        });
+        cuentasMenu.add(cuentaSimpleMenuItem);
 
-        cuentasSobreMenuItem.setText("Cantidad de cuentas sobre 250 minutos");
+        cuentasSobreMenuItem.setText("Cantidad de Cuentas Sobre 250 Minutos");
         cuentasSobreMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cuentasSobreMenuItemActionPerformed(evt);
@@ -184,7 +200,7 @@ public class MainFrame extends javax.swing.JFrame {
 
         servicioMenu.setText("Servicio Técnico");
 
-        servicioAplicarMenuItem.setText("Aplicar servicio a un teléfono");
+        servicioAplicarMenuItem.setText("Aplicar Servicio a un Teléfono");
         servicioAplicarMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 servicioAplicarMenuItemActionPerformed(evt);
@@ -192,7 +208,7 @@ public class MainFrame extends javax.swing.JFrame {
         });
         servicioMenu.add(servicioAplicarMenuItem);
 
-        servicioBuscarMenuItem.setText("Buscar teléfonos llevados al servicio técnico");
+        servicioBuscarMenuItem.setText("Buscar Teléfonos Llevados al Servicio Técnico");
         servicioBuscarMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 servicioBuscarMenuItemActionPerformed(evt);
@@ -203,13 +219,12 @@ public class MainFrame extends javax.swing.JFrame {
         jMenuBar1.add(servicioMenu);
 
         salirMenu.setText("Salir");
-        salirMenu.addMenuListener(new javax.swing.event.MenuListener() {
-            public void menuSelected(javax.swing.event.MenuEvent evt) {
-                salirMenuMenuSelected(evt);
+        salirMenu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                salirMenuMousePressed(evt);
             }
-            public void menuDeselected(javax.swing.event.MenuEvent evt) {
-            }
-            public void menuCanceled(javax.swing.event.MenuEvent evt) {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                salirMenuMouseClicked(evt);
             }
         });
         jMenuBar1.add(salirMenu);
@@ -257,13 +272,6 @@ public class MainFrame extends javax.swing.JFrame {
         });
     }//GEN-LAST:event_cantidadMenuItemActionPerformed
 
-    private void salirMenuMenuSelected(javax.swing.event.MenuEvent evt) {//GEN-FIRST:event_salirMenuMenuSelected
-        int dialogButton = JOptionPane.showConfirmDialog (rootPane, "¿Está seguro que desea cerrar el programa?","¿Está seguro?", JOptionPane.YES_NO_OPTION,JOptionPane.WARNING_MESSAGE);
-        if(dialogButton==0){
-            System.exit(0);
-        }
-    }//GEN-LAST:event_salirMenuMenuSelected
-
     private void usuariosAgregarMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usuariosAgregarMenuItemActionPerformed
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -297,40 +305,95 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_companiaAgregarMenuItemActionPerformed
 
     private void cuentasSobreMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cuentasSobreMenuItemActionPerformed
-        /*
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new CuentasSobreFrame().setVisible(true);
+                new CuentaSobreFrame().setVisible(true);
             }
         });
-        */
-        CuentasSobreFrame cuentasFrame = new CuentasSobreFrame();
-        cuentasFrame.setVisible(true);        
     }//GEN-LAST:event_cuentasSobreMenuItemActionPerformed
 
     private void listarMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listarMenuItemActionPerformed
         // TODO add your handling code here:
-        PlanTelefonicoListarFrame listarFrame = new PlanTelefonicoListarFrame();
-        listarFrame.setVisible(true);
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new PlanTelefonicoListarFrame().setVisible(true);
+            }
+        });
+        
     }//GEN-LAST:event_listarMenuItemActionPerformed
 
     private void planAgregarMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_planAgregarMenuItemActionPerformed
         // TODO add your handling code here:
-        PlanTelefonicoAgregarFrame planAgregar = new PlanTelefonicoAgregarFrame();
-        planAgregar.setVisible(true);
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new PlanTelefonicoAgregarFrame().setVisible(true);
+            }
+        });
     }//GEN-LAST:event_planAgregarMenuItemActionPerformed
 
     private void servicioAplicarMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_servicioAplicarMenuItemActionPerformed
         // TODO add your handling code here:
-        ServicioTecnicoAplicarFrame servicioFrame = new ServicioTecnicoAplicarFrame();
-        servicioFrame.setVisible(true);
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new ServicioTecnicoAplicarFrame().setVisible(true);
+            }
+        });        
     }//GEN-LAST:event_servicioAplicarMenuItemActionPerformed
 
     private void servicioBuscarMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_servicioBuscarMenuItemActionPerformed
         // TODO add your handling code here:
-        ServicioTecnicoListarFrame servicioFrame = new ServicioTecnicoListarFrame();
-        servicioFrame.setVisible(true);
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new ServicioTecnicoListarFrame().setVisible(true);
+            }
+        });
+
     }//GEN-LAST:event_servicioBuscarMenuItemActionPerformed
+
+    private void btnAgregarFonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarFonoActionPerformed
+        // TODO add your handling code here:
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new FonoAgregarFrame().setVisible(true);
+            }
+        });
+    }//GEN-LAST:event_btnAgregarFonoActionPerformed
+
+    private void salirMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_salirMenuMouseClicked
+        // TODO add your handling code here:
+        int dialogButton = JOptionPane.showConfirmDialog (rootPane, "¿Está seguro que desea cerrar el programa?","¿Está seguro?", JOptionPane.YES_NO_OPTION,JOptionPane.WARNING_MESSAGE);
+        if(dialogButton==0){
+            System.exit(0);
+        }
+
+    }//GEN-LAST:event_salirMenuMouseClicked
+
+    private void cuentaSimpleMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cuentaSimpleMenuItemActionPerformed
+        // TODO add your handling code here:
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new CuentaSimpleFrame().setVisible(true);
+            }
+        });
+    }//GEN-LAST:event_cuentaSimpleMenuItemActionPerformed
+
+    private void cuentaCompletaMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cuentaCompletaMenuItemActionPerformed
+        // TODO add your handling code here:
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new CuentaCompletaFrame().setVisible(true);
+            }
+        });
+    }//GEN-LAST:event_cuentaCompletaMenuItemActionPerformed
+
+    private void salirMenuMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_salirMenuMousePressed
+        // TODO add your handling code here:
+          int dialogButton = JOptionPane.showConfirmDialog (rootPane, "¿Está seguro que desea cerrar el programa?","¿Está seguro?", JOptionPane.YES_NO_OPTION,JOptionPane.WARNING_MESSAGE);
+          if(dialogButton==0){
+          System.exit(0);
+        }
+
+    }//GEN-LAST:event_salirMenuMousePressed
 
     /**
      * @param args the command line arguments
@@ -368,18 +431,18 @@ public class MainFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem btnAgregarFono;
     private javax.swing.JMenuItem buscarNumeroItem;
     private javax.swing.JMenuItem cantidadMenuItem;
     private javax.swing.JMenuItem companiaAgregarMenuItem;
     private javax.swing.JMenuItem companiaConsultarMenuItem;
     private javax.swing.JMenu companiaMenu;
+    private javax.swing.JMenuItem cuentaCompletaMenuItem;
+    private javax.swing.JMenuItem cuentaSimpleMenuItem;
     private javax.swing.JMenu cuentasMenu;
     private javax.swing.JMenuItem cuentasSobreMenuItem;
     private javax.swing.JMenuItem eliminarNumeroItem;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem listarMenuItem;
     private javax.swing.JMenuItem planAgregarMenuItem;
     private javax.swing.JMenu planesMenu;

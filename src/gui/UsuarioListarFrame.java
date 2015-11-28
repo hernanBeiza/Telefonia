@@ -5,8 +5,11 @@
  */
 package gui;
 
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import java.util.Iterator;
+import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 import telefonia.Usuario;
@@ -23,8 +26,18 @@ public class UsuarioListarFrame extends Ventana {
     public UsuarioListarFrame() {
         initComponents();
         iniciarCentrada();
-        
-        ArrayList<Usuario> usuarios = usuariosObtener();    
+        //Actualizar la tabla cada vez que gana foco, para que la información se mantenga al día en caso de editar un usuario
+        addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowActivated(WindowEvent e) {
+                cargarInformacion();        
+            }
+        });
+    }
+    
+    private void cargarInformacion(){
+        limpiar();
+        ArrayList<Usuario> usuarios = obtenerDB().usuariosObtener();    
         DefaultTableModel modeloTable = (DefaultTableModel) usuariosTable.getModel();
         Iterator it = usuarios.iterator();
         int rowCount = modeloTable.getRowCount();
@@ -35,7 +48,15 @@ public class UsuarioListarFrame extends Ventana {
             Usuario unUsuario = (Usuario)it.next();
             modeloTable.addRow(new Object[]{unUsuario.getRun(),unUsuario.getNombre(),unUsuario.getApellido(),unUsuario.getEdad(),unUsuario.getFechaNacimiento(),unUsuario.getEstadoCivil()});
         }
-        usuariosTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        usuariosTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);        
+    }
+    
+    private void limpiar(){
+        int rowCount = usuariosTable.getRowCount();
+        for (int i = rowCount - 1; i >= 0; i--) {
+            DefaultTableModel modeloTable = (DefaultTableModel) usuariosTable.getModel();
+            modeloTable.removeRow(i);
+        }
     }
     
 
@@ -55,13 +76,24 @@ public class UsuarioListarFrame extends Ventana {
         jPanel1 = new javax.swing.JPanel();
         btnVolver = new javax.swing.JButton();
         btnConsultar = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("CONSULTA USUARIO");
+
+        jPanel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         usuariosTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
                 "Rut", "Nombre", "Apellido", "Edad", "Fecha Nacimiento", "Estado Civil"
@@ -75,6 +107,7 @@ public class UsuarioListarFrame extends Ventana {
                 return canEdit [columnIndex];
             }
         });
+        usuariosTable.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
         jScrollPane1.setViewportView(usuariosTable);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -83,26 +116,27 @@ public class UsuarioListarFrame extends Ventana {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 0, Short.MAX_VALUE)
             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 537, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 375, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 259, Short.MAX_VALUE)
+            .addGap(0, 271, Short.MAX_VALUE)
             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel2Layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 271, Short.MAX_VALUE))
         );
 
+        jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
         btnVolver.setText("Volver");
+        btnVolver.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnVolver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnVolverActionPerformed(evt);
             }
         });
 
-        btnConsultar.setText("Consultar");
+        btnConsultar.setText("Modificar");
+        btnConsultar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnConsultar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnConsultarActionPerformed(evt);
@@ -114,9 +148,11 @@ public class UsuarioListarFrame extends Ventana {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(22, 22, 22)
                 .addComponent(btnVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 480, Short.MAX_VALUE)
-                .addComponent(btnConsultar))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 268, Short.MAX_VALUE)
+                .addComponent(btnConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -125,10 +161,6 @@ public class UsuarioListarFrame extends Ventana {
                 .addComponent(btnConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Listar Usuarios");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -136,21 +168,18 @@ public class UsuarioListarFrame extends Ventana {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(16, 16, 16)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -162,11 +191,29 @@ public class UsuarioListarFrame extends Ventana {
 
     private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarActionPerformed
         int idConsulta = usuariosTable.getSelectedRow();
-        Usuario usuarioSeleccionado = usuariosObtener().get(idConsulta);
-        System.out.println(usuarioSeleccionado);
-        UsuarioEditarFrame editarFrame = new UsuarioEditarFrame();
-        editarFrame.setVisible(true);
-        editarFrame.cargarUsuario(usuarioSeleccionado);
+        if(idConsulta!=-1){
+            final Usuario usuarioSeleccionado = obtenerDB().usuariosObtener().get(idConsulta);
+            System.out.println(usuarioSeleccionado);
+            //
+            
+            java.awt.EventQueue.invokeLater(new Runnable() {
+                @Override
+                public void run() {
+                    UsuarioEditarFrame editarFrame = new UsuarioEditarFrame();
+                    editarFrame.setVisible(true);
+                    editarFrame.cargarUsuario(usuarioSeleccionado);
+                    //new UsuarioEditarFrame().setVisible(true);
+                }
+            });
+            /*
+            UsuarioEditarFrame editarFrame = new UsuarioEditarFrame();
+            editarFrame.setVisible(true);
+            editarFrame.cargarUsuario(usuarioSeleccionado);
+            */
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "Debe tener un usuario seleccionado para poder consultar", "Error al intentar consultar", JOptionPane.WARNING_MESSAGE);
+            
+        }
     }//GEN-LAST:event_btnConsultarActionPerformed
 
     /**
@@ -207,7 +254,6 @@ public class UsuarioListarFrame extends Ventana {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnConsultar;
     private javax.swing.JButton btnVolver;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;

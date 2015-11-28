@@ -4,6 +4,8 @@
  * and open the template in the editor.
  */
 package gui;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import telefonia.Compania;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -16,14 +18,15 @@ import telefonia.PlanTelefonico;
  * @author Andres
  */
 //public class CompaniaAgregarFrame extends javax.swing.JFrame {
-public class CompaniaAgregarFrame extends Ventana {
+public class CompaniaEditarFrame extends Ventana {
 
+    private Compania laCompania;
     private ArrayList <PlanTelefonico> planes;
 
     /**
      * Creates new form CompaniagregarFrame
      */
-    public CompaniaAgregarFrame() {
+    public CompaniaEditarFrame() {
         initComponents();
         iniciarCentrada();
         //Cargar Planes
@@ -39,6 +42,13 @@ public class CompaniaAgregarFrame extends Ventana {
             modeloTable.addRow(new Object[]{unPlan.getCodigo(),unPlan.getTipoPlan(),unPlan.getNombrePlan(),unPlan.getValorPlan()});
         }
 
+    }
+    public void cargarCompania(Compania compania){
+        laCompania = compania;
+        txtnombre.setText(compania.getNombre());
+        txtrut.setText(compania.getRut());
+        txtdireccion.setText(compania.getDireccion());
+        
     }
 
     /**
@@ -277,13 +287,13 @@ public class CompaniaAgregarFrame extends Ventana {
                 planesSeleccionados.add(unPlan);
             }
 
-            Compania companiaNueva = new Compania(txtrut.getText(), txtnombre.getText(), txtdireccion.getText(), planesSeleccionados);
-            if(obtenerDB().companiaGuardar(companiaNueva)){
-                JOptionPane.showMessageDialog(rootPane, "Compañia guardado correctamente", "Guardado correcto", JOptionPane.INFORMATION_MESSAGE);
-                txtrut.setText(null);txtnombre.setText(null);txtdireccion.setText(null);
-            } else {
-                JOptionPane.showMessageDialog(rootPane, "La Compañia no se pudo guardar. Ya existe una compañia con ese rut", "Error al intentar guardar", JOptionPane.WARNING_MESSAGE);
-            }
+            laCompania.setRut(txtrut.getText());
+            laCompania.setNombre(txtnombre.getText());
+            laCompania.setDireccion(txtdireccion.getText());
+            laCompania.setPlan(planesSeleccionados);
+            
+            JOptionPane.showMessageDialog(rootPane, "Compañia editada correctamente", "Guardado correcto", JOptionPane.INFORMATION_MESSAGE);
+            
             
         } else {
              JOptionPane.showMessageDialog(rootPane,mensajeError, "Error al intentar guardar", JOptionPane.WARNING_MESSAGE);
@@ -335,21 +345,23 @@ public class CompaniaAgregarFrame extends Ventana {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(CompaniaAgregarFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CompaniaEditarFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(CompaniaAgregarFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CompaniaEditarFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(CompaniaAgregarFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CompaniaEditarFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(CompaniaAgregarFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CompaniaEditarFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new CompaniaAgregarFrame().setVisible(true);
+                new CompaniaEditarFrame().setVisible(true);
             }
         });
     }

@@ -7,19 +7,14 @@ package gui;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
-import java.util.ArrayList;
 import javax.swing.JFrame;
-import telefonia.Usuario;
 import telefonia.DB;
-import telefonia.PlanTelefonico;
-import telefonia.Compania;
-import telefonia.Telefonia;
 
 /** Clase de la cual las ventanas flotantes heredan. Permite el control de la posición inicial y la interacción con la DB ubicada en el MainFrame
  *
  * @author hernanBeiza
  */
-public class Ventana extends JFrame{
+public abstract class Ventana extends JFrame{
     
     /**
      * Inicia la ventana centrada
@@ -34,102 +29,37 @@ public class Ventana extends JFrame{
      * Retorna la instancia de la DB en el MainFrame
      * @return DB
      */
-    private DB obtenerDB (){
+    public DB obtenerDB (){
         MainFrame frame = (MainFrame)JFrame.getFrames()[0];
         //System.out.println(frame.getDb().getCompanias());
         return frame.getDb();
     }
-    /**
-     * Obtener los usuarios desde la DB
-     * @return ArrayList de tipo usuario con los usuarios ingresados al sistema
-     */
-    protected ArrayList <Usuario> usuariosObtener(){
-        MainFrame frame = (MainFrame)JFrame.getFrames()[0];
-        //System.out.println(frame.getDb().getCompanias());
-        return frame.getDb().getUsuarios();
+    public String TransformaMayuscula(String Dato){
+         String Aux = "" ; 
+         Aux+=String.valueOf(Dato).toUpperCase();
+         return (Aux);
     }
     /**
-     * Guarda un usuario en la db  
-     * @param unUsuario del tipo Usuario a guardar
-     * @return true si se guardó correcamente. false en caso contrario (existe un usuario con el mismo rut previamente
+     * Retorna si es un String está compuesto de números
+     * @param s cadena a evaluar
+     * @return true si es número, false si es string
      */
-    protected boolean usuarioGuardar (Usuario unUsuario){
-        boolean estado = false;
-        System.out.println(unUsuario.toString());
-        if(obtenerDB().usuarioGuardar(unUsuario)){
-            estado = true;
-        } else {
-            estado = false;
+    public static boolean isInteger(String s) {
+        return isInteger(s,10);
+    }
+    private static boolean isInteger(String s, int radix) {
+        if(s.isEmpty()) return false;
+        for(int i = 0; i < s.length(); i++) {
+            if(i == 0 && s.charAt(i) == '-') {
+                if(s.length() == 1) return false;
+                else continue;
+            }
+            if(Character.digit(s.charAt(i),radix) < 0) return false;
         }
-        
-        return estado;
+        return true;
     }
-    /**
-     * Retorna la lista de planes telefónicos disponibles en el sistema
-     * @return ArrayList de tipo PlanTelefónico. size(9 = 0 en caso de no tener nada
-     */
-    protected ArrayList <PlanTelefonico> planesObtener(){
-        MainFrame frame = (MainFrame)JFrame.getFrames()[0];
-        //System.out.println(frame.getDb().getCompanias());
-        return frame.getDb().getPlanes();
-    }
-    /**
-     * Guarda un plan teléfonico en el sistema
-     * @param elPlan instancia de PlanTelefónico a guardar
-     * @return true si se guarda correctamente. false en caso contrario (ya existe)
-     */
-    protected boolean planesGuardar(PlanTelefonico elPlan){
-        boolean estado = false;
-        if(obtenerDB().planesGuardar(elPlan)){
-            estado = true;
-        }        
-        return estado;
-    }
-    /**
-     * Guarda una compañía en el sistema
-     * @param unaCompania Instancia de Compania. 
-     * @return true si se guarda correctamente. false en caso contrario (ya existe una compañía con el mismo rut)
-     */
-    protected boolean companiaGuardar (Compania unaCompania){
-        boolean estado = false;
-        System.out.println(unaCompania.toString());
-        if(obtenerDB().companiaGuardar(unaCompania)){
-            estado = true;
-        } else {
-            estado = false;
-        }        
-        return estado;
-    }
-    /**
-     * Retorna los teléfonos registrados en el sistema
-     * @return ArrayList de Telefonía
-     */
-    protected ArrayList <Telefonia> telefonosObtener(){
-        MainFrame frame = (MainFrame)JFrame.getFrames()[0];
-        //System.out.println(frame.getDb().getCompanias());
-        return frame.getDb().getTelefonos();
-    }
-    
-    protected ArrayList <Telefonia> telefonosServicioObtener(){
-        MainFrame frame = (MainFrame)JFrame.getFrames()[0];
-        //System.out.println(frame.getDb().getCompanias());
-        return frame.getDb().telefonosServicio();
-    }
-    
-    /**
-     * Borrar un teléfono ingresado
-     * @param elTelefono Instancia de Telefonia. 
-     * @return true si se borra con èxito. false en caso contrario
-     */
-    protected boolean telefonoBorrar (Telefonia elTelefono){
-        if(this.obtenerDB().getTelefonos().remove(elTelefono)){
-            return true;
-        }
-        return false;
-    }
-    
-    protected ArrayList cuentasSobre (){
-        return this.obtenerDB().cuentasSobre();
+    public boolean isLetters(String name) {
+        return name.matches("[a-zA-Z]+");
     }
 
 }
