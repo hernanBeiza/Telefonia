@@ -34,6 +34,7 @@ public abstract class Ventana extends JFrame{
         //System.out.println(frame.getDb().getCompanias());
         return frame.getDb();
     }
+<<<<<<< HEAD
     public String TransformaMayuscula(String Dato){
          String Aux = "" ; 
          Aux+=String.valueOf(Dato).toUpperCase();
@@ -62,4 +63,6 @@ public abstract class Ventana extends JFrame{
         return name.matches("[a-zA-Z]+");
     }
 
+=======
+>>>>>>> origin/master
 }

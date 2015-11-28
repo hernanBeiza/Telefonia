@@ -57,6 +57,11 @@ public class CompaniaAgregarFrame extends Ventana {
         txtnombre = new javax.swing.JTextField();
         lbldireccion = new javax.swing.JLabel();
         txtdireccion = new javax.swing.JTextField();
+<<<<<<< HEAD
+=======
+        btnConsultar = new javax.swing.JButton();
+        lbldireccion1 = new javax.swing.JLabel();
+>>>>>>> origin/master
         jPanel3 = new javax.swing.JPanel();
         btnVolver = new javax.swing.JButton();
         btnAgregar = new javax.swing.JButton();
@@ -86,6 +91,7 @@ public class CompaniaAgregarFrame extends Ventana {
             }
         });
 
+<<<<<<< HEAD
         lbldireccion.setText("Dirección Cia.");
 
         txtdireccion.addActionListener(new java.awt.event.ActionListener() {
@@ -93,6 +99,9 @@ public class CompaniaAgregarFrame extends Ventana {
                 txtdireccionActionPerformed(evt);
             }
         });
+=======
+        lbldireccion1.setText("Planes disponibles");
+>>>>>>> origin/master
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -108,7 +117,13 @@ public class CompaniaAgregarFrame extends Ventana {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(txtrut, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+<<<<<<< HEAD
                         .addGap(0, 0, Short.MAX_VALUE))
+=======
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnConsultar)
+                        .addGap(0, 161, Short.MAX_VALUE))
+>>>>>>> origin/master
                     .addComponent(txtdireccion, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(txtnombre))
                 .addContainerGap())
@@ -128,6 +143,11 @@ public class CompaniaAgregarFrame extends Ventana {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtdireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lbldireccion))
+<<<<<<< HEAD
+=======
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lbldireccion1)
+>>>>>>> origin/master
                 .addContainerGap())
         );
 
@@ -207,7 +227,24 @@ public class CompaniaAgregarFrame extends Ventana {
             planesTable.getColumnModel().getColumn(3).setResizable(false);
         }
 
+<<<<<<< HEAD
         lbldireccion1.setText("Planes disponibles");
+=======
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 507, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 443, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 432, Short.MAX_VALUE))
+        );
+>>>>>>> origin/master
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -246,6 +283,20 @@ public class CompaniaAgregarFrame extends Ventana {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+<<<<<<< HEAD
+=======
+    private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarActionPerformed
+        // TODO add your handling code here:
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                new CompaniaConsultarFrame().setVisible(true);
+            }
+        });
+        this.dispose();
+    }//GEN-LAST:event_btnConsultarActionPerformed
+
+>>>>>>> origin/master
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
         //Validar que estén todos los campos rellenados antes de guardar
         boolean guardar = true;

@@ -64,6 +64,10 @@ public class PlanTelefonicoEditarFrame extends Ventana {
         lblfecnac = new javax.swing.JLabel();
         txtValorPlan = new javax.swing.JTextField();
         lbledad = new javax.swing.JLabel();
+<<<<<<< HEAD
+=======
+        jLabel1 = new javax.swing.JLabel();
+>>>>>>> origin/master
         cboTipoPlan = new javax.swing.JComboBox();
         cboEstadoServicio = new javax.swing.JComboBox();
         jPanel2 = new javax.swing.JPanel();
@@ -71,6 +75,7 @@ public class PlanTelefonicoEditarFrame extends Ventana {
         btnActualizar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+<<<<<<< HEAD
         setTitle("MODIFICAR PLAN TELEFONICO");
 
         jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -83,10 +88,16 @@ public class PlanTelefonicoEditarFrame extends Ventana {
             }
         });
 
+=======
+
+        lblcodigo.setText("Codigo");
+
+>>>>>>> origin/master
         lblapellido.setText("Tipo Plan");
 
         lblrut.setText("Nombre del Plan");
 
+<<<<<<< HEAD
         txtNombrePlan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtNombrePlanActionPerformed(evt);
@@ -106,6 +117,51 @@ public class PlanTelefonicoEditarFrame extends Ventana {
         cboTipoPlan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "ECONOMICO", "NORMAL", "PREMIUM" }));
 
         cboEstadoServicio.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "SI", "NO" }));
+=======
+        lblfecnac.setText("Valor Plan");
+
+        lbledad.setText("Estado Servicio Tecníco");
+
+        jLabel1.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jLabel1.setText("Editar Plan Telefonico");
+
+        cboTipoPlan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "ECONOMICO", "NORMAL", "PREMIUM" }));
+
+        cboEstadoServicio.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "SI", "NO" }));
+
+        btnVolver.setText("Volver");
+        btnVolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVolverActionPerformed(evt);
+            }
+        });
+
+        btnActualizar.setText("Actualizar");
+        btnActualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnActualizarActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(btnVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnActualizar)
+                .addContainerGap())
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)))
+        );
+>>>>>>> origin/master
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -115,6 +171,12 @@ public class PlanTelefonicoEditarFrame extends Ventana {
                 .addGap(36, 36, 36)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+<<<<<<< HEAD
+=======
+                        .addGap(52, 52, 52)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+>>>>>>> origin/master
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblfecnac, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lbledad)
@@ -135,10 +197,22 @@ public class PlanTelefonicoEditarFrame extends Ventana {
                             .addComponent(cboTipoPlan, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(txtCodigo))))
                 .addContainerGap(38, Short.MAX_VALUE))
+<<<<<<< HEAD
+=======
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+>>>>>>> origin/master
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+<<<<<<< HEAD
+=======
+                .addContainerGap()
+                .addComponent(jLabel1)
+>>>>>>> origin/master
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblcodigo)
@@ -159,6 +233,7 @@ public class PlanTelefonicoEditarFrame extends Ventana {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cboEstadoServicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lbledad))
+<<<<<<< HEAD
                 .addContainerGap(29, Short.MAX_VALUE))
         );
 
@@ -198,6 +273,11 @@ public class PlanTelefonicoEditarFrame extends Ventana {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)))
+=======
+                .addGap(55, 55, 55)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+>>>>>>> origin/master
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -206,19 +286,27 @@ public class PlanTelefonicoEditarFrame extends Ventana {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
+<<<<<<< HEAD
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+=======
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+>>>>>>> origin/master
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
+<<<<<<< HEAD
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 12, Short.MAX_VALUE))
+=======
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+>>>>>>> origin/master
         );
 
         pack();
@@ -241,6 +329,7 @@ public class PlanTelefonicoEditarFrame extends Ventana {
             guardar = false;
             mensajeError+="\nValor del pan";
         }
+<<<<<<< HEAD
         if(!isInteger(txtValorPlan.getText())){
             guardar = false;
             mensajeError+="\nDebe ingresar sólo números";
@@ -253,6 +342,8 @@ public class PlanTelefonicoEditarFrame extends Ventana {
             guardar = false;
             mensajeError+="\nNo es un código válido";
         }
+=======
+>>>>>>> origin/master
 
         if(guardar){
             String vof = cboEstadoServicio.getSelectedItem().toString();
@@ -271,7 +362,10 @@ public class PlanTelefonicoEditarFrame extends Ventana {
             
             if(obtenerDB().planesModificar(planViejo)){
                 JOptionPane.showMessageDialog(rootPane, "Registro actualizado con Exito", "Registro exitoso", JOptionPane.PLAIN_MESSAGE);                
+<<<<<<< HEAD
                 txtCodigo.setText(null);txtNombrePlan.setText(null);txtValorPlan.setText(null);
+=======
+>>>>>>> origin/master
             } else {
                 JOptionPane.showMessageDialog(rootPane, "Error al grabar registro", "Error al guardar", JOptionPane.WARNING_MESSAGE);
             }   
@@ -285,6 +379,7 @@ public class PlanTelefonicoEditarFrame extends Ventana {
         this.dispose();
     }//GEN-LAST:event_btnVolverActionPerformed
 
+<<<<<<< HEAD
     private void txtCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodigoActionPerformed
         // TODO add your handling code here:
         txtCodigo.transferFocus();
@@ -301,6 +396,8 @@ public class PlanTelefonicoEditarFrame extends Ventana {
         txtValorPlan.transferFocus();
     }//GEN-LAST:event_txtValorPlanActionPerformed
 
+=======
+>>>>>>> origin/master
     /**
      * @param args the command line arguments
      */
@@ -345,6 +442,10 @@ public class PlanTelefonicoEditarFrame extends Ventana {
     private javax.swing.JButton btnVolver;
     private javax.swing.JComboBox cboEstadoServicio;
     private javax.swing.JComboBox cboTipoPlan;
+<<<<<<< HEAD
+=======
+    private javax.swing.JLabel jLabel1;
+>>>>>>> origin/master
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel lblapellido;

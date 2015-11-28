@@ -47,6 +47,7 @@
           <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
+<<<<<<< HEAD
                   <Component id="jPanel11" pref="0" max="32767" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
@@ -59,12 +60,25 @@
                   <Component id="TabSmart" alignment="1" max="32767" attributes="0"/>
               </Group>
               <EmptySpace min="-2" max="-2" attributes="0"/>
+=======
+                  <Component id="jPanel2" alignment="0" pref="0" max="32767" attributes="0"/>
+                  <Component id="TabSmart" alignment="0" max="32767" attributes="0"/>
+                  <Component id="jPanel11" pref="0" max="32767" attributes="0"/>
+                  <Group type="102" alignment="1" attributes="0">
+                      <Component id="BtnCerrar" min="-2" pref="60" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="BtnAgregar" min="-2" pref="60" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+              <EmptySpace min="-2" pref="90" max="-2" attributes="0"/>
+>>>>>>> origin/master
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
+<<<<<<< HEAD
               <EmptySpace min="-2" max="-2" attributes="0"/>
               <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
@@ -75,6 +89,18 @@
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="BtnAgregar" alignment="3" min="-2" pref="45" max="-2" attributes="0"/>
                   <Component id="BtnCerrar" alignment="3" min="-2" pref="45" max="-2" attributes="0"/>
+=======
+              <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
+              <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="TabSmart" min="-2" pref="423" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="jPanel11" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="BtnCerrar" min="-2" pref="45" max="-2" attributes="0"/>
+                  <Component id="BtnAgregar" alignment="0" min="-2" pref="45" max="-2" attributes="0"/>
+>>>>>>> origin/master
               </Group>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
@@ -95,6 +121,7 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
+<<<<<<< HEAD
                   <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
@@ -119,6 +146,27 @@
                                   <Component id="lblCompañia" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                                   <Component id="cboCompania" min="-2" pref="139" max="-2" attributes="0"/>
+=======
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="lblCompañia" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" alignment="1" attributes="0">
+                                          <Component id="LblComuna" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="txtComuna" min="-2" pref="154" max="-2" attributes="0"/>
+                                      <Component id="cboCompania" min="-2" pref="139" max="-2" attributes="0"/>
+                                  </Group>
+>>>>>>> origin/master
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="LblCosto" min="-2" max="-2" attributes="0"/>
@@ -126,6 +174,7 @@
                                   <Component id="TxtCostoEquipo" min="-2" pref="83" max="-2" attributes="0"/>
                               </Group>
                           </Group>
+<<<<<<< HEAD
                           <EmptySpace max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Group type="102" alignment="1" attributes="0">
@@ -148,12 +197,51 @@
                           <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
                       </Group>
                   </Group>
+=======
+                          <EmptySpace min="-2" pref="90" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="LblPlanT" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="CmbPlanTelefonico" min="-2" pref="139" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="LblContrato" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="TxtFechadeContrato" min="-2" pref="83" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="LblRegion" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="LblRut" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="71" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="cboRegion" min="-2" pref="175" max="-2" attributes="0"/>
+                                      <Group type="102" attributes="0">
+                                          <Component id="TxtRut" min="-2" pref="91" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="LblNombre" min="-2" pref="225" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                              </Group>
+                          </Group>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="LblFono" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="TxtFono" min="-2" pref="93" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <EmptySpace max="32767" attributes="0"/>
+>>>>>>> origin/master
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
+<<<<<<< HEAD
                   <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -202,6 +290,44 @@
                       </Group>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
+=======
+                  <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="LblFono" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="TxtFono" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="LblRut" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="TxtRut" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="LblNombre" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="LblComuna" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="LblRegion" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="cboRegion" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Component id="txtComuna" alignment="1" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="cboCompania" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblCompañia" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                          <Component id="CmbPlanTelefonico" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="LblPlanT" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <EmptySpace pref="26" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="LblCosto" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="TxtCostoEquipo" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="LblContrato" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="TxtFechadeContrato" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+>>>>>>> origin/master
               </Group>
           </Group>
         </DimensionLayout>
@@ -246,6 +372,12 @@
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="LblNombre">
+<<<<<<< HEAD
+=======
+          <Properties>
+            <Property name="text" type="java.lang.String" value="-"/>
+          </Properties>
+>>>>>>> origin/master
         </Component>
         <Component class="javax.swing.JLabel" name="LblComuna">
           <Properties>
@@ -370,6 +502,7 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
+<<<<<<< HEAD
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace pref="218" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -382,13 +515,31 @@
                           <Component id="txtCodigoZona" min="-2" pref="88" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="183" max="-2" attributes="0"/>
+=======
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="124" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                          <Component id="LblIdentifLlamadas" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="CmbIdeLlamadas" pref="88" max="32767" attributes="0"/>
+                          <Component id="txtCodigoZona" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace pref="300" max="32767" attributes="0"/>
+>>>>>>> origin/master
                   </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
+<<<<<<< HEAD
                       <EmptySpace min="-2" pref="126" max="-2" attributes="0"/>
+=======
+                      <EmptySpace min="-2" pref="83" max="-2" attributes="0"/>
+>>>>>>> origin/master
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="txtCodigoZona" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -398,7 +549,11 @@
                           <Component id="LblIdentifLlamadas" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="CmbIdeLlamadas" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
+<<<<<<< HEAD
                       <EmptySpace pref="107" max="32767" attributes="0"/>
+=======
+                      <EmptySpace pref="217" max="32767" attributes="0"/>
+>>>>>>> origin/master
                   </Group>
               </Group>
             </DimensionLayout>
@@ -454,8 +609,13 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
+<<<<<<< HEAD
                       <EmptySpace min="-2" pref="183" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
+=======
+                      <EmptySpace min="-2" pref="152" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+>>>>>>> origin/master
                           <Component id="LblCantidadAnexos" min="-2" pref="127" max="-2" attributes="0"/>
                           <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                       </Group>
@@ -464,14 +624,22 @@
                           <Component id="txtCantidadAnexos" min="-2" pref="65" max="-2" attributes="0"/>
                           <Component id="txtCodigoZonaComercial1" min="-2" pref="65" max="-2" attributes="0"/>
                       </Group>
+<<<<<<< HEAD
                       <EmptySpace pref="237" max="32767" attributes="0"/>
+=======
+                      <EmptySpace pref="324" max="32767" attributes="0"/>
+>>>>>>> origin/master
                   </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
+<<<<<<< HEAD
                       <EmptySpace min="-2" pref="126" max="-2" attributes="0"/>
+=======
+                      <EmptySpace min="-2" pref="90" max="-2" attributes="0"/>
+>>>>>>> origin/master
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="txtCodigoZonaComercial1" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -481,7 +649,11 @@
                           <Component id="LblCantidadAnexos" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="txtCantidadAnexos" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
+<<<<<<< HEAD
                       <EmptySpace pref="108" max="32767" attributes="0"/>
+=======
+                      <EmptySpace pref="205" max="32767" attributes="0"/>
+>>>>>>> origin/master
                   </Group>
               </Group>
             </DimensionLayout>
@@ -524,6 +696,7 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
+<<<<<<< HEAD
                       <EmptySpace min="-2" pref="81" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="androidRadioButton" min="-2" max="-2" attributes="0"/>
@@ -532,11 +705,68 @@
                       <EmptySpace min="-2" pref="86" max="-2" attributes="0"/>
                       <Component id="jPOpciones" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
+=======
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="LblSop1" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="LblPeso" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="cboPeso" min="-2" pref="88" max="-2" attributes="0"/>
+                                      <Component id="cboCodigoAntena" min="-2" pref="88" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Component id="LblMemoriaIphone" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
+                                  <Component id="cboMemoria" min="-2" pref="88" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Component id="LblSop" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="cboOS" min="-2" pref="192" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="iPhoneRadioButton" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lblModelo" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" attributes="0">
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Component id="androidRadioButton" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" alignment="1" attributes="0">
+                                          <EmptySpace max="32767" attributes="0"/>
+                                          <Component id="cboModelo" min="-2" pref="88" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                              </Group>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="LblDuracionBateria" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="LblMarca" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Component id="cboMarcaAndroid" min="-2" pref="88" max="-2" attributes="0"/>
+                                  <Component id="cboDuracion" min="-2" pref="88" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                      </Group>
+>>>>>>> origin/master
                   </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
+<<<<<<< HEAD
                   <Group type="102" attributes="0">
                       <EmptySpace min="-2" max="-2" attributes="0"/>
                       <Component id="jPOpciones" max="32767" attributes="0"/>
@@ -548,6 +778,53 @@
                       <EmptySpace min="-2" pref="79" max="-2" attributes="0"/>
                       <Component id="androidRadioButton" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
+=======
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="iPhoneRadioButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="androidRadioButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="lblModelo" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="cboModelo" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="cboMemoria" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="LblMemoriaIphone" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="LblSop" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="cboOS" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="LblSop1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="cboCodigoAntena" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="LblPeso" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="cboPeso" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="LblDuracionBateria" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="cboDuracion" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="cboMarcaAndroid" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="LblMarca" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace pref="17" max="32767" attributes="0"/>
+>>>>>>> origin/master
                   </Group>
               </Group>
             </DimensionLayout>
@@ -561,7 +838,10 @@
                 <Property name="text" type="java.lang.String" value="iPhone"/>
               </Properties>
               <Events>
+<<<<<<< HEAD
                 <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="iPhoneRadioButtonMousePressed"/>
+=======
+>>>>>>> origin/master
                 <EventHandler event="mouseReleased" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="iPhoneRadioButtonMouseReleased"/>
               </Events>
             </Component>
@@ -576,6 +856,7 @@
                 <EventHandler event="mouseReleased" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="androidRadioButtonMouseReleased"/>
               </Events>
             </Component>
+<<<<<<< HEAD
             <Container class="javax.swing.JPanel" name="jPOpciones">
               <Properties>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -800,6 +1081,130 @@
                 </Component>
               </SubComponents>
             </Container>
+=======
+            <Component class="javax.swing.JLabel" name="LblSop">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Sistema Operativo"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JComboBox" name="cboOS">
+              <Properties>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="0"/>
+                </Property>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="LblMemoriaIphone">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Memoria"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JComboBox" name="cboMemoria">
+              <Properties>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="5">
+                    <StringItem index="0" value="0"/>
+                    <StringItem index="1" value="16"/>
+                    <StringItem index="2" value="32"/>
+                    <StringItem index="3" value="36"/>
+                    <StringItem index="4" value="128"/>
+                  </StringArray>
+                </Property>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblModelo">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Modelo"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JComboBox" name="cboModelo">
+              <Properties>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="7">
+                    <StringItem index="0" value="0"/>
+                    <StringItem index="1" value="1"/>
+                    <StringItem index="2" value="2"/>
+                    <StringItem index="3" value="3"/>
+                    <StringItem index="4" value="4"/>
+                    <StringItem index="5" value="5"/>
+                    <StringItem index="6" value="6"/>
+                  </StringArray>
+                </Property>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="LblMarca">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Marca"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JComboBox" name="cboMarcaAndroid">
+              <Properties>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="4">
+                    <StringItem index="0" value="0"/>
+                    <StringItem index="1" value="7.0"/>
+                    <StringItem index="2" value="8.0"/>
+                    <StringItem index="3" value="9.0"/>
+                  </StringArray>
+                </Property>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="LblDuracionBateria">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Duraci&#xf3;n Bateria"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JComboBox" name="cboDuracion">
+              <Properties>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="7">
+                    <StringItem index="0" value="0"/>
+                    <StringItem index="1" value="1"/>
+                    <StringItem index="2" value="2"/>
+                    <StringItem index="3" value="3"/>
+                    <StringItem index="4" value="4"/>
+                    <StringItem index="5" value="5"/>
+                    <StringItem index="6" value="6"/>
+                  </StringArray>
+                </Property>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="LblPeso">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Peso"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JComboBox" name="cboPeso">
+              <Properties>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="0"/>
+                </Property>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="LblSop1">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Codigo Antena"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JComboBox" name="cboCodigoAntena">
+              <Properties>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="10">
+                    <StringItem index="0" value="0"/>
+                    <StringItem index="1" value="1"/>
+                    <StringItem index="2" value="2"/>
+                    <StringItem index="3" value="3"/>
+                    <StringItem index="4" value="4"/>
+                    <StringItem index="5" value="5"/>
+                    <StringItem index="6" value="6"/>
+                    <StringItem index="7" value="7"/>
+                    <StringItem index="8" value="8"/>
+                    <StringItem index="9" value="9"/>
+                  </StringArray>
+                </Property>
+              </Properties>
+            </Component>
+>>>>>>> origin/master
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="JPTradicional">
@@ -828,6 +1233,7 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
+<<<<<<< HEAD
                       <EmptySpace min="-2" pref="222" max="-2" attributes="0"/>
                       <Component id="LblPantallaColor" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
@@ -841,27 +1247,128 @@
                           <Component id="jPanel1" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
+=======
+                      <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
+                      <Component id="normalRadioButton" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="138" max="-2" attributes="0"/>
+                      <Component id="sliderRadioButton" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="202" max="32767" attributes="0"/>
+                      <Component id="almejaRadioButton" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="89" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="190" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="LblSop2" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="LblPeso1" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="cboTradicionalPeso" alignment="0" min="-2" pref="88" max="-2" attributes="0"/>
+                                  <Component id="cboTradicionalAntena" alignment="0" min="-2" pref="88" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="LblDuracionBateria1" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+                              <Component id="cboTradicionalBateria" min="-2" pref="88" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Component id="LblPantallaColor" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="cboPantallaColor" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace max="32767" attributes="0"/>
+>>>>>>> origin/master
                   </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
+<<<<<<< HEAD
                       <EmptySpace min="-2" max="-2" attributes="0"/>
+=======
+                      <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
+>>>>>>> origin/master
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="LblPantallaColor" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="cboPantallaColor" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
+<<<<<<< HEAD
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                       <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
+=======
+                      <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="normalRadioButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="sliderRadioButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="almejaRadioButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="LblSop2" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="cboTradicionalAntena" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="LblPeso1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="cboTradicionalPeso" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="LblDuracionBateria1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="cboTradicionalBateria" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace pref="95" max="32767" attributes="0"/>
+>>>>>>> origin/master
                   </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
+<<<<<<< HEAD
+=======
+            <Component class="javax.swing.JRadioButton" name="normalRadioButton">
+              <Properties>
+                <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                  <ComponentRef name="tipoTradicionalButtonGroup"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Normal"/>
+              </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="normalRadioButtonMouseClicked"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JRadioButton" name="sliderRadioButton">
+              <Properties>
+                <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                  <ComponentRef name="tipoTradicionalButtonGroup"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Slide"/>
+              </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="sliderRadioButtonMouseClicked"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JRadioButton" name="almejaRadioButton">
+              <Properties>
+                <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                  <ComponentRef name="tipoTradicionalButtonGroup"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Almeja"/>
+              </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="almejaRadioButtonMouseClicked"/>
+              </Events>
+            </Component>
+>>>>>>> origin/master
             <Component class="javax.swing.JLabel" name="LblPantallaColor">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Pantalla Color"/>
@@ -877,6 +1384,7 @@
                 </Property>
               </Properties>
             </Component>
+<<<<<<< HEAD
             <Container class="javax.swing.JPanel" name="jPanel1">
               <Properties>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -1060,6 +1568,63 @@
                 </Component>
               </SubComponents>
             </Container>
+=======
+            <Component class="javax.swing.JLabel" name="LblSop2">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Codigo Antena"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JComboBox" name="cboTradicionalAntena">
+              <Properties>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="10">
+                    <StringItem index="0" value="0"/>
+                    <StringItem index="1" value="1"/>
+                    <StringItem index="2" value="2"/>
+                    <StringItem index="3" value="3"/>
+                    <StringItem index="4" value="4"/>
+                    <StringItem index="5" value="5"/>
+                    <StringItem index="6" value="6"/>
+                    <StringItem index="7" value="7"/>
+                    <StringItem index="8" value="8"/>
+                    <StringItem index="9" value="9"/>
+                  </StringArray>
+                </Property>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="LblPeso1">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Peso"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JComboBox" name="cboTradicionalPeso">
+              <Properties>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="0"/>
+                </Property>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="LblDuracionBateria1">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Duraci&#xf3;n Bateria"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JComboBox" name="cboTradicionalBateria">
+              <Properties>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="7">
+                    <StringItem index="0" value="0"/>
+                    <StringItem index="1" value="1"/>
+                    <StringItem index="2" value="2"/>
+                    <StringItem index="3" value="3"/>
+                    <StringItem index="4" value="4"/>
+                    <StringItem index="5" value="5"/>
+                    <StringItem index="6" value="6"/>
+                  </StringArray>
+                </Property>
+              </Properties>
+            </Component>
+>>>>>>> origin/master
           </SubComponents>
         </Container>
       </SubComponents>
@@ -1076,13 +1641,19 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
+<<<<<<< HEAD
               <Group type="102" attributes="0">
                   <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
+=======
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+>>>>>>> origin/master
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="LblValorMinutoFijo1" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
                           <Component id="TxtValorMinutoFijo" min="-2" pref="75" max="-2" attributes="0"/>
+<<<<<<< HEAD
                           <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
                           <Component id="LblValorMinutoMovil1" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
@@ -1092,11 +1663,23 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="TxtTarifaFija" min="-2" pref="75" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
+=======
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="LblValorMinutoMovil1" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="TxtValorMinutoMovil" min="-2" pref="82" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="LblTarifaFija1" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="TxtTarifaFija" min="-2" pref="75" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="567" max="-2" attributes="0"/>
+>>>>>>> origin/master
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="LblMinutosUsadosFijo1" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="TxtMinutosUsadosFijo" min="-2" pref="82" max="-2" attributes="0"/>
+<<<<<<< HEAD
                           <EmptySpace min="-2" pref="70" max="-2" attributes="0"/>
                           <Component id="LblMinutosUsadosMovil1" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
@@ -1104,6 +1687,15 @@
                       </Group>
                   </Group>
                   <EmptySpace min="-2" pref="541" max="-2" attributes="0"/>
+=======
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="LblMinutosUsadosMovil1" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="TxtMinutosUsadosMovil" min="-2" pref="82" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
+>>>>>>> origin/master
               </Group>
           </Group>
         </DimensionLayout>

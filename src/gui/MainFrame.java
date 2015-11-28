@@ -136,7 +136,11 @@ public class MainFrame extends javax.swing.JFrame {
 
         telefonosMenu.setText("Teléfonos");
 
+<<<<<<< HEAD
         btnAgregarFono.setText("Agregar Teléfono");
+=======
+        btnAgregarFono.setText("Agregar teléfono");
+>>>>>>> origin/master
         btnAgregarFono.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAgregarFonoActionPerformed(evt);
@@ -172,7 +176,11 @@ public class MainFrame extends javax.swing.JFrame {
 
         cuentasMenu.setText("Cuentas");
 
+<<<<<<< HEAD
         cuentaCompletaMenuItem.setText("Mostrar Cuenta");
+=======
+        cuentaCompletaMenuItem.setText("Mostrar cuenta");
+>>>>>>> origin/master
         cuentaCompletaMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cuentaCompletaMenuItemActionPerformed(evt);
@@ -180,7 +188,11 @@ public class MainFrame extends javax.swing.JFrame {
         });
         cuentasMenu.add(cuentaCompletaMenuItem);
 
+<<<<<<< HEAD
         cuentaSimpleMenuItem.setText("Mostrar Cuenta Simple");
+=======
+        cuentaSimpleMenuItem.setText("Mostrar cuenta simple");
+>>>>>>> origin/master
         cuentaSimpleMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cuentaSimpleMenuItemActionPerformed(evt);
@@ -220,9 +232,12 @@ public class MainFrame extends javax.swing.JFrame {
 
         salirMenu.setText("Salir");
         salirMenu.addMouseListener(new java.awt.event.MouseAdapter() {
+<<<<<<< HEAD
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 salirMenuMousePressed(evt);
             }
+=======
+>>>>>>> origin/master
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 salirMenuMouseClicked(evt);
             }
@@ -386,6 +401,7 @@ public class MainFrame extends javax.swing.JFrame {
         });
     }//GEN-LAST:event_cuentaCompletaMenuItemActionPerformed
 
+<<<<<<< HEAD
     private void salirMenuMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_salirMenuMousePressed
         // TODO add your handling code here:
           int dialogButton = JOptionPane.showConfirmDialog (rootPane, "¿Está seguro que desea cerrar el programa?","¿Está seguro?", JOptionPane.YES_NO_OPTION,JOptionPane.WARNING_MESSAGE);
@@ -395,6 +411,8 @@ public class MainFrame extends javax.swing.JFrame {
 
     }//GEN-LAST:event_salirMenuMousePressed
 
+=======
+>>>>>>> origin/master
     /**
      * @param args the command line arguments
      */

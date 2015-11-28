@@ -276,6 +276,7 @@ public class FonoBuscarFrame extends Ventana {
         for (int i = rowCount - 1; i >= 0; i--) {
             modeloTable.removeRow(i);
         }
+<<<<<<< HEAD
         if(marcaRadio.isSelected()){
             encontrados = obtenerDB().telefonosBuscarPorMarca(cboMarca.getSelectedItem().toString());
             
@@ -290,6 +291,24 @@ public class FonoBuscarFrame extends Ventana {
                 } else if(rutRadio.isSelected()){
                     encontrados = obtenerDB().telefonosBuscarPorRut(txtNumero.getText());
                 }            
+=======
+        if(!txtNumero.getText().equals("")){
+            //Obtener todas las ventanas abiertas. la 0 es la main, ella tiene la DB
+            //System.out.println("Total " + JFrame.getFrames().length);                       
+            MainFrame frame = (MainFrame)JFrame.getFrames()[0];
+            System.out.println(frame.getDb().telefonosObtener());
+            encontrados = null;
+            
+            if(numeroRadio.isSelected()){                
+                encontrados = frame.getDb().telefonosBuscarPorNumero(txtNumero.getText());
+            } else if(rutRadio.isSelected()){
+                encontrados = frame.getDb().telefonosBuscarPorRut(txtNumero.getText());
+            }else if(marcaRadio.isSelected()){
+                encontrados = frame.getDb().telefonosBuscarPorMarca(txtNumero.getText());
+            }            
+            if(encontrados.isEmpty()){
+                JOptionPane.showMessageDialog(rootPane, "No se encontró el teléfono", "Error al intentar buscar", JOptionPane.ERROR_MESSAGE);
+>>>>>>> origin/master
             } else {
                 String mensaje ="Debe ingresar ";
                 if(numeroRadio.isSelected()){

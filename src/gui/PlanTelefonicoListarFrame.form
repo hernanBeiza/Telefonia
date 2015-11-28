@@ -134,8 +134,13 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="volverButton" min="-2" max="-2" attributes="0"/>
+<<<<<<< HEAD
                   <EmptySpace pref="207" max="32767" attributes="0"/>
                   <Component id="ModificarButton" min="-2" max="-2" attributes="0"/>
+=======
+                  <EmptySpace max="32767" attributes="0"/>
+                  <Component id="consultarButton" min="-2" max="-2" attributes="0"/>
+>>>>>>> origin/master
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -144,7 +149,11 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="103" alignment="0" groupAlignment="3" attributes="0">
                   <Component id="volverButton" alignment="3" min="-2" pref="41" max="-2" attributes="0"/>
+<<<<<<< HEAD
                   <Component id="ModificarButton" alignment="3" min="-2" pref="41" max="-2" attributes="0"/>
+=======
+                  <Component id="consultarButton" alignment="3" min="-2" pref="41" max="-2" attributes="0"/>
+>>>>>>> origin/master
               </Group>
           </Group>
         </DimensionLayout>
@@ -158,12 +167,21 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="volverButtonActionPerformed"/>
           </Events>
         </Component>
+<<<<<<< HEAD
         <Component class="javax.swing.JButton" name="ModificarButton">
           <Properties>
             <Property name="text" type="java.lang.String" value="Modificar"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ModificarButtonActionPerformed"/>
+=======
+        <Component class="javax.swing.JButton" name="consultarButton">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Consultar"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="consultarButtonActionPerformed"/>
+>>>>>>> origin/master
           </Events>
         </Component>
       </SubComponents>

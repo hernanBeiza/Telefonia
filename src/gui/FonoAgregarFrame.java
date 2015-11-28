@@ -5,6 +5,10 @@
  */
 package gui;
 
+<<<<<<< HEAD
+=======
+import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils.IO;
+>>>>>>> origin/master
 import java.awt.Component;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -19,6 +23,10 @@ import telefonia.PlanTelefonico;
 import telefonia.Privado;
 import telefonia.Tradicional;
 import telefonia.IOS;
+<<<<<<< HEAD
+=======
+import telefonia.SmartPhone;
+>>>>>>> origin/master
 
 
 import telefonia.Usuario;
@@ -37,7 +45,11 @@ public class FonoAgregarFrame extends Ventana {
     public FonoAgregarFrame() {
         initComponents();
         iniciarCentrada();
+<<<<<<< HEAD
         jPOpciones.setVisible(false);
+=======
+        
+>>>>>>> origin/master
         cargarInfoCompania();
         cargarMarcasAndroid();
         cargarDatosMovil();
@@ -158,6 +170,7 @@ public class FonoAgregarFrame extends Ventana {
         JPSmartphone = new javax.swing.JPanel();
         iPhoneRadioButton = new javax.swing.JRadioButton();
         androidRadioButton = new javax.swing.JRadioButton();
+<<<<<<< HEAD
         jPOpciones = new javax.swing.JPanel();
         lblModelo = new javax.swing.JLabel();
         LblMemoriaIphone = new javax.swing.JLabel();
@@ -177,16 +190,41 @@ public class FonoAgregarFrame extends Ventana {
         LblPantallaColor = new javax.swing.JLabel();
         cboPantallaColor = new javax.swing.JComboBox();
         jPanel1 = new javax.swing.JPanel();
+=======
+        LblSop = new javax.swing.JLabel();
+        cboOS = new javax.swing.JComboBox();
+        LblMemoriaIphone = new javax.swing.JLabel();
+        cboMemoria = new javax.swing.JComboBox();
+        lblModelo = new javax.swing.JLabel();
+        cboModelo = new javax.swing.JComboBox();
+        LblMarca = new javax.swing.JLabel();
+        cboMarcaAndroid = new javax.swing.JComboBox();
+        LblDuracionBateria = new javax.swing.JLabel();
+        cboDuracion = new javax.swing.JComboBox();
+        LblPeso = new javax.swing.JLabel();
+        cboPeso = new javax.swing.JComboBox();
+        LblSop1 = new javax.swing.JLabel();
+        cboCodigoAntena = new javax.swing.JComboBox();
+        JPTradicional = new javax.swing.JPanel();
+        normalRadioButton = new javax.swing.JRadioButton();
+        sliderRadioButton = new javax.swing.JRadioButton();
+        almejaRadioButton = new javax.swing.JRadioButton();
+        LblPantallaColor = new javax.swing.JLabel();
+        cboPantallaColor = new javax.swing.JComboBox();
+>>>>>>> origin/master
         LblSop2 = new javax.swing.JLabel();
         cboTradicionalAntena = new javax.swing.JComboBox();
         LblPeso1 = new javax.swing.JLabel();
         cboTradicionalPeso = new javax.swing.JComboBox();
         LblDuracionBateria1 = new javax.swing.JLabel();
         cboTradicionalBateria = new javax.swing.JComboBox();
+<<<<<<< HEAD
         jPanel3 = new javax.swing.JPanel();
         normalRadioButton = new javax.swing.JRadioButton();
         sliderRadioButton = new javax.swing.JRadioButton();
         almejaRadioButton = new javax.swing.JRadioButton();
+=======
+>>>>>>> origin/master
         jPanel11 = new javax.swing.JPanel();
         LblValorMinutoFijo1 = new javax.swing.JLabel();
         TxtValorMinutoFijo = new javax.swing.JTextField();
@@ -237,6 +275,11 @@ public class FonoAgregarFrame extends Ventana {
             }
         });
 
+<<<<<<< HEAD
+=======
+        LblNombre.setText("-");
+
+>>>>>>> origin/master
         LblComuna.setText("Comuna");
 
         txtComuna.addActionListener(new java.awt.event.ActionListener() {
@@ -283,6 +326,7 @@ public class FonoAgregarFrame extends Ventana {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
+<<<<<<< HEAD
                 .addGap(24, 24, 24)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
@@ -305,10 +349,28 @@ public class FonoAgregarFrame extends Ventana {
                                 .addComponent(lblCompañia)
                                 .addGap(28, 28, 28)
                                 .addComponent(cboCompania, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
+=======
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addComponent(lblCompañia)
+                                        .addGap(28, 28, 28))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                        .addComponent(LblComuna)
+                                        .addGap(36, 36, 36)))
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtComuna, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(cboCompania, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)))
+>>>>>>> origin/master
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(LblCosto)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(TxtCostoEquipo, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)))
+<<<<<<< HEAD
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
@@ -324,10 +386,39 @@ public class FonoAgregarFrame extends Ventana {
                                     .addComponent(CmbPlanTelefonico, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(TxtFechadeContrato, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(47, 47, 47))))
+=======
+                        .addGap(90, 90, 90)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(LblPlanT)
+                                .addGap(18, 18, 18)
+                                .addComponent(CmbPlanTelefonico, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(LblContrato)
+                                .addGap(18, 18, 18)
+                                .addComponent(TxtFechadeContrato, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(LblRegion)
+                                    .addComponent(LblRut))
+                                .addGap(71, 71, 71)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(cboRegion, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addComponent(TxtRut, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(LblNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(LblFono)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(TxtFono, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+>>>>>>> origin/master
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
+<<<<<<< HEAD
                 .addGap(13, 13, 13)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -364,6 +455,37 @@ public class FonoAgregarFrame extends Ventana {
                             .addComponent(LblContrato)
                             .addComponent(TxtFechadeContrato, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+=======
+                .addGap(15, 15, 15)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(LblFono)
+                    .addComponent(TxtFono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(LblRut)
+                    .addComponent(TxtRut, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(LblNombre))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(LblComuna)
+                        .addComponent(LblRegion)
+                        .addComponent(cboRegion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtComuna, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(cboCompania, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblCompañia))
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(CmbPlanTelefonico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(LblPlanT)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(LblCosto)
+                    .addComponent(TxtCostoEquipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(LblContrato)
+                    .addComponent(TxtFechadeContrato, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(21, 21, 21))
+>>>>>>> origin/master
         );
 
         TabSmart.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -387,6 +509,7 @@ public class FonoAgregarFrame extends Ventana {
         JPPrivado.setLayout(JPPrivadoLayout);
         JPPrivadoLayout.setHorizontalGroup(
             JPPrivadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+<<<<<<< HEAD
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JPPrivadoLayout.createSequentialGroup()
                 .addContainerGap(218, Short.MAX_VALUE)
                 .addGroup(JPPrivadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -397,11 +520,27 @@ public class FonoAgregarFrame extends Ventana {
                     .addComponent(CmbIdeLlamadas, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(txtCodigoZona, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(183, 183, 183))
+=======
+            .addGroup(JPPrivadoLayout.createSequentialGroup()
+                .addGap(124, 124, 124)
+                .addGroup(JPPrivadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel1)
+                    .addComponent(LblIdentifLlamadas))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(JPPrivadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(CmbIdeLlamadas, 0, 88, Short.MAX_VALUE)
+                    .addComponent(txtCodigoZona))
+                .addContainerGap(300, Short.MAX_VALUE))
+>>>>>>> origin/master
         );
         JPPrivadoLayout.setVerticalGroup(
             JPPrivadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(JPPrivadoLayout.createSequentialGroup()
+<<<<<<< HEAD
                 .addGap(126, 126, 126)
+=======
+                .addGap(83, 83, 83)
+>>>>>>> origin/master
                 .addGroup(JPPrivadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(txtCodigoZona, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -409,7 +548,11 @@ public class FonoAgregarFrame extends Ventana {
                 .addGroup(JPPrivadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(LblIdentifLlamadas)
                     .addComponent(CmbIdeLlamadas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+<<<<<<< HEAD
                 .addContainerGap(107, Short.MAX_VALUE))
+=======
+                .addContainerGap(217, Short.MAX_VALUE))
+>>>>>>> origin/master
         );
 
         TabSmart.addTab("Privado", JPPrivado);
@@ -427,20 +570,33 @@ public class FonoAgregarFrame extends Ventana {
         JPComercialLayout.setHorizontalGroup(
             JPComercialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(JPComercialLayout.createSequentialGroup()
+<<<<<<< HEAD
                 .addGap(183, 183, 183)
                 .addGroup(JPComercialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+=======
+                .addGap(152, 152, 152)
+                .addGroup(JPComercialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+>>>>>>> origin/master
                     .addComponent(LblCantidadAnexos, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
                 .addGap(18, 18, 18)
                 .addGroup(JPComercialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtCantidadAnexos, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtCodigoZonaComercial1, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
+<<<<<<< HEAD
                 .addContainerGap(237, Short.MAX_VALUE))
+=======
+                .addContainerGap(324, Short.MAX_VALUE))
+>>>>>>> origin/master
         );
         JPComercialLayout.setVerticalGroup(
             JPComercialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(JPComercialLayout.createSequentialGroup()
+<<<<<<< HEAD
                 .addGap(126, 126, 126)
+=======
+                .addGap(90, 90, 90)
+>>>>>>> origin/master
                 .addGroup(JPComercialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(txtCodigoZonaComercial1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -448,7 +604,11 @@ public class FonoAgregarFrame extends Ventana {
                 .addGroup(JPComercialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(LblCantidadAnexos)
                     .addComponent(txtCantidadAnexos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+<<<<<<< HEAD
                 .addContainerGap(108, Short.MAX_VALUE))
+=======
+                .addContainerGap(205, Short.MAX_VALUE))
+>>>>>>> origin/master
         );
 
         TabSmart.addTab("Comercial", JPComercial);
@@ -460,9 +620,12 @@ public class FonoAgregarFrame extends Ventana {
         SmarthGroup.add(iPhoneRadioButton);
         iPhoneRadioButton.setText("iPhone");
         iPhoneRadioButton.addMouseListener(new java.awt.event.MouseAdapter() {
+<<<<<<< HEAD
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 iPhoneRadioButtonMousePressed(evt);
             }
+=======
+>>>>>>> origin/master
             public void mouseReleased(java.awt.event.MouseEvent evt) {
                 iPhoneRadioButtonMouseReleased(evt);
             }
@@ -476,6 +639,7 @@ public class FonoAgregarFrame extends Ventana {
             }
         });
 
+<<<<<<< HEAD
         jPOpciones.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         lblModelo.setText("Modelo");
@@ -598,6 +762,115 @@ public class FonoAgregarFrame extends Ventana {
                 .addGap(79, 79, 79)
                 .addComponent(androidRadioButton)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+=======
+        LblSop.setText("Sistema Operativo");
+
+        LblMemoriaIphone.setText("Memoria");
+
+        cboMemoria.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "16", "32", "36", "128" }));
+
+        lblModelo.setText("Modelo");
+
+        cboModelo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4", "5", "6" }));
+
+        LblMarca.setText("Marca");
+
+        cboMarcaAndroid.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "7.0", "8.0", "9.0" }));
+
+        LblDuracionBateria.setText("Duración Bateria");
+
+        cboDuracion.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4", "5", "6" }));
+
+        LblPeso.setText("Peso");
+
+        LblSop1.setText("Codigo Antena");
+
+        cboCodigoAntena.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9" }));
+
+        javax.swing.GroupLayout JPSmartphoneLayout = new javax.swing.GroupLayout(JPSmartphone);
+        JPSmartphone.setLayout(JPSmartphoneLayout);
+        JPSmartphoneLayout.setHorizontalGroup(
+            JPSmartphoneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(JPSmartphoneLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(JPSmartphoneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(JPSmartphoneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(JPSmartphoneLayout.createSequentialGroup()
+                            .addGroup(JPSmartphoneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(LblSop1)
+                                .addComponent(LblPeso))
+                            .addGap(27, 27, 27)
+                            .addGroup(JPSmartphoneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(cboPeso, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(cboCodigoAntena, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JPSmartphoneLayout.createSequentialGroup()
+                            .addComponent(LblMemoriaIphone)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cboMemoria, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JPSmartphoneLayout.createSequentialGroup()
+                            .addComponent(LblSop)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(cboOS, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addContainerGap())
+                        .addGroup(JPSmartphoneLayout.createSequentialGroup()
+                            .addGroup(JPSmartphoneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(iPhoneRadioButton)
+                                .addComponent(lblModelo))
+                            .addGroup(JPSmartphoneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(JPSmartphoneLayout.createSequentialGroup()
+                                    .addGap(18, 18, 18)
+                                    .addComponent(androidRadioButton))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JPSmartphoneLayout.createSequentialGroup()
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(cboModelo, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                    .addGroup(JPSmartphoneLayout.createSequentialGroup()
+                        .addGroup(JPSmartphoneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(LblDuracionBateria)
+                            .addComponent(LblMarca))
+                        .addGap(25, 25, 25)
+                        .addGroup(JPSmartphoneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(cboMarcaAndroid, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cboDuracion, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+        );
+        JPSmartphoneLayout.setVerticalGroup(
+            JPSmartphoneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(JPSmartphoneLayout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addGroup(JPSmartphoneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(JPSmartphoneLayout.createSequentialGroup()
+                        .addGroup(JPSmartphoneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(iPhoneRadioButton)
+                            .addComponent(androidRadioButton))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblModelo)
+                        .addGap(12, 12, 12))
+                    .addComponent(cboModelo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(9, 9, 9)
+                .addGroup(JPSmartphoneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cboMemoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(LblMemoriaIphone))
+                .addGap(13, 13, 13)
+                .addGroup(JPSmartphoneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(LblSop)
+                    .addComponent(cboOS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(25, 25, 25)
+                .addGroup(JPSmartphoneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(LblSop1)
+                    .addComponent(cboCodigoAntena, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(25, 25, 25)
+                .addGroup(JPSmartphoneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(LblPeso)
+                    .addComponent(cboPeso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(25, 25, 25)
+                .addGroup(JPSmartphoneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(LblDuracionBateria)
+                    .addComponent(cboDuracion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(JPSmartphoneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cboMarcaAndroid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(LblMarca))
+                .addContainerGap(17, Short.MAX_VALUE))
+>>>>>>> origin/master
         );
 
         TabSmart.addTab("SmartPhone", JPSmartphone);
@@ -605,6 +878,7 @@ public class FonoAgregarFrame extends Ventana {
         JPTradicional.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         JPTradicional.setEnabled(false);
 
+<<<<<<< HEAD
         LblPantallaColor.setText("Pantalla Color");
 
         cboPantallaColor.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "SI", "NO" }));
@@ -659,6 +933,8 @@ public class FonoAgregarFrame extends Ventana {
 
         jPanel3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
+=======
+>>>>>>> origin/master
         tipoTradicionalButtonGroup.add(normalRadioButton);
         normalRadioButton.setText("Normal");
         normalRadioButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -683,6 +959,7 @@ public class FonoAgregarFrame extends Ventana {
             }
         });
 
+<<<<<<< HEAD
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -706,12 +983,28 @@ public class FonoAgregarFrame extends Ventana {
                     .addComponent(almejaRadioButton))
                 .addContainerGap(45, Short.MAX_VALUE))
         );
+=======
+        LblPantallaColor.setText("Pantalla Color");
+
+        cboPantallaColor.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "SI", "NO" }));
+
+        LblSop2.setText("Codigo Antena");
+
+        cboTradicionalAntena.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9" }));
+
+        LblPeso1.setText("Peso");
+
+        LblDuracionBateria1.setText("Duración Bateria");
+
+        cboTradicionalBateria.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4", "5", "6" }));
+>>>>>>> origin/master
 
         javax.swing.GroupLayout JPTradicionalLayout = new javax.swing.GroupLayout(JPTradicional);
         JPTradicional.setLayout(JPTradicionalLayout);
         JPTradicionalLayout.setHorizontalGroup(
             JPTradicionalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(JPTradicionalLayout.createSequentialGroup()
+<<<<<<< HEAD
                 .addGap(222, 222, 222)
                 .addComponent(LblPantallaColor)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -723,10 +1016,40 @@ public class FonoAgregarFrame extends Ventana {
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
+=======
+                .addGap(42, 42, 42)
+                .addComponent(normalRadioButton)
+                .addGap(138, 138, 138)
+                .addComponent(sliderRadioButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 202, Short.MAX_VALUE)
+                .addComponent(almejaRadioButton)
+                .addGap(89, 89, 89))
+            .addGroup(JPTradicionalLayout.createSequentialGroup()
+                .addGap(190, 190, 190)
+                .addGroup(JPTradicionalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(JPTradicionalLayout.createSequentialGroup()
+                        .addGroup(JPTradicionalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(LblSop2)
+                            .addComponent(LblPeso1))
+                        .addGap(27, 27, 27)
+                        .addGroup(JPTradicionalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cboTradicionalPeso, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cboTradicionalAntena, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(JPTradicionalLayout.createSequentialGroup()
+                        .addComponent(LblDuracionBateria1)
+                        .addGap(25, 25, 25)
+                        .addComponent(cboTradicionalBateria, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(JPTradicionalLayout.createSequentialGroup()
+                        .addComponent(LblPantallaColor)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cboPantallaColor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+>>>>>>> origin/master
         );
         JPTradicionalLayout.setVerticalGroup(
             JPTradicionalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(JPTradicionalLayout.createSequentialGroup()
+<<<<<<< HEAD
                 .addContainerGap()
                 .addGroup(JPTradicionalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(LblPantallaColor)
@@ -736,6 +1059,30 @@ public class FonoAgregarFrame extends Ventana {
                 .addGap(28, 28, 28)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+=======
+                .addGap(35, 35, 35)
+                .addGroup(JPTradicionalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(LblPantallaColor)
+                    .addComponent(cboPantallaColor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(50, 50, 50)
+                .addGroup(JPTradicionalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(normalRadioButton)
+                    .addComponent(sliderRadioButton)
+                    .addComponent(almejaRadioButton))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(JPTradicionalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(LblSop2)
+                    .addComponent(cboTradicionalAntena, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(25, 25, 25)
+                .addGroup(JPTradicionalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(LblPeso1)
+                    .addComponent(cboTradicionalPeso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(25, 25, 25)
+                .addGroup(JPTradicionalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(LblDuracionBateria1)
+                    .addComponent(cboTradicionalBateria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(95, Short.MAX_VALUE))
+>>>>>>> origin/master
         );
 
         TabSmart.addTab("Tradicional", JPTradicional);
@@ -788,12 +1135,17 @@ public class FonoAgregarFrame extends Ventana {
         jPanel11Layout.setHorizontalGroup(
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel11Layout.createSequentialGroup()
+<<<<<<< HEAD
                 .addGap(35, 35, 35)
+=======
+                .addContainerGap()
+>>>>>>> origin/master
                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel11Layout.createSequentialGroup()
                         .addComponent(LblValorMinutoFijo1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(TxtValorMinutoFijo, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+<<<<<<< HEAD
                         .addGap(38, 38, 38)
                         .addComponent(LblValorMinutoMovil1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -803,15 +1155,34 @@ public class FonoAgregarFrame extends Ventana {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(TxtTarifaFija, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(3, 3, 3))
+=======
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(LblValorMinutoMovil1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(TxtValorMinutoMovil, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(LblTarifaFija1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(TxtTarifaFija, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(567, 567, 567))
+>>>>>>> origin/master
                     .addGroup(jPanel11Layout.createSequentialGroup()
                         .addComponent(LblMinutosUsadosFijo1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(TxtMinutosUsadosFijo, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+<<<<<<< HEAD
                         .addGap(70, 70, 70)
                         .addComponent(LblMinutosUsadosMovil1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(TxtMinutosUsadosMovil, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(541, 541, 541))
+=======
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(LblMinutosUsadosMovil1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(TxtMinutosUsadosMovil, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+>>>>>>> origin/master
         );
         jPanel11Layout.setVerticalGroup(
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -856,6 +1227,7 @@ public class FonoAgregarFrame extends Ventana {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+<<<<<<< HEAD
                     .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addGap(24, 24, 24)
@@ -866,10 +1238,21 @@ public class FonoAgregarFrame extends Ventana {
                     .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(TabSmart))
                 .addContainerGap())
+=======
+                    .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(TabSmart, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(BtnCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(BtnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(90, 90, 90))
+>>>>>>> origin/master
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+<<<<<<< HEAD
                 .addContainerGap()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -880,6 +1263,18 @@ public class FonoAgregarFrame extends Ventana {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BtnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(BtnCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+=======
+                .addGap(22, 22, 22)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(TabSmart, javax.swing.GroupLayout.PREFERRED_SIZE, 423, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(BtnCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BtnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+>>>>>>> origin/master
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -940,10 +1335,13 @@ public class FonoAgregarFrame extends Ventana {
             guardar = false;
             mensajeError+="\n Minutos Usados Movil";
         }
+<<<<<<< HEAD
        
         
         
         
+=======
+>>>>>>> origin/master
         Usuario usuario = obtenerDB().usuarioBuscarPorRut(TxtRut.getText());
         
         if(usuario == null){
@@ -1300,11 +1698,14 @@ public class FonoAgregarFrame extends Ventana {
         this.cboMarcaAndroid.setEnabled(false);
     }//GEN-LAST:event_iPhoneRadioButtonMouseReleased
 
+<<<<<<< HEAD
     private void iPhoneRadioButtonMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_iPhoneRadioButtonMousePressed
         // TODO add your handling code here:
         jPOpciones.setVisible(true);
     }//GEN-LAST:event_iPhoneRadioButtonMousePressed
 
+=======
+>>>>>>> origin/master
     /**
      * @param args the command line arguments
      */
@@ -1331,9 +1732,12 @@ public class FonoAgregarFrame extends Ventana {
             java.util.logging.Logger.getLogger(FonoAgregarFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+<<<<<<< HEAD
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
+=======
+>>>>>>> origin/master
  
 
         /* Create and display the form */
@@ -1454,11 +1858,16 @@ public class FonoAgregarFrame extends Ventana {
     private javax.swing.JRadioButton iPhoneRadioButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+<<<<<<< HEAD
     private javax.swing.JPanel jPOpciones;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+=======
+    private javax.swing.JPanel jPanel11;
+    private javax.swing.JPanel jPanel2;
+>>>>>>> origin/master
     private javax.swing.JLabel lblCompañia;
     private javax.swing.JLabel lblModelo;
     private java.awt.Menu menu1;

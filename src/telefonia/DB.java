@@ -206,7 +206,10 @@ public class DB {
         //Usuarios
         Usuario doris = new Usuario("Doris", "Napolitano", "5929028-2","05/02/1955" , 60, "SOLTERO");
         Usuario domingo = new Usuario("Domingo", "Beiza", "9040207-4","25/12/1965" , 50, "SOLTERO");
+<<<<<<< HEAD
         Usuario Andres  = new Usuario("Andres", "Osorio", "13269946-1","25/12/1965" , 50, "SOLTERO");
+=======
+>>>>>>> origin/master
         usuarios.add(doris);
         usuarios.add(domingo);
         usuarios.add(Andres);

@@ -87,7 +87,11 @@
                           </Group>
                           <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
+<<<<<<< HEAD
                               <Group type="102" alignment="0" attributes="0">
+=======
+                              <Group type="102" attributes="0">
+>>>>>>> origin/master
                                   <Component id="cboEstadoServicio" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               </Group>
@@ -103,7 +107,11 @@
                           <EmptySpace min="-2" pref="73" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Component id="cboTipoPlan" max="32767" attributes="0"/>
+<<<<<<< HEAD
                               <Component id="txtCodigo" min="-2" pref="89" max="-2" attributes="0"/>
+=======
+                              <Component id="txtCodigo" max="32767" attributes="0"/>
+>>>>>>> origin/master
                           </Group>
                       </Group>
                   </Group>
@@ -182,6 +190,17 @@
             <Property name="text" type="java.lang.String" value="Estado Servicio Tecn&#xed;co"/>
           </Properties>
         </Component>
+<<<<<<< HEAD
+=======
+        <Component class="javax.swing.JLabel" name="jLabel1">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Dialog" size="18" style="0"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Ingreso Plan Telefonico"/>
+          </Properties>
+        </Component>
+>>>>>>> origin/master
         <Component class="javax.swing.JComboBox" name="cboTipoPlan">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">

@@ -63,9 +63,29 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
+<<<<<<< HEAD
                           <Component id="lblrut" min="-2" pref="46" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="txtrut" min="-2" pref="88" max="-2" attributes="0"/>
+=======
+                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                              <Component id="lblestciv" max="32767" attributes="0"/>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Component id="lbledad" min="-2" pref="46" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+                                  <Component id="txtEdad" min="-2" pref="30" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="cboEstadoCivil" min="-2" pref="176" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+>>>>>>> origin/master
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
@@ -182,7 +202,10 @@
         </Component>
         <Component class="javax.swing.JTextField" name="txtEdad">
           <Events>
+<<<<<<< HEAD
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtEdadActionPerformed"/>
+=======
+>>>>>>> origin/master
             <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtEdadFocusGained"/>
           </Events>
         </Component>

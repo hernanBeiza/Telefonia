@@ -84,6 +84,7 @@ public class ServicioTecnicoListarFrame extends Ventana {
 
         datosTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
+<<<<<<< HEAD
                 {null, null, null, null, null},
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -93,6 +94,9 @@ public class ServicioTecnicoListarFrame extends Ventana {
                 {null, null, null, null, null},
                 {null, null, null, null, null},
                 {null, null, null, null, null}
+=======
+
+>>>>>>> origin/master
             },
             new String [] {
                 "Rut", "Teléfono", "Nombre", "Apellido", "Estado"

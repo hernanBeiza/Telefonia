@@ -70,7 +70,11 @@ public class PlanTelefonicoListarFrame extends Ventana {
         datosTable = new javax.swing.JTable();
         jPanel4 = new javax.swing.JPanel();
         volverButton = new javax.swing.JButton();
+<<<<<<< HEAD
         ModificarButton = new javax.swing.JButton();
+=======
+        consultarButton = new javax.swing.JButton();
+>>>>>>> origin/master
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("LISTA PLANES TELEFONICOS");
@@ -115,10 +119,17 @@ public class PlanTelefonicoListarFrame extends Ventana {
             }
         });
 
+<<<<<<< HEAD
         ModificarButton.setText("Modificar");
         ModificarButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ModificarButtonActionPerformed(evt);
+=======
+        consultarButton.setText("Consultar");
+        consultarButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                consultarButtonActionPerformed(evt);
+>>>>>>> origin/master
             }
         });
 
@@ -129,15 +140,24 @@ public class PlanTelefonicoListarFrame extends Ventana {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(volverButton)
+<<<<<<< HEAD
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 207, Short.MAX_VALUE)
                 .addComponent(ModificarButton)
+=======
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(consultarButton)
+>>>>>>> origin/master
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(volverButton, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+<<<<<<< HEAD
                 .addComponent(ModificarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+=======
+                .addComponent(consultarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+>>>>>>> origin/master
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -169,7 +189,11 @@ public class PlanTelefonicoListarFrame extends Ventana {
         this.dispose();
     }//GEN-LAST:event_volverButtonActionPerformed
 
+<<<<<<< HEAD
     private void ModificarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModificarButtonActionPerformed
+=======
+    private void consultarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultarButtonActionPerformed
+>>>>>>> origin/master
         int id = datosTable.getSelectedRow();
         final PlanTelefonico plan = this.obtenerDB().planesObtener().get(id);
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -182,7 +206,11 @@ public class PlanTelefonicoListarFrame extends Ventana {
             }
         });
 
+<<<<<<< HEAD
     }//GEN-LAST:event_ModificarButtonActionPerformed
+=======
+    }//GEN-LAST:event_consultarButtonActionPerformed
+>>>>>>> origin/master
 
     /**
      * @param args the command line arguments
@@ -220,7 +248,11 @@ public class PlanTelefonicoListarFrame extends Ventana {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+<<<<<<< HEAD
     private javax.swing.JButton ModificarButton;
+=======
+    private javax.swing.JButton consultarButton;
+>>>>>>> origin/master
     private javax.swing.JTable datosTable;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;

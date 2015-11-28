@@ -82,7 +82,11 @@
             <Component class="javax.swing.JTable" name="datosTable">
               <Properties>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
+<<<<<<< HEAD
                   <Table columnCount="5" rowCount="9">
+=======
+                  <Table columnCount="5" rowCount="0">
+>>>>>>> origin/master
                     <Column editable="false" title="Rut" type="java.lang.Object"/>
                     <Column editable="false" title="Tel&#xe9;fono" type="java.lang.Object"/>
                     <Column editable="false" title="Nombre" type="java.lang.Object"/>
@@ -90,7 +94,10 @@
                     <Column editable="false" title="Estado" type="java.lang.Object"/>
                   </Table>
                 </Property>
+<<<<<<< HEAD
                 <Property name="autoResizeMode" type="int" value="0"/>
+=======
+>>>>>>> origin/master
                 <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                   <TableColumnModel selectionModel="0">
                     <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">

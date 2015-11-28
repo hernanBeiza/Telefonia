@@ -156,7 +156,10 @@ public class FonoCantidadFrame extends Ventana {
             }
         });
 
+<<<<<<< HEAD
         lblCantidad.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+=======
+>>>>>>> origin/master
         lblCantidad.setText("Total:");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -172,9 +175,14 @@ public class FonoCantidadFrame extends Ventana {
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+<<<<<<< HEAD
             .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(volverButton, javax.swing.GroupLayout.DEFAULT_SIZE, 47, Short.MAX_VALUE)
                 .addComponent(lblCantidad))
+=======
+            .addComponent(volverButton, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
+            .addComponent(lblCantidad, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+>>>>>>> origin/master
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -219,6 +227,7 @@ public class FonoCantidadFrame extends Ventana {
         if(privadosRadio.isSelected()){
             encontrados = obtenerDB().telefonosObtenerPrivados();
         } else if(comercialesRadio.isSelected()){
+<<<<<<< HEAD
             encontrados = obtenerDB().telefonosObtenerComerciales();
         }
         System.out.println(encontrados);
@@ -230,11 +239,24 @@ public class FonoCantidadFrame extends Ventana {
             modeloTable.removeRow(i);
         }
 
+=======
+            encontrados = obtenerDB().telefonosObtenerPrivados();
+        }
+>>>>>>> origin/master
         if(encontrados.isEmpty()){
             JOptionPane.showMessageDialog(rootPane, "No se encontraron teléfonos", "Error al intentar listar", JOptionPane.WARNING_MESSAGE);
             lblCantidad.setText("Total: 0");
         } else {
             lblCantidad.setText("Total: " + encontrados.size());
+<<<<<<< HEAD
+=======
+            DefaultTableModel modeloTable = (DefaultTableModel) datosTable.getModel();
+            Iterator it = encontrados.iterator();
+            int rowCount = modeloTable.getRowCount();
+            for (int i = rowCount - 1; i >= 0; i--) {
+                modeloTable.removeRow(i);
+            }
+>>>>>>> origin/master
             while(it.hasNext()){
                 Telefonia unTelefono = (Telefonia)it.next();
                 modeloTable.addRow(new Object[]{unTelefono.getUsuario().getRun(),unTelefono.getNumeroFono(),unTelefono.getCompania().getNombre()});

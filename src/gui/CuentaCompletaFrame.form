@@ -3,7 +3,11 @@
 <Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
+<<<<<<< HEAD
     <Property name="title" type="java.lang.String" value="CUENTA"/>
+=======
+    <Property name="title" type="java.lang.String" value="Cuenta Completa"/>
+>>>>>>> origin/master
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -24,12 +28,25 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
+<<<<<<< HEAD
           <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jPanel1" max="32767" attributes="0"/>
                   <Component id="jPanel2" max="32767" attributes="0"/>
                   <Component id="jPanel3" alignment="0" max="32767" attributes="0"/>
+=======
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Component id="jPanel3" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="consultarButton" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Component id="jPanel2" alignment="0" max="32767" attributes="0"/>
+                  <Component id="jPanel1" max="32767" attributes="0"/>
+>>>>>>> origin/master
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -40,17 +57,32 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
+<<<<<<< HEAD
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
+=======
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  </Group>
+                  <Component id="consultarButton" max="32767" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+>>>>>>> origin/master
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
     <Container class="javax.swing.JPanel" name="jPanel1">
+<<<<<<< HEAD
       <Properties>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
@@ -58,11 +90,14 @@
           </Border>
         </Property>
       </Properties>
+=======
+>>>>>>> origin/master
 
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
+<<<<<<< HEAD
                   <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
                   <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
@@ -70,12 +105,26 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="buscarButton" min="-2" pref="311" max="-2" attributes="0"/>
                   <EmptySpace pref="21" max="32767" attributes="0"/>
+=======
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Component id="txtRun" min="-2" pref="190" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="buscarButton" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace pref="537" max="32767" attributes="0"/>
+              </Group>
+              <Group type="102" alignment="0" attributes="0">
+                  <Component id="jLabel1" max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+>>>>>>> origin/master
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
+<<<<<<< HEAD
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="txtRun" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -83,11 +132,24 @@
                       <Component id="jLabel2" alignment="3" pref="25" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
+=======
+                  <EmptySpace max="32767" attributes="0"/>
+                  <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="buscarButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtRun" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Component id="jLabel2" max="32767" attributes="0"/>
+                  </Group>
+>>>>>>> origin/master
               </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
+<<<<<<< HEAD
         <Component class="javax.swing.JButton" name="buscarButton">
           <Properties>
             <Property name="text" type="java.lang.String" value="Buscar"/>
@@ -96,12 +158,24 @@
                 <BevelBorder/>
               </Border>
             </Property>
+=======
+        <Component class="javax.swing.JLabel" name="jLabel1">
+          <Properties>
+            <Property name="horizontalAlignment" type="int" value="0"/>
+            <Property name="text" type="java.lang.String" value="Cuenta Completa"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="buscarButton">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Buscar"/>
+>>>>>>> origin/master
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buscarButtonActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="txtRun">
+<<<<<<< HEAD
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtRunActionPerformed"/>
           </Events>
@@ -109,11 +183,18 @@
         <Component class="javax.swing.JLabel" name="jLabel2">
           <Properties>
             <Property name="text" type="java.lang.String" value="Rut:"/>
+=======
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel2">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="RUN:"/>
+>>>>>>> origin/master
           </Properties>
         </Component>
       </SubComponents>
     </Container>
     <Container class="javax.swing.JPanel" name="jPanel2">
+<<<<<<< HEAD
       <Properties>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
@@ -121,16 +202,32 @@
           </Border>
         </Property>
       </Properties>
+=======
+>>>>>>> origin/master
 
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
+<<<<<<< HEAD
               <Component id="jScrollPane1" alignment="0" max="32767" attributes="0"/>
+=======
+              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+              <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
+                  <Component id="jScrollPane1" alignment="1" pref="589" max="32767" attributes="0"/>
+              </Group>
+>>>>>>> origin/master
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
+<<<<<<< HEAD
               <Component id="jScrollPane1" alignment="1" pref="354" max="32767" attributes="0"/>
+=======
+              <EmptySpace min="0" pref="354" max="32767" attributes="0"/>
+              <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
+                  <Component id="jScrollPane1" alignment="0" pref="354" max="32767" attributes="0"/>
+              </Group>
+>>>>>>> origin/master
           </Group>
         </DimensionLayout>
       </Layout>
@@ -144,6 +241,7 @@
           <SubComponents>
             <Component class="javax.swing.JTable" name="cuentaTable">
               <Properties>
+<<<<<<< HEAD
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
                     <BevelBorder/>
@@ -152,6 +250,11 @@
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                   <Table columnCount="12" rowCount="24">
                     <Column editable="false" title="Rut" type="java.lang.Object"/>
+=======
+                <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
+                  <Table columnCount="12" rowCount="0">
+                    <Column editable="false" title="RUT" type="java.lang.Object"/>
+>>>>>>> origin/master
                     <Column editable="false" title="Nombre" type="java.lang.Object"/>
                     <Column editable="false" title="Apellido" type="java.lang.Object"/>
                     <Column editable="false" title="Fecha Nacimiento" type="java.lang.Object"/>
@@ -165,7 +268,10 @@
                     <Column editable="true" title="Min. Fijos" type="java.lang.Object"/>
                   </Table>
                 </Property>
+<<<<<<< HEAD
                 <Property name="autoResizeMode" type="int" value="0"/>
+=======
+>>>>>>> origin/master
                 <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                   <TableColumnModel selectionModel="0">
                     <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
@@ -240,6 +346,7 @@
       </SubComponents>
     </Container>
     <Container class="javax.swing.JPanel" name="jPanel3">
+<<<<<<< HEAD
       <Properties>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
@@ -247,27 +354,40 @@
           </Border>
         </Property>
       </Properties>
+=======
+>>>>>>> origin/master
 
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
+<<<<<<< HEAD
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="volverButton" min="-2" pref="84" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
                   <Component id="consultarButton" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
+=======
+                  <Component id="volverButton" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
+>>>>>>> origin/master
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
+<<<<<<< HEAD
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Component id="volverButton" alignment="1" max="32767" attributes="0"/>
                       <Component id="consultarButton" alignment="1" pref="44" max="32767" attributes="0"/>
                   </Group>
+=======
+              <Group type="102" attributes="0">
+                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  <Component id="volverButton" min="-2" pref="44" max="-2" attributes="0"/>
+>>>>>>> origin/master
               </Group>
           </Group>
         </DimensionLayout>
@@ -276,16 +396,20 @@
         <Component class="javax.swing.JButton" name="volverButton">
           <Properties>
             <Property name="text" type="java.lang.String" value="Volver"/>
+<<<<<<< HEAD
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.SoftBevelBorderInfo">
                 <BevelBorder/>
               </Border>
             </Property>
+=======
+>>>>>>> origin/master
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="volverButtonActionPerformed"/>
           </Events>
         </Component>
+<<<<<<< HEAD
         <Component class="javax.swing.JButton" name="consultarButton">
           <Properties>
             <Property name="text" type="java.lang.String" value="Consultar Detalle"/>
@@ -301,5 +425,17 @@
         </Component>
       </SubComponents>
     </Container>
+=======
+      </SubComponents>
+    </Container>
+    <Component class="javax.swing.JButton" name="consultarButton">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Consultar Detalle"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="consultarButtonActionPerformed"/>
+      </Events>
+    </Component>
+>>>>>>> origin/master
   </SubComponents>
 </Form>

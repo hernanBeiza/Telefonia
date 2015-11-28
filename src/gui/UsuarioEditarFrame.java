@@ -197,7 +197,10 @@ public class UsuarioEditarFrame extends Ventana {
         });
 
         btnActualizar.setText("Actualizar");
+<<<<<<< HEAD
         btnActualizar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+=======
+>>>>>>> origin/master
         btnActualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnActualizarActionPerformed(evt);
@@ -212,7 +215,11 @@ public class UsuarioEditarFrame extends Ventana {
                 .addContainerGap()
                 .addComponent(btnVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+<<<<<<< HEAD
                 .addComponent(btnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+=======
+                .addComponent(btnActualizar)
+>>>>>>> origin/master
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
@@ -221,8 +228,12 @@ public class UsuarioEditarFrame extends Ventana {
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+<<<<<<< HEAD
                     .addComponent(btnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 12, Short.MAX_VALUE))
+=======
+                    .addComponent(btnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))
+>>>>>>> origin/master
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -285,7 +296,10 @@ public class UsuarioEditarFrame extends Ventana {
             usuarioViejo.setEstadoCivil(cboEstadoCivil.getSelectedItem().toString().toUpperCase());
             
             JOptionPane.showMessageDialog(rootPane, "Usuario guardado correctamente", "Guardado correcto", JOptionPane.INFORMATION_MESSAGE);            
+<<<<<<< HEAD
             txtRut.setText(null);txtNombre.setText(null);txtApellido.setText(null);txtFecNac.setText(null);txtEdad.setText(null);
+=======
+>>>>>>> origin/master
         } else {
              JOptionPane.showMessageDialog(rootPane,mensajeError, "Error al intentar guardar", JOptionPane.WARNING_MESSAGE);
         }   
