@@ -52,7 +52,7 @@
                       <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                       <Component id="BtnCerrar" min="-2" pref="66" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
-                      <Component id="BtnAgregar" min="-2" pref="60" max="-2" attributes="0"/>
+                      <Component id="btnEditar" min="-2" pref="60" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                   </Group>
                   <Component id="jPanel2" alignment="0" max="32767" attributes="0"/>
@@ -73,7 +73,7 @@
               <Component id="jPanel11" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="BtnAgregar" alignment="3" min="-2" pref="45" max="-2" attributes="0"/>
+                  <Component id="btnEditar" alignment="3" min="-2" pref="45" max="-2" attributes="0"/>
                   <Component id="BtnCerrar" alignment="3" min="-2" pref="45" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
@@ -733,7 +733,7 @@
                         <StringItem index="0" value="0"/>
                         <StringItem index="1" value="16"/>
                         <StringItem index="2" value="32"/>
-                        <StringItem index="3" value="36"/>
+                        <StringItem index="3" value="64"/>
                         <StringItem index="4" value="128"/>
                       </StringArray>
                     </Property>
@@ -1197,9 +1197,9 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BtnCerrarActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="BtnAgregar">
+    <Component class="javax.swing.JButton" name="btnEditar">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Agregar"/>
+        <Property name="text" type="java.lang.String" value="Modificar"/>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
             <BevelBorder/>
@@ -1207,7 +1207,7 @@
         </Property>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BtnAgregarActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEditarActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

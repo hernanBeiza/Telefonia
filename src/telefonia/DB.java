@@ -213,13 +213,21 @@ public class DB {
         
         //Teléfonos Fijo
         //    public Privado(boolean identificadorLlamada, int codigoZona, Compania compania, Usuario usuario, String region, String comuna, String fechaContrato, int valorMinutoFijo, int valorMinutoMovil, float tarifaFija, int cantidadMinutosUsadosFijos, int cantidadMinutosUsadosMovil, PlanTelefonico planTelefonico, String numeroFono, int costoEquipo) {
-        Privado telefonoPrivado = new Privado(false, 033, movistar, domingo, "Petorca", "Papudo", "04/07/2010", 10, 100, 1000, 100, 200, premiumEntel, "790123", 5000);
+        Privado telefonoPrivado = new Privado(false, 033, movistar, domingo, "Metropolitana de Santiago", "La Reina", "04/07/2010", 10, 100, 1000, 100, 200, premiumEntel, "790123", 5000);
         telefonos.add(telefonoPrivado);
         //Teléfono Comercial
         //    public Comerciales(int cantidadAnexos, int codigoZona, Compania compania, Usuario usuario, String region, String comuna, String fechaContrato, int valorMinutoFijo, int valorMinutoMovil, float tarifaFija, int cantidadMinutosUsadosFijos, int cantidadMinutosUsadosMovil, PlanTelefonico planTelefonico, String numeroFono, int costoEquipo) {
-        Comerciales telefonoComercial = new Comerciales(10, 02, entel, doris, "RM", "La Florida", "01/01/1990", 10, 100, 22000, 0,0, economicoEntel, "2813797", 1000);
+        Comerciales telefonoComercial = new Comerciales(10, 02, entel, doris, "Metropolitana de Santiago", "La Florida", "01/01/1990", 10, 100, 22000, 0,0, normalEntel, "2813797", 1000);
         telefonos.add(telefonoComercial);
-        
+        //    public Android(String marcaFono, String versionSO, int cantidadmemoria, int codigoAntena, int peso, int duracionBateria, Compania compania, Usuario usuario, String region, String comuna, String fechaContrato, int valorMinutoFijo, int valorMinutoMovil, float tarifaFija, int cantidadMinutosUsadosFijos, int cantidadMinutosUsadosMovil, PlanTelefonico planTelefonico, String numeroFono, int costoEquipo) {
+        Android telefonoAndroid = new Android(marcasAndroid[0], versionesAndroid[0], 16, 1, 100, 1, entel, doris, "Valparaíso", "La Florida", "04/07/1987", 100, 200, 24900, 0, 0, premiumEntel, "9040207", 150000);
+        telefonos.add(telefonoAndroid);
+        //    public IOS(String modelo, String versionSO, int cantidadmemoria, int codigoAntena, int peso, int duracionBateria, Compania compania, Usuario usuario, String region, String comuna, String fechaContrato, int valorMinutoFijo, int valorMinutoMovil, float tarifaFija, int cantidadMinutosUsadosFijos, int cantidadMinutosUsadosMovil, PlanTelefonico planTelefonico, String numeroFono, int costoEquipo) {
+        IOS telefonoIOS = new IOS(modelosIOS[3], versionesiOS[2], 64, 2, 200, 1, entel, Andres, "Valparaíso", "La reina", "25/12/2015", 10, 20, 15900, 0, 0, economicoEntel, "985486023", 600000);
+        telefonos.add(telefonoIOS);
+        //    public Tradicional(boolean pantallaColor, String tipoFono, int codigoAntena, int peso, int duracionBateria, Compania compania, Usuario usuario, String region, String comuna, String fechaContrato, int valorMinutoFijo, int valorMinutoMovil, float tarifaFija, int cantidadMinutosUsadosFijos, int cantidadMinutosUsadosMovil, PlanTelefonico planTelefonico, String numeroFono, int costoEquipo) {
+        Tradicional telefonoTradicional = new Tradicional(true, tipos[0], 3, 300, 4, movistar, doris, "Los Ríos", "Lagos", "12/12/2915", 20, 10, 10000, 0, 0, premiumMovistar, "91231234", 5000);
+        telefonos.add(telefonoTradicional);
     }
 
     public int[] getPesos() {

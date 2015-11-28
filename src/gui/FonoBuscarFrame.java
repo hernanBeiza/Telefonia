@@ -12,7 +12,12 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
+import telefonia.Android;
+import telefonia.Comerciales;
+import telefonia.IOS;
+import telefonia.Privado;
 import telefonia.Telefonia;
+import telefonia.Tradicional;
 /**
  *
  * @author hernanBeiza
@@ -339,7 +344,6 @@ public class FonoBuscarFrame extends Ventana {
         this.revalidate();
         this.repaint();
         */
-        System.out.println("Quiero hacer que aparezca un combobox con las marcas y oculta el campo... Y viceversa");
     }//GEN-LAST:event_marcaRadioActionPerformed
 
     private void verDetalleButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verDetalleButtonActionPerformed
@@ -348,9 +352,38 @@ public class FonoBuscarFrame extends Ventana {
         if(datosTable.getSelectedRow()>=0){
             int id = datosTable.getSelectedRow();
             System.out.println(id);
-            Telefonia telefono = encontrados.get(id);
+            final Telefonia telefono = encontrados.get(id);
             System.out.println(telefono.toString());
-            JOptionPane.showMessageDialog(rootPane, "Acá hay que mostrar el formulario de andrés con la data cargada", "Error al ver detalle", JOptionPane.WARNING_MESSAGE);
+            
+            java.awt.EventQueue.invokeLater(new Runnable() {
+                @Override
+                public void run() {
+                    FonoEditarFrame editarFrame = new FonoEditarFrame();
+                    editarFrame.setVisible(true);
+
+                    if(telefono instanceof Privado){
+                        System.out.println("Es un teléfono privado");
+                        Privado unPrivado = (Privado)telefono;
+                        editarFrame.cargarPrivado(unPrivado);
+                    } else if(telefono instanceof Comerciales){
+                        System.out.println("Es un teléfono comercial");
+                        Comerciales unComercial = (Comerciales)telefono;
+                        editarFrame.cargarComercial(unComercial);
+                    } else if(telefono instanceof Android){
+                        System.out.println("Es una mugre Android");
+                        Android unAndroid = (Android)telefono;
+                        editarFrame.cargarAndroid(unAndroid);
+                    } else if(telefono instanceof IOS){
+                        IOS unIOS = (IOS)telefono;
+                        editarFrame.cargarIOS(unIOS);
+                    } else if (telefono instanceof Tradicional){
+                        System.out.println("Este lo usan los abuelitos Tradicional");
+                    }            
+
+                }
+            });
+
+            
         } else {
             JOptionPane.showMessageDialog(rootPane, "Debe seleccionar al menos una", "Error al ver detalle", JOptionPane.WARNING_MESSAGE);
         }        
